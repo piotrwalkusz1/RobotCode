@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.RobotCode.CSharp", "..\RobotCode\UnityVS.RobotCode.CSharp.csproj", "{544611EB-7F93-2968-99A7-C45839DC81F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "..\Compiler\Compiler.csproj", "{AEBEF337-D029-4ECE-AC9B-1B78D206AF18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotsLibrary", "..\RobotsLibrary\RobotsLibrary.csproj", "{631920F6-2716-45D6-859E-5F7252E2BBBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{544611EB-7F93-2968-99A7-C45839DC81F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544611EB-7F93-2968-99A7-C45839DC81F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544611EB-7F93-2968-99A7-C45839DC81F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544611EB-7F93-2968-99A7-C45839DC81F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEBEF337-D029-4ECE-AC9B-1B78D206AF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEBEF337-D029-4ECE-AC9B-1B78D206AF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEBEF337-D029-4ECE-AC9B-1B78D206AF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEBEF337-D029-4ECE-AC9B-1B78D206AF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
