@@ -26,14 +26,18 @@ namespace Compiler
 
             if (results.Errors.HasErrors)
             {
-                StringBuilder sb = new StringBuilder();
+                var exception = new InvalidOperationException();
+
+                var errors = new List<string>();
 
                 foreach (CompilerError error in results.Errors)
                 {
-                    sb.AppendLine(error.ErrorText);
+                    errors.Add(error.Line.ToString() + " @ " + error.Column.ToString() + " @ " + error.ErrorText);
                 }
+                
+                exception.Data["Errors"] = errors;
 
-                throw new InvalidOperationException(sb.ToString());
+                throw exception;
             }
 
             return results.CompiledAssembly;
