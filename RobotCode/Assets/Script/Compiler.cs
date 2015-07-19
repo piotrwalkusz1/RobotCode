@@ -11,11 +11,7 @@ public class Compiler : MonoBehaviour
 {
     public static Compiler Main { get; set; }
 
-    public RealRobot _realRobot;
-
     private MethodInfo _compileMethod;
-
-    private Thread _robotThread;
 
     private string COMPILER_PATH;
 
@@ -41,24 +37,68 @@ public class Compiler : MonoBehaviour
         _compileMethod = method;
     }
 
-    public void CompileAndStartFunction(string code)
+    public void Compile(CodeInfo codeInfo)
     {
-        _robotThread = new Thread(delegate() { Function_CompileAndStartFunction(code); });
+        Thread thread = new Thread(delegate() { Function_Compile(codeInfo); });
 
-        _robotThread.Start();
+        thread.Start();
+    }
+    
+
+    public void CompileAndStartFunction(CodeInfo codeInfo, RealRobot realRobot)
+    {
+        Thread thread = new Thread(delegate() { Function_CompileAndStartFunction(codeInfo, realRobot); });
+
+        thread.Start();
     }
 
-    private void Function_CompileAndStartFunction(string code)
+    private void Function_Compile(CodeInfo codeInfo)
     {
         try
         {
-            var assembly = _compileMethod.Invoke(null, new object[] { code, COMPILER_PATH }) as Assembly;
+            var assembly = _compileMethod.Invoke(null, new object[] { codeInfo.Code, COMPILER_PATH }) as Assembly;
+
+            codeInfo.CompiledAssembly = assembly;
+
+            codeInfo.IsEdited = false;
+        }
+        catch (TargetInvocationException targertException)
+        {
+            Exception exception = targertException.InnerException;
+
+            var errors = (List<string>)exception.Data["Errors"];
+
+            if (errors == null)
+            {
+                print("Compilation hase failed");
+
+                return;
+            }
+
+            foreach (string error in errors)
+            {
+                string[] errorData = error.Split(new string[] { " @ " }, StringSplitOptions.None);
+
+                print("Line: " + errorData[0] + ", Column: " + errorData[1] + " : " + errorData[2]);
+            }
+        }
+    }
+
+    private void Function_CompileAndStartFunction(CodeInfo codeInfo, RealRobot realRobot)
+    {
+        try
+        {
+            var assembly = _compileMethod.Invoke(null, new object[] { codeInfo.Code, COMPILER_PATH }) as Assembly;
+
+            codeInfo.CompiledAssembly = assembly;
+
+            codeInfo.IsEdited = false;
 
             var robotClass = assembly.GetType("Program") as Type;
 
             var inst = Activator.CreateInstance(robotClass);
 
-            typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(inst, _realRobot);
+            typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(inst, realRobot);
 
             robotClass.GetMethod("Main").Invoke(inst, null);
         }

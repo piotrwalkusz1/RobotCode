@@ -9,17 +9,25 @@ using System.Linq;
 
 public class RealRobot : MonoBehaviour, IRobot
 {
-    public float _movementSpeed;
-    public float _rotationSpeed;
+    public RobotFunctions _robotFunctions;
+
+    public float _maxMovementSpeed;
+    public float _maxRotationSpeed;
+
+    private float _currentMovementSpeed;
+    private float _currentRotationSpeed;
 
     private List<Action> _tasks { get; set; }
     private object _tasks_lock = new object();
 
-    private bool _isMove = false;
-    private float _movementDistanceLeft;
+    private bool _isMove;
+    private bool _movementTypeIsTime; // false - distance, true - time
+    private float _movementDistanceOrTimeLeft;
+    private Vector2 _movementLastPosition;
 
+    private bool _rotationTypeIsTime; // false - distance, true - time
     private int _rotationPhase = 0; // -1 - left, 0 - nothing, 1 - right
-    private float _rotationDeegresLeft;
+    private float _rotationDeegresOrTimeLeft;
 
     private bool _isWait = false;
     private DateTime _waitEndTime;
@@ -27,8 +35,14 @@ public class RealRobot : MonoBehaviour, IRobot
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
 	// Use this for initialization
-	void Awake () {
+	void Awake () 
+    {
         _tasks = new List<Action>();
+
+        _robotFunctions = GetComponent<RobotFunctions>();
+
+        _currentMovementSpeed = _maxMovementSpeed;
+        _currentRotationSpeed = _maxRotationSpeed;
 	}
 	
 	// Update is called once per frame
@@ -43,6 +57,18 @@ public class RealRobot : MonoBehaviour, IRobot
         Update_Wait();
 	}
 
+    public void CompileOrRun(CodeInfo codeInfo)
+    {
+        if (codeInfo.IsEdited)
+        {
+            codeInfo.CompileAndRun(this);
+        }
+        else
+        {
+            codeInfo.Run(this);
+        }
+    }
+
     public void ContinueProcess()
     {
         _stopEvent.Set();
@@ -51,6 +77,36 @@ public class RealRobot : MonoBehaviour, IRobot
     public void StopProcess()
     {
         _stopEvent.WaitOne();
+    }
+
+    public float GetMaxMovementSpeed()
+    {
+        return _maxMovementSpeed;
+    }
+
+    public float GetMaxRotationSpeed()
+    {
+        return _maxRotationSpeed;
+    }
+
+    public void SetMovementSpeed(float speed)
+    {
+        _currentMovementSpeed = Mathf.Clamp(speed, -_maxMovementSpeed, _maxMovementSpeed);
+    }
+
+    public void SetRotationSpeed(float speed)
+    {
+        _currentRotationSpeed = Mathf.Clamp(speed, -_maxRotationSpeed, _maxRotationSpeed);
+    }
+
+    public void StartMove(float time)
+    {
+        AddTask(delegate() { Function_StartMove(time); });
+    }
+
+    public void StartRotate(float time)
+    {
+        AddTask(delegate() { Function_StartRotate(time); });
     }
 
     public void Move(float distance)
@@ -63,14 +119,36 @@ public class RealRobot : MonoBehaviour, IRobot
         AddTaskAndWait(delegate() { Function_Rotate(deegres); });
     }
 
-    public void Wait(float seconds)
+    public void Wait(float time)
     {
-        AddTaskAndWait(delegate() { Function_Wait(seconds); });
+        AddTaskAndWait(delegate() { Function_Wait(time); });
+    }
+
+    private void Function_StartMove(float time)
+    {
+        _movementDistanceOrTimeLeft = time;
+
+        _movementTypeIsTime = true;
+
+        _isMove = true;
+    }
+
+    private void Function_StartRotate(float time)
+    {
+        _rotationPhase = 1;
+
+        _rotationDeegresOrTimeLeft = time;
+
+        _rotationTypeIsTime = true;
     }
 
     private void Function_Move(float distance)
     {
-        _movementDistanceLeft = distance;
+        _movementDistanceOrTimeLeft = distance;
+
+        _movementLastPosition = new Vector2(transform.position.x, transform.position.z);
+
+        _movementTypeIsTime = false;
 
         _isMove = true;
     }
@@ -79,7 +157,9 @@ public class RealRobot : MonoBehaviour, IRobot
     {
         _rotationPhase = deegres > 0 ? 1 : -1;
 
-        _rotationDeegresLeft = Mathf.Abs(deegres);
+        _rotationDeegresOrTimeLeft = Mathf.Abs(deegres);
+
+        _rotationTypeIsTime = false;
     }
 
     private void Function_Wait(float seconds)
@@ -93,23 +173,34 @@ public class RealRobot : MonoBehaviour, IRobot
     {
         if (_isMove)
         {
-            if (_movementDistanceLeft <= 0)
+            if (_movementDistanceOrTimeLeft <= 0)
             {
                 _isMove = false;
 
-                ContinueProcess();
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                if (!_movementTypeIsTime) ContinueProcess();            
             }
             else
             {
-                Vector2 startPos = new Vector2(transform.position.x, transform.position.z);
+                if (_movementTypeIsTime)
+                {
+                    GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
 
-                transform.Translate(0, 0, _movementSpeed * Time.deltaTime);
+                    _movementDistanceOrTimeLeft -= Time.deltaTime;
+                }
+                else
+                {
+                    GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
 
-                Vector2 endPos = new Vector2(transform.position.x, transform.position.z);
+                    Vector2 currentPos = new Vector2(transform.position.x, transform.position.z);
 
-                float traveledDistance = (endPos - startPos).magnitude;
+                    float traveledDistance = (currentPos - _movementLastPosition).magnitude;
 
-                _movementDistanceLeft -= traveledDistance;
+                    _movementDistanceOrTimeLeft -= traveledDistance;
+
+                    _movementLastPosition = currentPos;
+                }              
             }
         }      
     }
@@ -118,21 +209,30 @@ public class RealRobot : MonoBehaviour, IRobot
     {
         if (_rotationPhase != 0)
         {
-            if (_rotationDeegresLeft <= 0)
+            if (_rotationDeegresOrTimeLeft <= 0)
             {
                 _rotationPhase = 0;
 
-                ContinueProcess();
+                if(!_rotationTypeIsTime) ContinueProcess();
             }
             else
             {
-                float startRot = transform.eulerAngles.y;
+                if (_rotationTypeIsTime)
+                {
+                    transform.Rotate(0, _currentRotationSpeed * Time.deltaTime, 0);
 
-                transform.Rotate(0, _rotationPhase * _rotationSpeed * Time.deltaTime, 0);
+                    _rotationDeegresOrTimeLeft -= Time.deltaTime;
+                }
+                else
+                {
+                    float startRot = transform.eulerAngles.y;
 
-                float endRot = transform.eulerAngles.y;
+                    transform.Rotate(0, _rotationPhase * _currentRotationSpeed * Time.deltaTime, 0);
 
-                _rotationDeegresLeft -= Math.Abs(Mathf.DeltaAngle(startRot, endRot));
+                    float endRot = transform.eulerAngles.y;
+
+                    _rotationDeegresOrTimeLeft -= Math.Abs(Mathf.DeltaAngle(startRot, endRot));
+                }        
             }
         }      
     }
@@ -167,12 +267,17 @@ public class RealRobot : MonoBehaviour, IRobot
         }
     }
 
-    private void AddTaskAndWait(Action task)
+    private void AddTask(Action task)
     {
         lock (_tasks_lock)
         {
             _tasks.Add(task);
         }
+    }
+
+    private void AddTaskAndWait(Action task)
+    {
+        AddTask(task);
 
         StopProcess();
     }

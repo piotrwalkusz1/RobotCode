@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "..\Compiler\Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotsLibrary", "..\RobotsLibrary\RobotsLibrary.csproj", "{631920F6-2716-45D6-859E-5F7252E2BBBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.RobotCode.CSharp.Plugins", "..\RobotCode\UnityVS.RobotCode.CSharp.Plugins.csproj", "{5B0AAB0E-6F86-AB6E-ED1C-2A2C190A2A97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{631920F6-2716-45D6-859E-5F7252E2BBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B0AAB0E-6F86-AB6E-ED1C-2A2C190A2A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0AAB0E-6F86-AB6E-ED1C-2A2C190A2A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0AAB0E-6F86-AB6E-ED1C-2A2C190A2A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0AAB0E-6F86-AB6E-ED1C-2A2C190A2A97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

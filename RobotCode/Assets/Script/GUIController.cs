@@ -2,13 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GUIController : MonoBehaviour
 {
     public static GUIController Main { get; set; }
 
-    public List<MonoBehaviour> _componentsDisableWhileCodeEditor;
-    public GameObject _codeEditor;
+    public static RealRobot RealRobot { get; set; }
+
+    public List<MonoBehaviour> _componentsDisableWhileGUI;
+
+    public CodeEditor _codeEditor;
+    public GUIFunctionList _functionsList;
+    public GUIMissionInfo _missionInfo;
 
     void Awake()
     {
@@ -22,13 +28,65 @@ public class GUIController : MonoBehaviour
         }
     }
 
-    void Update()
+    public void OnLevelWasLoaded(int level)
     {
-        if (Input.GetKeyDown(InputSettings.Main._openCodeEditor))
+        if (MainController.IsGame)
         {
-            _codeEditor.SetActive(!_codeEditor.activeSelf);
+            _componentsDisableWhileGUI.Add(GameObject.FindObjectOfType<RigidbodyFirstPersonController>());
 
-            _componentsDisableWhileCodeEditor.ForEach(x => x.enabled = !_codeEditor.activeInHierarchy);
+            _componentsDisableWhileGUI.Add(GameObject.FindObjectOfType<PlayerRobotSelector>());
+        } 
+    }
+
+    public static void ShowFunctionsList(RealRobot realRobot)
+    {
+        RealRobot = realRobot;
+
+        Main._functionsList.Show();
+    }
+
+    public static void ShowCodeEditor(CodeInfo codeInfo)
+    {
+        Main._codeEditor.Set(codeInfo, RealRobot);
+
+        Main._codeEditor.gameObject.SetActive(true);
+
+        Main._functionsList.gameObject.SetActive(false);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void HideCodeEditor()
+    {
+        Main._codeEditor.gameObject.SetActive(false);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void ShowMissionInfo()
+    {
+        Main._missionInfo.gameObject.SetActive(true);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void HideMissionInfo()
+    {
+        Main._missionInfo.gameObject.SetActive(false);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    private static void RefreshComponentsDisableWhileGUI()
+    {
+        if(Main._codeEditor.gameObject.activeInHierarchy ||
+           Main._missionInfo.gameObject.activeInHierarchy)
+        {
+            Main._componentsDisableWhileGUI.ForEach(x => x.enabled = false);
+        }
+        else
+        {
+            Main._componentsDisableWhileGUI.ForEach(x => x.enabled = true);
         }
     }
 }
