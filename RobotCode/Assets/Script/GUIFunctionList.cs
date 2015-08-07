@@ -11,11 +11,6 @@ public class GUIFunctionList : MonoBehaviour
         }
     }
 
-    public void Show()
-    {
-        gameObject.SetActive(true);
-    }
-
     public void ShowFunctionCodeEditor(int functionIndex)
     {
         GUIController.ShowCodeEditor(RobotFunctions.Functions[functionIndex]);

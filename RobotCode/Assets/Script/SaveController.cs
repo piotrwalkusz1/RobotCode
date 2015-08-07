@@ -34,4 +34,18 @@ public static class SaveController
 
         return (SaveData)serializer.Deserialize(new StringReader(text));
     }
+
+    public static string[] GetAllSaves()
+    {
+        string[] fullPaths = Directory.GetFiles(_saveFolderPath, "*.save");
+
+        string[] saves = new string[fullPaths.Length];
+
+        for (int i = 0; i < fullPaths.Length; i++)
+        {
+            saves[i] = Path.GetFileNameWithoutExtension(fullPaths[i]);
+        }
+
+        return saves;
+    }
 }

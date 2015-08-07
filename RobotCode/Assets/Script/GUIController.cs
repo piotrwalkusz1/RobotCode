@@ -8,13 +8,18 @@ public class GUIController : MonoBehaviour
 {
     public static GUIController Main { get; set; }
 
-    public static RealRobot RealRobot { get; set; }
+    public Color _enableButtonColor;
+    public Color _disableButtonColor;
 
     public List<MonoBehaviour> _componentsDisableWhileGUI;
 
     public CodeEditor _codeEditor;
     public GUIFunctionList _functionsList;
     public GUIMissionInfo _missionInfo;
+    public GameObject _menuPanel;
+    public GameObject _loadGamePanel;
+
+    public static RealRobot RealRobot { get; set; }
 
     void Awake()
     {
@@ -32,6 +37,8 @@ public class GUIController : MonoBehaviour
     {
         if (MainController.IsGame)
         {
+            _componentsDisableWhileGUI.Clear();
+
             _componentsDisableWhileGUI.Add(GameObject.FindObjectOfType<RigidbodyFirstPersonController>());
 
             _componentsDisableWhileGUI.Add(GameObject.FindObjectOfType<PlayerRobotSelector>());
@@ -42,7 +49,9 @@ public class GUIController : MonoBehaviour
     {
         RealRobot = realRobot;
 
-        Main._functionsList.Show();
+        Main._functionsList.gameObject.SetActive(true);
+
+        RefreshComponentsDisableWhileGUI();
     }
 
     public static void ShowCodeEditor(CodeInfo codeInfo)
@@ -70,6 +79,22 @@ public class GUIController : MonoBehaviour
         RefreshComponentsDisableWhileGUI();
     }
 
+    public void ShowLoadGamePanel()
+    {
+        Main._menuPanel.SetActive(false);
+
+        Main._loadGamePanel.SetActive(true);
+
+        Main._loadGamePanel.GetComponentInChildren<GUILoadGameList>().Initialize();
+    }
+
+    public void ShowMenuPanel()
+    {
+        Main._menuPanel.SetActive(true);
+
+        Main._loadGamePanel.SetActive(false);
+    }
+
     public static void HideMissionInfo()
     {
         Main._missionInfo.gameObject.SetActive(false);
@@ -80,7 +105,8 @@ public class GUIController : MonoBehaviour
     private static void RefreshComponentsDisableWhileGUI()
     {
         if(Main._codeEditor.gameObject.activeInHierarchy ||
-           Main._missionInfo.gameObject.activeInHierarchy)
+           Main._missionInfo.gameObject.activeInHierarchy ||
+           Main._functionsList.gameObject.activeInHierarchy)
         {
             Main._componentsDisableWhileGUI.ForEach(x => x.enabled = false);
         }

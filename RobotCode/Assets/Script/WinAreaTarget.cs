@@ -23,7 +23,7 @@ public class WinAreaTarget : WinCondition
         {
             _isConditionAchieved = true;
 
-            CheckWinConditions();
+            RefreshWinConditions();
         }
     }
 
@@ -34,6 +34,8 @@ public class WinAreaTarget : WinCondition
         if (parcel != null && parcel._key == this._key)
         {
             _isConditionAchieved = false;
+
+            RefreshWinConditions();
         }
     }
 }

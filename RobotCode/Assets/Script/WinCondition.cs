@@ -8,7 +8,7 @@ public abstract class WinCondition : MonoBehaviour
 {
     public abstract bool IsConditionAchieved { get; }
 
-    protected void CheckWinConditions()
+    protected void RefreshWinConditions()
     {
         MainController.CheckWinConditions();
     }

@@ -25,4 +25,11 @@ public class PlayerProfilController : MonoBehaviour
     {
         SaveController.Save(SaveData, Name);
     }
+
+    public static void Set(SaveData saveData, string name)
+    {
+        SaveData = saveData;
+
+        Name = name;
+    }
 }

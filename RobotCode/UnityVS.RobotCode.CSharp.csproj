@@ -76,15 +76,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
+    <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
     <Compile Include="Assets\Script\CodeEditor.cs" />
     <Compile Include="Assets\Script\CodeInfo.cs" />
     <Compile Include="Assets\Script\Compiler.cs" />
     <Compile Include="Assets\Script\GUIController.cs" />
     <Compile Include="Assets\Script\GUIFunctionList.cs" />
+    <Compile Include="Assets\Script\GUILoadGameButton.cs" />
+    <Compile Include="Assets\Script\GUILoadGameList.cs" />
     <Compile Include="Assets\Script\GUIMissionInfo.cs" />
     <Compile Include="Assets\Script\InputFieldMask.cs" />
     <Compile Include="Assets\Script\InputSettings.cs" />
-    <Compile Include="Assets\Script\WinCondition.cs" />
     <Compile Include="Assets\Script\MainController.cs" />
     <Compile Include="Assets\Script\PlayerProfilController.cs" />
     <Compile Include="Assets\Script\PlayerRobotSelector.cs" />
@@ -94,8 +97,10 @@
     <Compile Include="Assets\Script\SaveData.cs" />
     <Compile Include="Assets\Script\WinAreaParcel.cs" />
     <Compile Include="Assets\Script\WinAreaTarget.cs" />
+    <Compile Include="Assets\Script\WinCondition.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Elementals\!Readme.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />

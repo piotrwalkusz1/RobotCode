@@ -32,6 +32,8 @@ public class RealRobot : MonoBehaviour, IRobot
     private bool _isWait = false;
     private DateTime _waitEndTime;
 
+    private bool _isWaitOneFrame = false;
+
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
 	// Use this for initialization
@@ -50,12 +52,22 @@ public class RealRobot : MonoBehaviour, IRobot
     {
         ExecuteTasks();
 
-        Update_Move();
-
-        Update_Rotate();
+        Update_Rotate();       
 
         Update_Wait();
+
+        if (_isWaitOneFrame)
+        {
+            ContinueProcess();
+
+            _isWaitOneFrame = false;
+        }
 	}
+
+    public void FixedUpdate()
+    {
+        Update_Move(); 
+    }
 
     public void CompileOrRun(CodeInfo codeInfo)
     {
@@ -101,28 +113,42 @@ public class RealRobot : MonoBehaviour, IRobot
 
     public void StartMove(float time)
     {
-        AddTask(delegate() { Function_StartMove(time); });
+        AddTaskAndWaitOneFrame(delegate() { Function_StartMove(time); });
     }
 
     public void StartRotate(float time)
     {
-        AddTask(delegate() { Function_StartRotate(time); });
+        AddTaskAndWaitOneFrame(delegate() { Function_StartRotate(time); });
     }
 
     public void Move(float distance)
     {
-        AddTaskAndWait(delegate() { Function_Move(distance); });
+        AddTaskAndWaitToStart(delegate() { Function_Move(distance); });
     }
 
     public void Rotate(float deegres)
     {
-        AddTaskAndWait(delegate() { Function_Rotate(deegres); });
+        AddTaskAndWaitToStart(delegate() { Function_Rotate(deegres); });
     }
 
     public void Wait(float time)
     {
-        AddTaskAndWait(delegate() { Function_Wait(time); });
+        AddTaskAndWaitToStart(delegate() { Function_Wait(time); });
     }
+
+    public float Raycast()
+    {
+        return Raycast(0, 1);
+    }
+
+    public float Raycast(float x, float y)
+    {
+        float result = -2f;
+
+        AddTaskAndWaitOneFrame(delegate() { Function_Raycast(x, y, out result); });
+
+        return result;
+    } 
 
     private void Function_StartMove(float time)
     {
@@ -169,15 +195,31 @@ public class RealRobot : MonoBehaviour, IRobot
         _isWait = true;
     }
 
+    private void Function_Raycast(float x, float y, out float result)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(x, 0, y), out hit))
+        {
+            result = hit.distance;
+        }
+        else
+        {
+            result = -1;
+        }
+    }
+
     private void Update_Move()
     {
+        var rigidbody = GetComponent<Rigidbody>();
+
         if (_isMove)
         {
             if (_movementDistanceOrTimeLeft <= 0)
             {
                 _isMove = false;
 
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
 
                 if (!_movementTypeIsTime) ContinueProcess();            
             }
@@ -185,13 +227,21 @@ public class RealRobot : MonoBehaviour, IRobot
             {
                 if (_movementTypeIsTime)
                 {
-                    GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
+                    Vector3 velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
+
+                    velocity.y = rigidbody.velocity.y;
+
+                    rigidbody.velocity = velocity;
 
                     _movementDistanceOrTimeLeft -= Time.deltaTime;
                 }
                 else
                 {
-                    GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
+                    Vector3 velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
+
+                    velocity.y = rigidbody.velocity.y;
+
+                    rigidbody.velocity = velocity;
 
                     Vector2 currentPos = new Vector2(transform.position.x, transform.position.z);
 
@@ -202,7 +252,11 @@ public class RealRobot : MonoBehaviour, IRobot
                     _movementLastPosition = currentPos;
                 }              
             }
-        }      
+        }
+        else
+        {
+            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+        }
     }
 
     private void Update_Rotate()
@@ -275,9 +329,18 @@ public class RealRobot : MonoBehaviour, IRobot
         }
     }
 
-    private void AddTaskAndWait(Action task)
+    private void AddTaskAndWaitToStart(Action task)
     {
         AddTask(task);
+
+        StopProcess();
+    }
+
+    private void AddTaskAndWaitOneFrame(Action task)
+    {
+        AddTask(task);
+
+        _isWaitOneFrame = true;
 
         StopProcess();
     }

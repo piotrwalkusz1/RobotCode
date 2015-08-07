@@ -53,5 +53,14 @@ namespace RobotsLibrary
         {
             _robot.Wait(seconds);
         }
+
+        public float Raycast()
+        {
+            return _robot.Raycast();
+        }
+        public float Raycast(float x, float y)
+        {
+            return _robot.Raycast(x, y);
+        }
     }
 }

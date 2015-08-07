@@ -16,5 +16,7 @@ namespace RobotsLibrary
         void Rotate(float deegres);
         void StartRotate(float time);
         void Wait(float seconds);
+        float Raycast();
+        float Raycast(float x, float y);
     }
 }
