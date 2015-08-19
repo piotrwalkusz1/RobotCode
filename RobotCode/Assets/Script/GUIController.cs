@@ -16,8 +16,10 @@ public class GUIController : MonoBehaviour
     public CodeEditor _codeEditor;
     public GUIFunctionList _functionsList;
     public GUIMissionInfo _missionInfo;
+    public GUIDocumentation _documentation;
     public GameObject _menuPanel;
     public GameObject _loadGamePanel;
+    public GameObject _aim;
 
     public static RealRobot RealRobot { get; set; }
 
@@ -42,7 +44,22 @@ public class GUIController : MonoBehaviour
             _componentsDisableWhileGUI.Add(GameObject.FindObjectOfType<RigidbodyFirstPersonController>());
 
             _componentsDisableWhileGUI.Add(GameObject.FindObjectOfType<PlayerRobotSelector>());
+
+            HideAll();
+
+            _missionInfo.LoadMission();
+
+            ShowMissionInfo();
         } 
+    }
+
+    public static void HideAll()
+    {
+        HideAim();
+        HideCodeEditor();
+        HideMissionInfo();
+        HideFunctionsList();
+        HideDocumentation();
     }
 
     public static void ShowFunctionsList(RealRobot realRobot)
@@ -50,6 +67,13 @@ public class GUIController : MonoBehaviour
         RealRobot = realRobot;
 
         Main._functionsList.gameObject.SetActive(true);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void HideFunctionsList()
+    {
+        Main._functionsList.gameObject.SetActive(false);
 
         RefreshComponentsDisableWhileGUI();
     }
@@ -79,6 +103,27 @@ public class GUIController : MonoBehaviour
         RefreshComponentsDisableWhileGUI();
     }
 
+    public static void HideMissionInfo()
+    {
+        Main._missionInfo.gameObject.SetActive(false);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void ShowDocumentation()
+    {
+        Main._documentation.gameObject.SetActive(true);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void HideDocumentation()
+    {
+        Main._documentation.gameObject.SetActive(false);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
     public void ShowLoadGamePanel()
     {
         Main._menuPanel.SetActive(false);
@@ -95,24 +140,32 @@ public class GUIController : MonoBehaviour
         Main._loadGamePanel.SetActive(false);
     }
 
-    public static void HideMissionInfo()
+    public static void ShowAim()
     {
-        Main._missionInfo.gameObject.SetActive(false);
+        Main._aim.SetActive(true);
+    }
 
-        RefreshComponentsDisableWhileGUI();
+    public static void HideAim()
+    {
+        Main._aim.SetActive(false);
     }
 
     private static void RefreshComponentsDisableWhileGUI()
     {
         if(Main._codeEditor.gameObject.activeInHierarchy ||
            Main._missionInfo.gameObject.activeInHierarchy ||
-           Main._functionsList.gameObject.activeInHierarchy)
+           Main._functionsList.gameObject.activeInHierarchy ||
+           Main._documentation.gameObject.activeInHierarchy)
         {
             Main._componentsDisableWhileGUI.ForEach(x => x.enabled = false);
+
+            HideAim();
         }
         else
         {
             Main._componentsDisableWhileGUI.ForEach(x => x.enabled = true);
+
+            ShowAim();
         }
     }
 }

@@ -66,7 +66,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(4);
+        LoadScene(7);
     }
 
     public static void LoadGame(string saveName)
@@ -126,7 +126,7 @@ public class MainController : MonoBehaviour
     {
         Lvl = index;
 
-        Application.LoadLevel("Scene" + index.ToString());
+        Application.LoadLevel(index);
     }
 
     private static void ResetWinConditions()

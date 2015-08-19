@@ -62,5 +62,10 @@ namespace RobotsLibrary
         {
             return _robot.Raycast(x, y);
         }
+
+        public void Light()
+        {
+            _robot.Light();
+        }
     }
 }

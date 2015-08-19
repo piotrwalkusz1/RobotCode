@@ -35,8 +35,7 @@ public class CodeInfo
     {
         IsEdited = true;
 
-        Code = @"using System;
-using RobotsLibrary;
+        Code = @"using RobotsLibrary;
 
 public class Program : Robot
 {

@@ -1,3 +1,20 @@
 ﻿<missions>
-
+  <mission>
+    <id>1</id>
+    <name>Kompilacja</name>
+    <description>Witamy w Centrum Programowania Robotów. Aby wydać polecenie robotowi, należy kliknąć na niego lewym przyciskiem myszki, a następnie wprowadzić kod. Początkowy kod składa się z kilku elementów:
+&lt;b&gt;using RobotLibrary&lt;/b&gt; - pozwala na używanie podstawowych funckji robota
+&lt;b&gt;public class Program : Robot&lt;/b&gt; - miejsce, gdzie koncentruje się cały kod
+&lt;b&gt;public void Main()&lt;/b&gt; - w tym miejscu rozpoczynamy wykonywanie kodu
+      
+Nie martw się drogi kadecie, jeżeli czujesz się zakłopotany. Z czasem poznasz dokładniej całą strukturę kodu.
+      
+&lt;b&gt;Cel misji : Skompiluj wzór kodu&lt;/b&gt;
+Otwórz edytor kodu i wciśnij przycisk &lt;b&gt;Kompiluj&lt;/b&gt;. Nie oczekuj, że coś się zdarzy. Jest to tylko pusty szablon.</description>
+  </mission>
+  <mission>
+    <id>2</id>
+    <name>Jazda do przodu</name>
+    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+  </mission>
 </missions>

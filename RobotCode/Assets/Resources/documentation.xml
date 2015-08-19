@@ -1,0 +1,22 @@
+﻿<documentation>
+  <nav>
+    <title>Spis funkcji</title>
+    <description>
+      &lt;b&gt;Move&lt;/b&gt; (float odległość)
+      Porusza robotem do przodu na podaną odległość wyrażoną w metrach.
+
+      &lt;b&gt;Rotate&lt;/b&gt; (float kąt)
+      Obraca robota zgodnie z ruchem wskazówek zegara o podany kąt wyrażony w stopniach.
+    </description>
+  </nav>
+  <nav>
+    <title>Typy robotów</title>
+    <description>
+      &lt;b&gt;Robot&lt;/b&gt;
+      Zwykły robot.
+
+      &lt;b&gt;WarRobot&lt;/b&gt;
+      Robot bojowy.
+    </description>
+  </nav>
+</documentation>

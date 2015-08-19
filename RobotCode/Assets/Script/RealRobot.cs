@@ -10,9 +10,14 @@ using System.Linq;
 public class RealRobot : MonoBehaviour, IRobot
 {
     public RobotFunctions _robotFunctions;
+    public GameObject _blueLight;
+
+    public string _firstCode;
 
     public float _maxMovementSpeed;
     public float _maxRotationSpeed;
+
+    public Action OnLightFunction;
 
     private float _currentMovementSpeed;
     private float _currentRotationSpeed;
@@ -36,12 +41,19 @@ public class RealRobot : MonoBehaviour, IRobot
 
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
+    
+
 	// Use this for initialization
 	void Awake () 
     {
         _tasks = new List<Action>();
 
         _robotFunctions = GetComponent<RobotFunctions>();
+
+        if (_firstCode != null && _firstCode != "")
+        {
+            _robotFunctions.Functions[0].Code = _firstCode;
+        }
 
         _currentMovementSpeed = _maxMovementSpeed;
         _currentRotationSpeed = _maxRotationSpeed;
@@ -148,7 +160,12 @@ public class RealRobot : MonoBehaviour, IRobot
         AddTaskAndWaitOneFrame(delegate() { Function_Raycast(x, y, out result); });
 
         return result;
-    } 
+    }
+
+    public void Light()
+    {
+        AddTaskAndWaitOneFrame(delegate() { Function_Light(); });
+    }
 
     private void Function_StartMove(float time)
     {
@@ -207,6 +224,13 @@ public class RealRobot : MonoBehaviour, IRobot
         {
             result = -1;
         }
+    }
+
+    private void Function_Light()
+    {
+        _blueLight.SetActive(!_blueLight.activeSelf);
+
+        if (OnLightFunction != null) OnLightFunction();
     }
 
     private void Update_Move()

@@ -11,6 +11,8 @@ public class Compiler : MonoBehaviour
 {
     public static Compiler Main { get; set; }
 
+    public static Action OnCompile;
+
     private MethodInfo _compileMethod;
 
     private string COMPILER_PATH;
@@ -61,6 +63,8 @@ public class Compiler : MonoBehaviour
             codeInfo.CompiledAssembly = assembly;
 
             codeInfo.IsEdited = false;
+
+            if (OnCompile != null) OnCompile();
         }
         catch (TargetInvocationException targertException)
         {
@@ -93,6 +97,8 @@ public class Compiler : MonoBehaviour
             codeInfo.CompiledAssembly = assembly;
 
             codeInfo.IsEdited = false;
+
+            if (OnCompile != null) OnCompile();
 
             var robotClass = assembly.GetType("Program") as Type;
 
