@@ -19,5 +19,6 @@ namespace RobotsLibrary
         float Raycast();
         float Raycast(float x, float y);
         void Light();
+        void Answer(float answer);
     }
 }

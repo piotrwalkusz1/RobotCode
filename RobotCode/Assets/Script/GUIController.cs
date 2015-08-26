@@ -53,6 +53,11 @@ public class GUIController : MonoBehaviour
         } 
     }
 
+    public static void ShowMessage(string message)
+    {
+        print(message);
+    }
+
     public static void HideAll()
     {
         HideAim();

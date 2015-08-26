@@ -41,8 +41,6 @@ public class RealRobot : MonoBehaviour, IRobot
 
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
-    
-
 	// Use this for initialization
 	void Awake () 
     {
@@ -167,6 +165,11 @@ public class RealRobot : MonoBehaviour, IRobot
         AddTaskAndWaitOneFrame(delegate() { Function_Light(); });
     }
 
+    public void Answer(float answer)
+    {
+        AddTaskAndWaitOneFrame(delegate() { Function_Answer(answer); });
+    }
+
     private void Function_StartMove(float time)
     {
         _movementDistanceOrTimeLeft = time;
@@ -231,6 +234,19 @@ public class RealRobot : MonoBehaviour, IRobot
         _blueLight.SetActive(!_blueLight.activeSelf);
 
         if (OnLightFunction != null) OnLightFunction();
+    }
+
+    private void Function_Answer(float answer)
+    {
+        var win = GameObject.FindObjectOfType<WinAnswerCondition>();
+
+        if (win == null)
+        {
+            GUIController.ShowMessage("Ta misja nie polega na podawaniu odpowiedzi.");
+            return;
+        }
+
+        win.Answer(answer);
     }
 
     private void Update_Move()

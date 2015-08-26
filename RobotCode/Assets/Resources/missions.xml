@@ -17,4 +17,79 @@ Otwórz edytor kodu i wciśnij przycisk &lt;b&gt;Kompiluj&lt;/b&gt;. Nie oczekuj
     <name>Jazda do przodu</name>
     <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
   </mission>
+  <mission>
+    <id>3</id>
+    <name>Jazda do przodu</name>
+    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+  </mission>
+  <mission>
+    <id>4</id>
+    <name>Jazda do przodu</name>
+    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+  </mission>
+  <mission>
+    <id>5</id>
+    <name>Jazda do przodu</name>
+    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+  </mission>
+  <mission>
+    <id>6</id>
+    <name>Jazda do przodu</name>
+    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+  </mission>
+  <mission>
+    <id>7</id>
+    <name>Zmienne</name>
+    <description>Zmienne służą do przechowywania informacji określonego typu. Zmienna typu &lt;b&gt;int&lt;/b&gt; służy do przechowywania liczb całkowitych. Aby użyć zmiennej najpierw należy ją zadeklarować : 
+&lt;b&gt;int&lt;/b&gt; a = 5;
+Deklaracja zmiennej składa się z trzech części. Nazwy typu ('int'), nazwy zmiennej ('a') oraz początkowej wartości ('5'). W kolejnych misjach Twoim zadaniem będzie odpowiadanie na zadane pytania. Odpowiedzi udzielasz za pomocą funckji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;. Zacznijmy od czegoś prostego. Z ilu znaków składa się &lt;b&gt;nazwa zmiennej&lt;/b&gt; w następującym wyrażeniu :
+&lt;b&gt;int&lt;/b&gt; duzaLiczba = 999999;</description>
+  </mission>
+  <mission>
+    <id>8</id>
+    <name>Operacje arytmetyczne</name>
+    <description>Na zmiennych możemy wykonywać proste operacje arytmetyczne, takie jak dodawanie ("+"), odejmowanie ("-"), mnożenie ("*") i dzielenie ("/"). Wartoś zmiennej zmieniamy za pomocą operatora przypisania ("=")
+int a = 5;
+int b = 6
+a = a + b;
+W pierwszych dwóch wierszach deklarujemy zmienną "a" o wartości 5 oraz zmienną "b" o wartości 6. W trzecim wierszu zmiennej "a" przypisujemy nową wartość równą sumie zmiennych "a" i "b". Od tego momentu zmienna "a" będzie miała wartość 11. Za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt; odpowiedz na pytanie : jaka będzie wartość zmiennej "c" po wykonaniu wszystkich czterech linijek następującego kodu?
+int a = 3;
+int b = 4;
+b = b - a;
+int c = b + 5;</description>
+  </mission>
+  <mission>
+    <id>9</id>
+    <name>Mnożenie</name>
+    <description>Za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt; odpowiedz na pytanie : jaka będzie wartość zmiennej "c" po wykonaniu wszystkich pięciu linijek następującego kodu?
+int a = 3;
+int b = 4;
+a = a * a;
+b = b * b;
+c = b - a;
+c = c * c;</description>
+  </mission>
+  <mission>
+    <id>10</id>
+    <name>Skomplikowane obliczenia</name>
+    <description>Jak na razie Twoje obliczenia były bezbłędne. Jednak należy pamiętać, że to robot powinien zajmować się obliczeniami. Napisz więc program, który obliczy liczbę wyciętych drzew. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
+  </mission>
+  <mission>
+    <id>11</id>
+    <name>Dzielenie i zmienne typu &lt;b&gt;float&lt;/b&gt;</name>
+    <description>Jak już zostało powiedziane, zmienne typu &lt;b&gt;int&lt;/b&gt; przechowują liczby całkowite. Co jeśli chcemy zapisać ułamek. Z pomocą przychodzi nam typ &lt;b&gt;float&lt;/b&gt;. Po wykonaniu następującego kodu :
+int a = 10;
+int b = 3;
+int c = a / b;
+zmienna "c" będzie równa 3, gdyż typ &lt;b&gt;int&lt;/b&gt; przechowuje tylko liczby całkowite. Wartość dzielenia została zaokrąglona w dół. Teraz spójrzmy na ten przykład:
+float a = 10;
+float b = 3;
+float c = a / b
+Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość 3.333333 (po zaokrągleniu do szejściu miejsc po przecinku). Za pomocą funkcji zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblicz średnią z ocen pewnego ucznia. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
+  </mission>
+  <mission>
+    <id>12</id>
+    <name>Jazda po okręgu</name>
+    <description>Teraz zaczyna robić się naprawdę trudno. Do wykonania tej misji będzie Tobie potrzebna nowa funkcja : &lt;b&gt;SetRotationSpeed(float szybkość_obrotu)&lt;/b&gt;. Do tej pory mogłeś tylko określać o ile stopni robot miał się obrócić. Teraz możesz również sprecyzować, jak szybko powinien to robić, podając prędkość w stopniach na sekundę. Twoim zadaniem jest napisanie kodu, który sprawi, że Robot będzie poruszał się po okręgu i dotrze do wyznaczonego punktu. Tor w kształcie okręgu ma promieć 10m. Maksymalną (i tym samym domyślną) prędkość robota możesz uzyskać za pomocą funkcji &lt;b&gt;GetMaxMovementSpeed()&lt;/b&gt;. </description>
+  </mission>
 </missions>

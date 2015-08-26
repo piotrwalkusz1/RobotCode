@@ -67,5 +67,10 @@ namespace RobotsLibrary
         {
             _robot.Light();
         }
+
+        public void Answer(float answer)
+        {
+            _robot.Answer(answer);
+        }
     }
 }
