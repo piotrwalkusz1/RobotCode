@@ -3,7 +3,18 @@
     <id>1</id>
     <name>Kompilacja</name>
     <description>Witamy w Centrum Programowania Robotów. Aby wydać polecenie robotowi, należy kliknąć na niego lewym przyciskiem myszki, a następnie wprowadzić kod. Początkowy kod składa się z kilku elementów:
-&lt;b&gt;using RobotLibrary&lt;/b&gt; - pozwala na używanie podstawowych funckji robota
+    
+&lt;b&gt;&lt;color=#800000ff&gt;using RobotsLibrary;
+
+public class Program : Robot
+{
+  public void Main()
+  {
+
+  }
+}&lt;/color&gt;&lt;/b&gt;
+
+&lt;b&gt;using RobotLibrary&lt;/b&gt; - pozwala na używanie podstawowych funkcji robota
 &lt;b&gt;public class Program : Robot&lt;/b&gt; - miejsce, gdzie koncentruje się cały kod
 &lt;b&gt;public void Main()&lt;/b&gt; - w tym miejscu rozpoczynamy wykonywanie kodu
       
@@ -77,7 +88,7 @@ c = c * c;</description>
   <mission>
     <id>11</id>
     <name>Dzielenie i zmienne typu &lt;b&gt;float&lt;/b&gt;</name>
-    <description>Jak już zostało powiedziane, zmienne typu &lt;b&gt;int&lt;/b&gt; przechowują liczby całkowite. Co jeśli chcemy zapisać ułamek. Z pomocą przychodzi nam typ &lt;b&gt;float&lt;/b&gt;. Po wykonaniu następującego kodu :
+    <description>Jak już zostało powiedziane, zmienne typu &lt;b&gt;int&lt;/b&gt; przechowują liczby całkowite. Co jeśli chcemy zapisać ułamek? Z pomocą przychodzi nam typ &lt;b&gt;float&lt;/b&gt;. Po wykonaniu następującego kodu :
 int a = 10;
 int b = 3;
 int c = a / b;
@@ -85,7 +96,7 @@ zmienna "c" będzie równa 3, gdyż typ &lt;b&gt;int&lt;/b&gt; przechowuje tylko
 float a = 10;
 float b = 3;
 float c = a / b
-Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość 3.333333 (po zaokrągleniu do szejściu miejsc po przecinku). Za pomocą funkcji zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblicz średnią z ocen pewnego ucznia. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
+Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość 3.333333 (po zaokrągleniu do szejściu miejsc po przecinku). Za pomocą zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblicz średnią z ocen pewnego ucznia. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
   </mission>
   <mission>
     <id>12</id>

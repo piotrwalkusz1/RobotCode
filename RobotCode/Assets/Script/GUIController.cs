@@ -17,6 +17,7 @@ public class GUIController : MonoBehaviour
     public GUIFunctionList _functionsList;
     public GUIMissionInfo _missionInfo;
     public GUIDocumentation _documentation;
+    public GUIMenu _menu;
     public GameObject _menuPanel;
     public GameObject _loadGamePanel;
     public GameObject _aim;
@@ -65,6 +66,7 @@ public class GUIController : MonoBehaviour
         HideMissionInfo();
         HideFunctionsList();
         HideDocumentation();
+        Main.HideMenu();
     }
 
     public static void ShowFunctionsList(RealRobot realRobot)
@@ -72,6 +74,32 @@ public class GUIController : MonoBehaviour
         RealRobot = realRobot;
 
         Main._functionsList.gameObject.SetActive(true);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public static void ShowMainMenu()
+    {
+        Main._menuPanel.gameObject.SetActive(true);
+
+        Main._loadGamePanel.gameObject.SetActive(false);
+    }
+
+    public static void HideMainMenu()
+    {
+        Main._menuPanel.gameObject.SetActive(false);
+    }
+
+    public static void ShowMenu()
+    {
+        Main._menu.gameObject.SetActive(true);
+
+        RefreshComponentsDisableWhileGUI();
+    }
+
+    public void HideMenu()
+    {
+        Main._menu.gameObject.SetActive(false);
 
         RefreshComponentsDisableWhileGUI();
     }
@@ -133,12 +161,19 @@ public class GUIController : MonoBehaviour
     {
         Main._menuPanel.SetActive(false);
 
+        Main._menu.gameObject.SetActive(false);
+
         Main._loadGamePanel.SetActive(true);
 
-        Main._loadGamePanel.GetComponentInChildren<GUILoadGameList>().Initialize();
+        Main._loadGamePanel.GetComponentInChildren<GUILoadGameList>().Refresh();
     }
 
-    public void ShowMenuPanel()
+    public void HideLoadGamePanel()
+    {
+        Main._loadGamePanel.SetActive(false);
+    }
+
+    public static void ShowMenuPanel()
     {
         Main._menuPanel.SetActive(true);
 
@@ -157,10 +192,17 @@ public class GUIController : MonoBehaviour
 
     private static void RefreshComponentsDisableWhileGUI()
     {
+        if (Main._componentsDisableWhileGUI == null)
+        {
+            return;
+        }
+
         if(Main._codeEditor.gameObject.activeInHierarchy ||
            Main._missionInfo.gameObject.activeInHierarchy ||
            Main._functionsList.gameObject.activeInHierarchy ||
-           Main._documentation.gameObject.activeInHierarchy)
+           Main._documentation.gameObject.activeInHierarchy ||
+           Main._menu.gameObject.activeInHierarchy ||
+           Main._loadGamePanel.gameObject.activeInHierarchy)
         {
             Main._componentsDisableWhileGUI.ForEach(x => x.enabled = false);
 

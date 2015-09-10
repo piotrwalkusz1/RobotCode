@@ -170,6 +170,15 @@ public class RealRobot : MonoBehaviour, IRobot
         AddTaskAndWaitOneFrame(delegate() { Function_Answer(answer); });
     }
 
+    public bool IsButtonPressed(string buttonName)
+    {
+        bool result = false;
+
+        AddTaskAndWaitOneFrame(delegate() { Function_IsButtonPressed(buttonName, out result); });
+
+        return result;
+    }
+
     private void Function_StartMove(float time)
     {
         _movementDistanceOrTimeLeft = time;
@@ -213,6 +222,9 @@ public class RealRobot : MonoBehaviour, IRobot
         _waitEndTime = DateTime.UtcNow.AddSeconds(seconds);
 
         _isWait = true;
+
+        _isMove = false;
+        _rotationPhase = 0;
     }
 
     private void Function_Raycast(float x, float y, out float result)
@@ -226,6 +238,20 @@ public class RealRobot : MonoBehaviour, IRobot
         else
         {
             result = -1;
+        }
+    }
+
+    private void Function_IsButtonPressed(string buttonName, out bool result)
+    {
+        var button = GameObject.FindObjectsOfType<NormalButton>().FirstOrDefault(x => x._name == buttonName);
+
+        if (button == null)
+        {
+            result = false;
+        }
+        else
+        {
+            result = button.IsPressed;
         }
     }
 

@@ -20,5 +20,6 @@ namespace RobotsLibrary
         float Raycast(float x, float y);
         void Light();
         void Answer(float answer);
+        bool IsButtonPressed(string buttonName);
     }
 }

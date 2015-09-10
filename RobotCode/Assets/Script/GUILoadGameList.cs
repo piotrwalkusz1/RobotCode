@@ -7,7 +7,7 @@ public class GUILoadGameList : MonoBehaviour
 {
     public List<GUILoadGameButton> _buttons;
 
-    public void Initialize()
+    public void Refresh()
     {
         string[] saves = SaveController.GetAllSaves();
 

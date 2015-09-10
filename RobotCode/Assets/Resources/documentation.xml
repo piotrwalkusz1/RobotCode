@@ -1,22 +1,54 @@
 ﻿<documentation>
   <nav>
     <title>Spis funkcji</title>
-    <description>
-      &lt;b&gt;Move&lt;/b&gt; (float odległość)
-      Porusza robotem do przodu na podaną odległość wyrażoną w metrach.
+    <description>&lt;b&gt;Answer&lt;/b&gt; (float answer)
+Udziela odpowiedzi na pytanie zawarte w zadaniu. Należy używać tylko w konkretnych misjach.
 
-      &lt;b&gt;Rotate&lt;/b&gt; (float kąt)
-      Obraca robota zgodnie z ruchem wskazówek zegara o podany kąt wyrażony w stopniach.
-    </description>
+&lt;b&gt;GetMaxMovementSpeed&lt;/b&gt; ()
+Zwraca największą możliwą prędkość poruszania się dla danego robota.
+
+&lt;b&gt;GetMaxRotationSpeed&lt;/b&gt; ()
+Zwraca największą możliwą prędkość obracania się dla danego robota.
+
+&lt;b&gt;IsButtonPressed&lt;/b&gt; (string buttonName)
+Zwraca wartość "true", jeżeli przycisk o podanej nazwie jest obecnie wciśnięty. W przeciwnym razie zwraca wartość "false". 
+
+&lt;b&gt;Light&lt;/b&gt; ()
+Włącza i wyłącza światła.
+
+&lt;b&gt;Move&lt;/b&gt; (float odległość)
+Porusza robotem do przodu na podaną odległość wyrażoną w metrach.
+
+&lt;b&gt;Raycast&lt;/b&gt; ()
+Wystrzeliwuje przed siebie promień badawczy i zwraca odległość do przeszkody lub wartość -1, gdy nie napotkano przeszkody.
+
+&lt;b&gt;Raycast&lt;/b&gt; (float x, float y)
+Wystrzeliwuje promień badawczy w podanym kierunku i zwraca odległość do przeszkody lub wartość -1, gdy nie napotkano przeszkody. Argumeny x, y oznaczają punkt przez jaki musi przejść promień przyjmując, że robot jest środkiem układu współrzędnych. Przykładowo, dla x=1, y=0 promień zostanie wystrzelony w prawo, dla x=1, y=1 promień zostanie wystrzelony pod kątem 45 stopni do kierunku ruchu.
+
+&lt;b&gt;Rotate&lt;/b&gt; (float kąt)
+Obraca robota zgodnie z ruchem wskazówek zegara o podany kąt wyrażony w stopniach.
+
+&lt;b&gt;SetMovementSpeed&lt;/b&gt; (float speed)
+Ustawia prędkość poruszania się. Gdy zostanie podana wartość wyższa od prędkości maksymalnej, zostanie ustawiona prędkość maksymalna.
+
+&lt;b&gt;SetRotationSpeed&lt;/b&gt; (float speed)
+Ustawia prędkość obracania się. Gdy zostanie podana wartość wyższa od prędkości maksymalnej, zostanie ustawiona prędkość maksymalna.
+
+&lt;b&gt;StartMove&lt;/b&gt; (float time)
+Robot zacznie się poruszać przed siebie przez czas podany w argumencie funkcji.
+
+&lt;b&gt;StartRotate&lt;/b&gt; (float time)
+Robot zacznie obracać się przez czas podany w argumencie funkcji.
+
+&lt;b&gt;Wait&lt;/b&gt; (float time)
+Zatrzymuje działanie programu na określony czas.</description>
   </nav>
   <nav>
     <title>Typy robotów</title>
-    <description>
-      &lt;b&gt;Robot&lt;/b&gt;
-      Zwykły robot.
+    <description>&lt;b&gt;Robot&lt;/b&gt;
+Zwykły robot.
 
-      &lt;b&gt;WarRobot&lt;/b&gt;
-      Robot bojowy.
-    </description>
+&lt;b&gt;WarRobot&lt;/b&gt;
+Robot bojowy.</description>
   </nav>
 </documentation>

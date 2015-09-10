@@ -72,5 +72,10 @@ namespace RobotsLibrary
         {
             _robot.Answer(answer);
         }
+
+        public bool IsButtonPressed(string buttonName)
+        {
+            return _robot.IsButtonPressed(buttonName);
+        }
     }
 }

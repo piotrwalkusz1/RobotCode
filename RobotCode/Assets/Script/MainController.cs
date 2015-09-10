@@ -6,6 +6,7 @@ using RobotsLibrary;
 using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
@@ -13,9 +14,6 @@ public class MainController : MonoBehaviour
 
     public static bool IsGame { get; set; }
     public static int Lvl { get; set; }
-
-    public GameObject _canvasMenu;
-    public GameObject _canvasGame;
 
     public PlayerProfilController PlayerProfilController { get; set; }
 
@@ -66,7 +64,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(7);
+        LoadScene(1);
     }
 
     public static void LoadGame(string saveName)
@@ -80,13 +78,25 @@ public class MainController : MonoBehaviour
         LoadScene(saveData.Lvl);
     }
 
+    public static void Defeat()
+    {
+        GUIController.ShowMessage("Przegrałeś!");
+
+        Main.ReloadLevel();
+    }
+
+    public void ReloadLevel()
+    {
+        LoadScene(Lvl);
+    }
+
     public static void InitializeGame()
     {
         IsGame = true;
 
-        Main._canvasMenu.SetActive(false);
+        GUIController.HideMainMenu();
 
-        Main._canvasGame.SetActive(true);
+        GUIController.Main.HideLoadGamePanel();
     }
 
     public static void CheckWinConditions()

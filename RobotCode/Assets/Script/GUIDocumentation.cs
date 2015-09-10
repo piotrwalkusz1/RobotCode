@@ -8,21 +8,26 @@ public class GUIDocumentation : MonoBehaviour
 {
     public static GUIDocumentation Main { get; set; }
 
+    public GUIStyle _guiStyle;
     public GameObject _docNavButtonParent;
-    public GameObject _docNavButton;
+    public GameObject _docNavButtonPrefab;
     public int _docNavButtonHeight;
     public GameObject _docTextParent;
-    public GameObject _docText;
+    public GameObject _docTextPrefab;
 
     private List<GameObject> _docNavButtonsList = new List<GameObject>();
     private List<GameObject> _docTextsList = new List<GameObject>();
     private int _choosen = -1;
+
+    private GUIContent _guiContent;
 
     void Awake()
     {
         if (Main == null)
         {
             Main = this;
+
+            _guiContent = new GUIContent();
         }
         else
         {
@@ -76,6 +81,21 @@ public class GUIDocumentation : MonoBehaviour
         var find = _docTextsList.Find(x => x.GetComponent<Identificator>()._id == _choosen);
 
         find.SetActive(true);
+
+        find.GetComponent<Text>().font = _guiStyle.font;
+        find.GetComponent<Text>().fontSize = _guiStyle.fontSize;
+
+        Text docText = find.GetComponent<Text>();
+
+        _guiContent.text = docText.text;
+
+        int docTextMaxWidth = (int)_docTextParent.GetComponent<RectTransform>().sizeDelta.x;
+
+        Vector2 size = new Vector2(docTextMaxWidth, _guiStyle.CalcHeight(_guiContent, docTextMaxWidth));
+
+        var textRectTransform = docText.GetComponent<RectTransform>();
+
+        _docTextParent.GetComponent<RectTransform>().sizeDelta = new Vector2(size.x + textRectTransform.offsetMin.x - textRectTransform.offsetMax.x, size.y + textRectTransform.offsetMin.y - textRectTransform.offsetMax.y);
     }
 
     public void DeleteAllDocNavButtons()
@@ -101,7 +121,7 @@ public class GUIDocumentation : MonoBehaviour
     {
         var position = new Vector3(0, -_docNavButtonHeight * _docNavButtonsList.Count, 0);
 
-        var go = Instantiate(_docNavButton, position, Quaternion.identity) as GameObject;
+        var go = Instantiate(_docNavButtonPrefab, position, Quaternion.identity) as GameObject;
 
         go.transform.SetParent(_docNavButtonParent.transform, worldPositionStays: false);
 
@@ -112,7 +132,7 @@ public class GUIDocumentation : MonoBehaviour
 
     public Text AddDocText()
     {
-        var go = Instantiate(_docText) as GameObject;
+        var go = Instantiate(_docTextPrefab) as GameObject;
 
         go.transform.SetParent(_docTextParent.transform, worldPositionStays: false);
 
