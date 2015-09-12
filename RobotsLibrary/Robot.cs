@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotsLibrary
 {
-    public class Robot
+    public class Robot : IRobot
     {
         private IRobot _robot;
 
@@ -76,6 +76,11 @@ namespace RobotsLibrary
         public bool IsButtonPressed(string buttonName)
         {
             return _robot.IsButtonPressed(buttonName);
+        }
+
+        public void Print(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,16 +8,19 @@ namespace RobotsLibrary
 {
     public class WarRobot : Robot, IWarRobot
     {
-        private IWarRobot _robot;
-
-        private WarRobot()
-        {
-            _robot =  (IWarRobot)typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
-        }
+        private IWarRobot _warRobot;
 
         public void Shoot()
         {
-            _robot.Shoot();
+            CheckWarRobotVariable();
+
+            _warRobot.Shoot();
+        }
+
+        private void CheckWarRobotVariable()
+        {
+            if (_warRobot == null)
+                _warRobot = (IWarRobot)typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
         }
     }
 }

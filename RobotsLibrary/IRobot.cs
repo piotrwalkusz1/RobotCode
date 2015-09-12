@@ -21,5 +21,6 @@ namespace RobotsLibrary
         void Light();
         void Answer(float answer);
         bool IsButtonPressed(string buttonName);
+        void Print(string message);
     }
 }

@@ -74,7 +74,7 @@ public class Compiler : MonoBehaviour
 
             if (errors == null)
             {
-                print("Compilation hase failed");
+                print("Compilation has failed");
 
                 return;
             }
@@ -116,7 +116,7 @@ public class Compiler : MonoBehaviour
 
             if (errors == null)
             {
-                print("Compilation hase failed");
+                print("Compilation has failed");
 
                 return;
             }

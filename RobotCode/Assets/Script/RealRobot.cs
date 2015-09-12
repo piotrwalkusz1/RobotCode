@@ -179,6 +179,11 @@ public class RealRobot : MonoBehaviour, IRobot
         return result;
     }
 
+    public void Print(string message)
+    {
+        print(message);
+    }
+
     private void Function_StartMove(float time)
     {
         _movementDistanceOrTimeLeft = time;
