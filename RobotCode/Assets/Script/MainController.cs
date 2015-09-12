@@ -64,7 +64,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(1);
+        LoadScene(16);
     }
 
     public static void LoadGame(string saveName)

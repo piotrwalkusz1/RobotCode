@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.1.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -79,6 +81,8 @@
   <ItemGroup>
     <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
     <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
+    <Compile Include="Assets\Script\BulletDamage.cs" />
+    <Compile Include="Assets\Script\BulletTarget.cs" />
     <Compile Include="Assets\Script\ButtonArea.cs" />
     <Compile Include="Assets\Script\CodeEditor.cs" />
     <Compile Include="Assets\Script\CodeInfo.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="Assets\Script\PlayerRobotSelector.cs" />
     <Compile Include="Assets\Script\Prefabs.cs" />
     <Compile Include="Assets\Script\RealRobot.cs" />
+    <Compile Include="Assets\Script\RealWarRobot.cs" />
     <Compile Include="Assets\Script\RobotFunctions.cs" />
     <Compile Include="Assets\Script\SaveController.cs" />
     <Compile Include="Assets\Script\SaveData.cs" />
@@ -116,7 +121,9 @@
   <ItemGroup>
     <None Include="Assets\Elementals\!Readme.txt" />
     <None Include="Assets\Resources\documentation.xml" />
-    <None Include="Assets\Resources\missions.xml" />
+    <None Include="Assets\Resources\missions.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />

@@ -42,7 +42,7 @@ public class RealRobot : MonoBehaviour, IRobot
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
 	// Use this for initialization
-	void Awake () 
+	protected void Awake () 
     {
         _tasks = new List<Action>();
 
@@ -58,7 +58,7 @@ public class RealRobot : MonoBehaviour, IRobot
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected void Update () 
     {
         ExecuteTasks();
 
@@ -395,14 +395,14 @@ public class RealRobot : MonoBehaviour, IRobot
         }
     }
 
-    private void AddTaskAndWaitToStart(Action task)
+    protected void AddTaskAndWaitToStart(Action task)
     {
         AddTask(task);
 
         StopProcess();
     }
 
-    private void AddTaskAndWaitOneFrame(Action task)
+    protected void AddTaskAndWaitOneFrame(Action task)
     {
         AddTask(task);
 
