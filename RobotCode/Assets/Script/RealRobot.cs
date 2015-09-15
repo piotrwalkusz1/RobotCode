@@ -42,7 +42,7 @@ public class RealRobot : MonoBehaviour, IRobot
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
 	// Use this for initialization
-	protected void Awake () 
+	protected void Start () 
     {
         _tasks = new List<Action>();
 
@@ -99,6 +99,21 @@ public class RealRobot : MonoBehaviour, IRobot
     public void StopProcess()
     {
         _stopEvent.WaitOne();
+    }
+
+    public bool IsMove()
+    {
+        return _isMove;
+    }
+
+    public float GetMovementSpeed()
+    {
+        return _currentMovementSpeed;
+    }
+
+    public float GetRotationSpeed()
+    {
+        return _currentRotationSpeed;
     }
 
     public float GetMaxMovementSpeed()

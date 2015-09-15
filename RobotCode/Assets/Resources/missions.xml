@@ -18,35 +18,56 @@ public class Program : Robot
 &lt;b&gt;public class Program : Robot&lt;/b&gt; - miejsce, gdzie koncentruje się cały kod
 &lt;b&gt;public void Main()&lt;/b&gt; - w tym miejscu rozpoczynamy wykonywanie kodu
       
-Nie martw się drogi kadecie, jeżeli czujesz się zakłopotany. Z czasem poznasz dokładniej całą strukturę kodu.
-      
-&lt;b&gt;Cel misji : Skompiluj wzór kodu&lt;/b&gt;
-Otwórz edytor kodu i wciśnij przycisk &lt;b&gt;Kompiluj&lt;/b&gt;. Nie oczekuj, że coś się zdarzy. Jest to tylko pusty szablon.</description>
+Nie martw się drogi kadecie, jeżeli czujesz się zakłopotany. Z czasem poznasz dokładniej całą strukturę kodu. Twoim pierwszym zadaniem jest po prostu skompilowanie pustego szablonu kodu. Otwórz edytor kodu i wciśnij przycisk &lt;b&gt;Kompiluj&lt;/b&gt;. Nie oczekuj, że coś się zdarzy. Jest to tylko pusty szablon.</description>
   </mission>
   <mission>
     <id>2</id>
-    <name>Jazda do przodu</name>
-    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+    <name>Funkcje</name>
+    <description>Polecenia robotowi wydajesz za pomocą funkcji. Używa się ich podając nazwę funkcji, a na następnie pisząc dwa nawiasy "()". Jedną z najprostszych funkcji jest ta odpowiedzialna za włączanie oświetlenia robota. Aby jej użyć wprowadź fragment kodu "Light()" między klamrami "{" i "}" po wyrażeniu "Main()", tak jak pokazano w następującym przykładzie.
+
+&lt;b&gt;&lt;color=#800000ff&gt;using RobotsLibrary;
+
+public class Program : Robot
+{
+  public void Main()
+  {
+    Light();
+  }
+}&lt;/color&gt;&lt;/b&gt;
+
+Po wprowadzeniu kodu wciśnij przycisk kompiluj. Robot powinien włączyć swoje światła.</description>
   </mission>
   <mission>
     <id>3</id>
     <name>Jazda do przodu</name>
-    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+    <description>Niektóre funkcje pobierają jeden lub więcej argumentów, które podaje się wewnątrz nawiasów po nazwie funkcji. Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt;, aby poruszyć robotem do przodu o podaną ilość metrów. Na przykład następujący kod
+    
+&lt;b&gt;&lt;color=#800000ff&gt;using RobotsLibrary;
+
+public class Program : Robot
+{
+  public void Main()
+  {
+    Move(5);
+  }
+}&lt;/color&gt;&lt;/b&gt;
+
+sprawi, że robot przemieści się 5 metrów do przodu. Twoim zadaniem jest przemieszcze robota do zaznaczonego pola, które znajduje się 10 metrów dalej.</description>
   </mission>
   <mission>
     <id>4</id>
-    <name>Jazda do przodu</name>
-    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+    <name>Obrót</name>
+    <description>Oczywiście przemieszczanie robota tylko do przodu jest mało praktyczne. W tej misji pole docelowe znajduje się 10 metrów na prawo od robota. Najpierw musisz go obrócić o 90 stopni w prawo. Do tego celu użyj funkcji &lt;b&gt;Rotate(kąt)&lt;/b&gt;, gdzie kąt podajemy w stopniach. Podanie wartości ujemnej sprawi, że robot obróci się przeciwnie do wskazówek zegara. Po dokonaniu obrotu pozostaje wykorzystanie funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; z poprzedniego zadania</description>
   </mission>
   <mission>
     <id>5</id>
-    <name>Jazda do przodu</name>
-    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+    <name>Labirynt</name>
+    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu.</description>
   </mission>
   <mission>
     <id>6</id>
-    <name>Jazda do przodu</name>
-    <description>Użyj funkcji &lt;b&gt;Move(float odległość)&lt;/b&gt;, aby poruszyć robotem do przodu.</description>
+    <name>Powolna jazda</name>
+    <description>Twoim zadaniem jest przemieszczenie robota do strefy oddalonej o 30 metrów. Jednakże misja zakończy się niepowodzeniem, gdy robot będzie się poruszał szybciej niż 0.9 metra na sekundę. Aby spowolnić robota użyj funckji &lt;b&gt;SetMovementSpeed(prędkość)&lt;/b&gt;. Należy podać wartość mniejszą od 0.9. Tak. Zgadza się. Jako argumentów funkcji można również używać liczb zmiennoprzecinkowych. Należy jednak pamiętać, że tytułowy przecinek jest zastępowany przez kropkę "." oraz po liczbie należy dodać literę "f", aby zaznaczyć, ża mamy do czynienia z liczną zmiennoprzecinkową, na przykład "12.45f".</description>
   </mission>
   <mission>
     <id>7</id>
@@ -101,6 +122,57 @@ Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość
   <mission>
     <id>12</id>
     <name>Jazda po okręgu</name>
-    <description>Teraz zaczyna robić się naprawdę trudno. Do wykonania tej misji będzie Tobie potrzebna nowa funkcja : &lt;b&gt;SetRotationSpeed(float szybkość_obrotu)&lt;/b&gt;. Do tej pory mogłeś tylko określać o ile stopni robot miał się obrócić. Teraz możesz również sprecyzować, jak szybko powinien to robić, podając prędkość w stopniach na sekundę. Twoim zadaniem jest napisanie kodu, który sprawi, że Robot będzie poruszał się po okręgu i dotrze do wyznaczonego punktu. Tor w kształcie okręgu ma promieć 10m. Maksymalną (i tym samym domyślną) prędkość robota możesz uzyskać za pomocą funkcji &lt;b&gt;GetMaxMovementSpeed()&lt;/b&gt;. </description>
+    <description>Teraz zaczyna robić się naprawdę trudno. Do wykonania tej misji będą Tobie potrzebne trzy nowe funkcje : &lt;b&gt;SetRotationSpeed(float szybkość_obrotu)&lt;/b&gt;, &lt;b&gt;StartMove(czas)&lt;/b&gt; oraz &lt;b&gt;StartRotate(czas)&lt;/b&gt;. Pierwsza służy do ustawienia szybkości obrotu. Dwie kolejne funkcje różnią się od swoich odpowiedników bez prefiksu "Start" w dwóch kwestiach. Po pierwsze nie podajemy odległości do przebycia ani kątu do obrotu. Zamiast tego ustalamy jak długo ma trwać poruszanie się lub obrót. Drugą sprawą jest to, że po rozpoczęciu ruchu, robot nie czeka na zakończenie czynności lecz przechodzi do kolejnych funkcji. Przykładowo :
+    
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  Move(10);
+  Light();
+}
+&lt;/color&gt;&lt;/b&gt;
+
+Ten kod sprawi, że robot przebędzie 10 metrów, a następnie włączy światła. Gdyby zamiast funkcji &lt;b&gt;Move&lt;/b&gt; użyć &lt;b&gt;StartMove&lt;/b&gt; robot jednocześnie zacznie się przemieszczać oraz zapali światła. Przydatną rzeczą jest połączenie funkcji &lt;b&gt;StartMove&lt;/b&gt; oraz &lt;b&gt;StartRotate&lt;/b&gt;, które sprawi, że robot będzie jednocześnie się poruszał i skręcał. Będzie się on poruszał po łuku. Wielkość tego łuku można określić za pomocą funkcji &lt;b&gt;SetRotationSpeed&lt;/b&gt;. Im większa szybkość obrotu, tym mniejszy będzie okrąg, po którym będzie się poruszał robot.
+
+Twoim zadaniem jest przetransportowanie robota na drugi koniec trasy w kształcie okręgu o promieniu 10 metrów. Należy obliczyć ze wzoru na obwód koła długość trasu, czas trwania podróży oraz jaka powinna powinna być prędkość obrotu (WSKAZÓWKA : robot powinien wykonać obrót 180 stopni wciągu trwania całego ruchu). Prędkość robota odczytasz za pomocą funkcji &lt;b&gt;GetMovementSpeed()&lt;/b&gt;, na przykład :
+
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  float predkosc = GetMovementSpeed();
+  
+  // reszta kodu
+}
+&lt;/color&gt;&lt;/b&gt;</description>
+  </mission>
+  <mission>
+    <id>13</id>
+    <name>Do przodu, czekaj, do przodu</name>
+    <description>Aby dotrzeć do docelowego pola, należy otworzyć przejście. Można tego dokonać za pomocą umieszczonego przed nim przycisku, który aktywuje się, gdy robot stoi na nim przez 4 sekundy. Do wykonania zadania będzie potrzeba funkcja &lt;b&gt;Wait(czas)&lt;/b&gt;, która nakazuje robotowi czekać przez określoną ilość sekund. Przycisk znajduje się 9 metrów od początkowej pozycji robota, a pole docelowe 11 metrów dalej.</description>
+  </mission>
+  <mission>
+    <id>14</id>
+    <name>Pomiar odległości</name>
+    <description>Aby dotrzeć do docelowego pola, należy otworzyć przejście. Można tego dokonać za pomocą umieszczonego przed nim przycisku, który aktywuje się, gdy robot stoi na nim przez 4 sekundy. Do wykonania zadania będzie potrzeba funkcja &lt;b&gt;Wait(czas)&lt;/b&gt;, która nakazuje robotowi czekać przez określoną ilość sekund. Przycisk znajduje się 9 metrów od początkowej pozycji robota, a pole docelowe 11 metrów dalej.</description>
+  </mission>
+  <mission>
+    <id>15</id>
+    <name>Pętle</name>
+    <description>Do tej pory podawaliścmi robotowi określoną ilość funkcji do wykonania. Jednakże nie zawsze wiemy, ile razy powinniśmy użyć danej funkcji. W tym zadaniu oprócz dostarczenia robota do miejsca docelowego, nie może on również dotknąć czerwonego promienia. Jeden jest przed, drugi za robotem. Człowiek może ich dotykać bez rzadnych przeszkód. Gdy naciśniemy przycisk, promienie z losowym opóźnieniem od 4 do 10 sekund zaczną poruszać się do przodu ze stałą prędkością, równą prędkości robota.
+
+Cały problem leży w właśnie w tym opóźnieniu. Robot po skompilowaniu kodu musi sam określić moment, kiedy należy ruszyć. Najprostrzym sposobem, aby to osiągnąć jest pomiar odległości do przedniego lub tylnego promienia. Gdy przedni promień wystarczająco się oddali lub tylny wystarczająco się zbliży, robot powinien ruszyć. Pomiaru odle</description>
+  </mission>
+  <mission>
+    <id>17</id>
+    <name>Pętla</name>
+    <description>Kolejnym zadaniem będzie pokananie labiryntu o następującym kształcie :      
+_ _ _ _ _ _ _ _
+| _ _ _ _ _ _ |
+| | _ _ _ _ | |
+| | |  _ _| | |
+| | |_ _ _ _| |
+| | _ _ _ _ _ |
+|X|
+
+Znak 'X' oznacza poczatkową pozycję labiryntu. Aby dotrzeć na sam koniec należy przejechać 25 metrów, skęcić w prawo, znów przejechać 25 metrów, znów skręcić w prawo, 20 metrów, w prawo, 20 metrów, w prawo, 15 metrów, w prawo, 15 metrów, w prawo itd. Jak widać jest to dość spora liczba kroków, które jednak są bardzo powtarzalne. Każdy fragment składa się z 4 czynności : x metrów, w prawo, x metrów, w prawo. Następny fragment będzie już wyglądał następująco : x-5 metrów, w prawo, x-5 metrów, w prawo. Z pomocą przychodzą tutaj &lt;b&gt;&lt;pętle&lt;b&gt;&lt;. Jedną z nich jest pętla
+    </description>
   </mission>
 </missions>

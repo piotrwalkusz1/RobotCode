@@ -44,14 +44,14 @@ public class GUIMissionInfo : MonoBehaviour
         _description.GetComponent<Text>().font = _guiStyle.font;
         _description.GetComponent<Text>().fontSize = _guiStyle.fontSize;
 
-        GUIContent _guiContent = new GUIContent(_description.GetComponent<Text>().text);
+        GUIContent _guiContent = new GUIContent(_description.text);
 
-        int textMaxWidth = (int)_description.GetComponent<RectTransform>().sizeDelta.x;
+        int textMaxWidth = (int)_description.GetComponent<RectTransform>().rect.width;
 
         Vector2 size = new Vector2(textMaxWidth, _guiStyle.CalcHeight(_guiContent, textMaxWidth));
 
         var textRectTransform = _description.GetComponent<RectTransform>();
 
-        _descriptionParent.GetComponent<RectTransform>().sizeDelta = new Vector2(size.x + textRectTransform.offsetMin.x - textRectTransform.offsetMax.x, size.y + textRectTransform.offsetMin.y - textRectTransform.offsetMax.y);
+        _descriptionParent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, size.y + textRectTransform.offsetMin.y - textRectTransform.offsetMax.y);
     }
 }

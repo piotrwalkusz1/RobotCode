@@ -7,8 +7,14 @@ Udziela odpowiedzi na pytanie zawarte w zadaniu. Należy używać tylko w konkre
 &lt;b&gt;GetMaxMovementSpeed&lt;/b&gt; ()
 Zwraca największą możliwą prędkość poruszania się dla danego robota.
 
+&lt;b&gt;GetMovementSpeed&lt;/b&gt; ()
+Zwraca obecną prędkość poruszania się dla danego robota.
+
 &lt;b&gt;GetMaxRotationSpeed&lt;/b&gt; ()
 Zwraca największą możliwą prędkość obracania się dla danego robota.
+
+&lt;b&gt;GetRotationSpeed&lt;/b&gt; ()
+Zwraca obecną prędkość obracania się dla danego robota.
 
 &lt;b&gt;IsButtonPressed&lt;/b&gt; (string buttonName)
 Zwraca wartość "true", jeżeli przycisk o podanej nazwie jest obecnie wciśnięty. W przeciwnym razie zwraca wartość "false". 

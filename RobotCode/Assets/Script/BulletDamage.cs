@@ -27,8 +27,12 @@ public class BulletDamage : MonoBehaviour
         if (other.GetComponent<BulletTarget>() != null)
         {
             other.GetComponent<BulletTarget>().DestroyTarget();
-        }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else if (!other.isTrigger)
+        {
+            Destroy(gameObject);
+        }
     }
 }

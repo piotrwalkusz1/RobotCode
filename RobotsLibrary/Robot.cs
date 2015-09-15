@@ -12,7 +12,7 @@ namespace RobotsLibrary
         public void SetMovementSpeed(float speed)
         {
             _robot.SetMovementSpeed(speed);
-        }
+        } 
 
         public float GetMaxMovementSpeed()
         {
@@ -81,6 +81,16 @@ namespace RobotsLibrary
         public void Print(string message)
         {
             throw new NotImplementedException();
+        }
+
+        public float GetMovementSpeed()
+        {
+            return _robot.GetMovementSpeed();
+        }
+
+        public float GetRotationSpeed()
+        {
+            return _robot.GetRotationSpeed();
         }
     }
 }

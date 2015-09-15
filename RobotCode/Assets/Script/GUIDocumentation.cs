@@ -95,7 +95,7 @@ public class GUIDocumentation : MonoBehaviour
 
         var textRectTransform = docText.GetComponent<RectTransform>();
 
-        _docTextParent.GetComponent<RectTransform>().sizeDelta = new Vector2(size.x + textRectTransform.offsetMin.x - textRectTransform.offsetMax.x, size.y + textRectTransform.offsetMin.y - textRectTransform.offsetMax.y);
+        _docTextParent.GetComponent<RectTransform>().sizeDelta = new Vector2(size.x + textRectTransform.offsetMin.x - textRectTransform.offsetMax.x, docText.preferredHeight + textRectTransform.offsetMin.y - textRectTransform.offsetMax.y);
     }
 
     public void DeleteAllDocNavButtons()
