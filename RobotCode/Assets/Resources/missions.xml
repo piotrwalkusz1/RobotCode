@@ -23,7 +23,7 @@ Nie martw się drogi kadecie, jeżeli czujesz się zakłopotany. Z czasem poznas
   <mission>
     <id>2</id>
     <name>Funkcje</name>
-    <description>Polecenia robotowi wydajesz za pomocą funkcji. Używa się ich podając nazwę funkcji, a na następnie pisząc dwa nawiasy "()". Jedną z najprostszych funkcji jest ta odpowiedzialna za włączanie oświetlenia robota. Aby jej użyć wprowadź fragment kodu "Light()" między klamrami "{" i "}" po wyrażeniu "Main()", tak jak pokazano w następującym przykładzie.
+    <description>Polecenia robotowi wydajesz za pomocą funkcji. Używa się ich podając nazwę funkcji, a na następnie pisząc dwa nawiasy "()". Po każdej operacji musi pojawić się w zapisie średnik ';'. Jedną z najprostszych funkcji jest ta odpowiedzialna za włączanie oświetlenia robota. Aby jej użyć wprowadź fragment kodu "Light()" między klamrami "{" i "}" po wyrażeniu "Main()", tak jak pokazano w następującym przykładzie.
 
 &lt;b&gt;&lt;color=#800000ff&gt;using RobotsLibrary;
 
@@ -57,12 +57,23 @@ sprawi, że robot przemieści się 5 metrów do przodu. Twoim zadaniem jest prze
   <mission>
     <id>4</id>
     <name>Obrót</name>
-    <description>Oczywiście przemieszczanie robota tylko do przodu jest mało praktyczne. W tej misji pole docelowe znajduje się 10 metrów na prawo od robota. Najpierw musisz go obrócić o 90 stopni w prawo. Do tego celu użyj funkcji &lt;b&gt;Rotate(kąt)&lt;/b&gt;, gdzie kąt podajemy w stopniach. Podanie wartości ujemnej sprawi, że robot obróci się przeciwnie do wskazówek zegara. Po dokonaniu obrotu pozostaje wykorzystanie funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; z poprzedniego zadania</description>
+    <description>Oczywiście przemieszczanie robota tylko do przodu jest mało praktyczne. W tej misji pole docelowe znajduje się 10 metrów na prawo od robota. Najpierw musisz go obrócić o 90 stopni w prawo. Do tego celu użyj funkcji &lt;b&gt;Rotate(kąt)&lt;/b&gt;, gdzie kąt podajemy w stopniach. Podanie wartości ujemnej sprawi, że robot obróci się przeciwnie do wskazówek zegara. Po dokonaniu obrotu pozostaje wykorzystanie funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; z poprzedniego zadania. Kod jest wykonywany od góry do dołu, a po każdej instrukji musi pojawić się średnik ';' jak w następującym kodzie :
+
+&lt;b&gt;&lt;color=#800000ff&gt;using RobotsLibrary;
+
+public class Program : Robot
+{
+  public void Main()
+  {
+    NazwaFunckji();
+    InnaNazwaFunkcji();
+  }
+}&lt;/color&gt;&lt;/b&gt;</description>
   </mission>
   <mission>
     <id>5</id>
     <name>Labirynt</name>
-    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu.</description>
+    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu. Aby znaleźć odpowiednią drogę, najpierw się trochę rozejrzyj osobiście.</description>
   </mission>
   <mission>
     <id>6</id>
@@ -110,14 +121,26 @@ c = c * c;</description>
     <id>11</id>
     <name>Dzielenie i zmienne typu &lt;b&gt;float&lt;/b&gt;</name>
     <description>Jak już zostało powiedziane, zmienne typu &lt;b&gt;int&lt;/b&gt; przechowują liczby całkowite. Co jeśli chcemy zapisać ułamek? Z pomocą przychodzi nam typ &lt;b&gt;float&lt;/b&gt;. Po wykonaniu następującego kodu :
-int a = 10;
+
+&lt;b&gt;&lt;color=#800000ff&gt;int a = 10;
 int b = 3;
-int c = a / b;
+int c = a / b;&lt;/color&gt;&lt;b&gt;
+
 zmienna "c" będzie równa 3, gdyż typ &lt;b&gt;int&lt;/b&gt; przechowuje tylko liczby całkowite. Wartość dzielenia została zaokrąglona w dół. Teraz spójrzmy na ten przykład:
-float a = 10;
+
+&lt;b&gt;&lt;color=#800000ff&gt;float a = 10;
 float b = 3;
-float c = a / b
-Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość 3.333333 (po zaokrągleniu do szejściu miejsc po przecinku). Za pomocą zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblicz średnią z ocen pewnego ucznia. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
+float c = a / b;&lt;/color&gt;&lt;b&gt;
+
+Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość 3.333333 (po zaokrągleniu do szejściu miejsc po przecinku). Należy również mieć na uwadze, że przypisywanie liczby całkowitej do zmiennoprzecinkowej jest możliwe, lecz odwrota sytuacja spowoduje wystąpienie błędu :
+
+&lt;b&gt;&lt;color=#800000ff&gt;int a = 10;
+float b = a; // jest to dozwolone
+
+float c = 10.5f;
+int d = c; // wystąpi błąd, ponieważ nie da się zapisać liczby '10.5' w postaci liczby całkowitej&lt;/color&gt;&lt;b&gt;
+    
+Za pomocą zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblicz średnią z ocen pewnego ucznia. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
   </mission>
   <mission>
     <id>12</id>
@@ -133,15 +156,17 @@ Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość
 
 Ten kod sprawi, że robot przebędzie 10 metrów, a następnie włączy światła. Gdyby zamiast funkcji &lt;b&gt;Move&lt;/b&gt; użyć &lt;b&gt;StartMove&lt;/b&gt; robot jednocześnie zacznie się przemieszczać oraz zapali światła. Przydatną rzeczą jest połączenie funkcji &lt;b&gt;StartMove&lt;/b&gt; oraz &lt;b&gt;StartRotate&lt;/b&gt;, które sprawi, że robot będzie jednocześnie się poruszał i skręcał. Będzie się on poruszał po łuku. Wielkość tego łuku można określić za pomocą funkcji &lt;b&gt;SetRotationSpeed&lt;/b&gt;. Im większa szybkość obrotu, tym mniejszy będzie okrąg, po którym będzie się poruszał robot.
 
-Twoim zadaniem jest przetransportowanie robota na drugi koniec trasy w kształcie okręgu o promieniu 10 metrów. Należy obliczyć ze wzoru na obwód koła długość trasu, czas trwania podróży oraz jaka powinna powinna być prędkość obrotu (WSKAZÓWKA : robot powinien wykonać obrót 180 stopni wciągu trwania całego ruchu). Prędkość robota odczytasz za pomocą funkcji &lt;b&gt;GetMovementSpeed()&lt;/b&gt;, na przykład :
+Twoim zadaniem jest przetransportowanie robota na drugi koniec trasy w kształcie okręgu o promieniu 10 metrów. Należy obliczyć ze wzoru na obwód koła długość trasu, czas trwania podróży oraz jaka powinna powinna być prędkość obrotu (WSKAZÓWKA : robot powinien wykonać obrót 180 stopni wciągu trwania całego ruchu). Prędkość robota odczytasz za pomocą funkcji &lt;b&gt;GetMovementSpeed()&lt;/b&gt;. Funkcja ta w odróżnieniu od poznanych dotychczas zwraca ona wartość typu &lt;b&gt;float&lt;/b&gt;, na przykład :
 
 &lt;b&gt;&lt;color=#800000ff&gt;public void Main()
 {
   float predkosc = GetMovementSpeed();
   
-  // reszta kodu
+  // zmienna 'predkosc' zawiera teraz wartość równą obecnie ustawionej prędkości robota
 }
 &lt;/color&gt;&lt;/b&gt;</description>
+    
+Należy pamiętać, że użycie zmiennej np. typu &lt;b&gt;int&lt;/b&gt; zamiast &lt;b&gt;float&lt;/b&gt; spowoduje wystąpienie błędu, gdyż nie można zamisać liczby zmiennoprzecinkowej za pomocą liczby całkowitej.
   </mission>
   <mission>
     <id>13</id>
@@ -151,14 +176,135 @@ Twoim zadaniem jest przetransportowanie robota na drugi koniec trasy w kształci
   <mission>
     <id>14</id>
     <name>Pomiar odległości</name>
-    <description>Aby dotrzeć do docelowego pola, należy otworzyć przejście. Można tego dokonać za pomocą umieszczonego przed nim przycisku, który aktywuje się, gdy robot stoi na nim przez 4 sekundy. Do wykonania zadania będzie potrzeba funkcja &lt;b&gt;Wait(czas)&lt;/b&gt;, która nakazuje robotowi czekać przez określoną ilość sekund. Przycisk znajduje się 9 metrów od początkowej pozycji robota, a pole docelowe 11 metrów dalej.</description>
+    <description>W kolejnych misjach będzie potrzebna funckja umożliwiająca pomiar odległości. Jest nią &lt;b&gt;Raycast()&lt;/b&gt;. Sprawia ona, że robot wysyła przed siebie promień i mierzy dystans do najbliższej przeszkody. Przykład użycia :
+
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  float odleglosc = Raycast();
+
+  // zmienna 'odleglosc' zawiera teraz wartość równą odległości do najbliższej przeszkody z przodu robota
+}
+&lt;/color&gt;&lt;/b&gt;
+
+Zadaniem w tej misji będzie pomiar odległości robota do ściany znajdującej się przed nim. Wynik należy podać za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.
+  </description>
   </mission>
   <mission>
     <id>15</id>
-    <name>Pętle</name>
-    <description>Do tej pory podawaliścmi robotowi określoną ilość funkcji do wykonania. Jednakże nie zawsze wiemy, ile razy powinniśmy użyć danej funkcji. W tym zadaniu oprócz dostarczenia robota do miejsca docelowego, nie może on również dotknąć czerwonego promienia. Jeden jest przed, drugi za robotem. Człowiek może ich dotykać bez rzadnych przeszkód. Gdy naciśniemy przycisk, promienie z losowym opóźnieniem od 4 do 10 sekund zaczną poruszać się do przodu ze stałą prędkością, równą prędkości robota.
+    <name>Warunki</name>
+    <description>Do zrozumienia nowego zagadnienia niezbędny będzie nowy typ zmiennej &lt;b&gt;bool&lt;/b&gt;. Może ona przechowywać tylko dwie wartości : true (prawda) lub false (fałsz). Oto przykład deklaracji zmiennej typu &lt;b&gt;bool&lt;/b&gt; :
+    
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  bool a = false;
+  bool b = true;
+}
+&lt;/color&gt;&lt;/b&gt;
 
-Cały problem leży w właśnie w tym opóźnieniu. Robot po skompilowaniu kodu musi sam określić moment, kiedy należy ruszyć. Najprostrzym sposobem, aby to osiągnąć jest pomiar odległości do przedniego lub tylnego promienia. Gdy przedni promień wystarczająco się oddali lub tylny wystarczająco się zbliży, robot powinien ruszyć. Pomiaru odle</description>
+Gdy chcemy, aby robot wykonał daną czynność tylko wtedy, gdy określony warunek został spełniony, musimy użyć słowa kluczowego &lt;b&gt;if&lt;/b&gt;. Na przykład :
+
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  if(warunek)
+  {
+    WykonajPierwsząCzynność();
+    WykonajDrrugąCzynność();
+  }
+}
+&lt;/color&gt;&lt;/b&gt;
+
+W miejsce "warunek" możemy wstawić nasz warunek. Istnieją sześć podstawowych warunków :
+&lt;b&gt;&lt;color=#800000ff&gt;a > b    - jeżeli 'a' jest większe od 'b'
+a &lt; b    - jeżeli 'a' jest mniejsze od 'b'
+a >= b    - jeżeli 'a' jest większe lub równe 'b'
+a &lt;= b    - jeżeli 'a' jest mniejsze lub równe 'b'
+a == b    - jeżeli 'a' jest równe 'b'
+a != b    - jeżeli 'a' jest różne od 'b'&lt;/color&gt;&lt;/b&gt;
+
+Oto przykład :
+
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  int a = 7
+  
+  if(a > 3)
+  {
+    // warunek się wykona, gdyż 7 jest większe od 3
+  }
+  
+  int b = 12;
+  
+  if(a >= b)
+  {
+    // warunek się nie wykona, gdyż 7 nie jest większe lub równe 12
+  }
+  
+  bool c = false;
+  
+  if(c == true)
+  {
+    // warunek się nie wykona, zmienna 'c' nie ma wartości 'true'
+  }
+}
+&lt;/color&gt;&lt;/b&gt;
+
+Jaką wartość będzie miała zmienna 'd' po wykonaniu się całego kodu? :
+
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  int a = 5;
+  int b = 12
+  
+  if(a == b)
+  {
+    a = 4;
+  }
+  
+  if(a &lt; b)
+  {
+    b = 3;
+  }
+  
+  bool c = false;
+  
+  if(c != false)
+  {
+    a = 50;
+  }
+  
+  if(a > b)
+  {
+    b = 100;
+  }
+  
+  int d = a + b;
+}
+&lt;/color&gt;&lt;/b&gt;
+
+Udziel odpowiedzi za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
+  </mission>
+  <mission>
+    <id>16</id>
+    <name>Pętle</name>
+    <description>Do tej pory kod wykonywał się w sposób liniowy od góry do dołu. Jednakże to nie zawsze wystarcza. Czasami musimy wykonać daną czynność wiele razy. Z pomocą przychodzi pętla &lt;b&gt;while&lt;/b&gt;. Oto przykład jej zastosowania :
+      
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  while(przyswojonaWiedza &lt; 100)
+  {
+    CzytajPodręcznik();
+    RóbĆwiczenia();
+  }
+  
+  Odpocznij();
+}
+&lt;/color&gt;&lt;/b&gt;
+
+W nawiasach po słowie &lt;b&gt;while&lt;/b&gt; wstawiamy warunek lub zmienną typu &lt;b&gt;bool&lt;/b&gt;. Instrukcje między klamrami będą wykonywać się, dopóki warunek jest prawdziwy. Gdy zmienna 'przyswojonaWiedza' będzie większa lub równa od 100, pętla zostanie przerwana i zostanie wykonana funkcja Odpocznij().
+
+W tym zadaniu oprócz dostarczenia robota do miejsca docelowego, nie może on również dotknąć czerwonego promienia. Jeden jest przed, drugi za robotem. Człowiek może ich dotykać bez żadnych przeszkód. Gdy naciśniemy przycisk, promienie z losowym opóźnieniem od 4 do 10 sekund zaczną poruszać się do przodu ze stałą prędkością, równą prędkości robota.
+
+Cały problem leży w właśnie w tym opóźnieniu. Robot po skompilowaniu kodu musi sam określić moment, kiedy należy ruszyć. Najprostrzym sposobem, aby to osiągnąć jest pomiar odległości do przedniego promienia. Gdy wystarczająco się oddali, robot powinien ruszyć. Pomiaru odległości można wykonać za pomocą funkcji lt;b&gt;Raycast()&lt;/b&gt;. Aby wykonać misję należy tak długo powtarzać funkcję lt;b&gt;Wait(czas)&lt;/b&gt;, aż odległość do przedniego promienia wystarczająco się zwiększy. Jako argument funkcji lt;b&gt;Wait(czas)&lt;/b&gt; należy podać bardzo małą wartość, przykładowo 0.2f, aby robot odpowienio szybko reagował. Miejsce docelowe jest oddalone o 22 metry.</description>
   </mission>
   <mission>
     <id>17</id>

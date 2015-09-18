@@ -16,7 +16,7 @@ public class WinAnswerCondition : WinCondition
     {
         if (answer == _properAnswer)
         {
-            GUIController.ShowMessage("Odpowiedź " + answer.ToString() + " jest poprawna!");
+            GUIController.ShowMessage("Odpowiedź " + answer.ToString() + " jest poprawna!", MessageColor.Green);
 
             _isCondtionAchieved = true;
 
@@ -24,7 +24,7 @@ public class WinAnswerCondition : WinCondition
         }
         else
         {
-            GUIController.ShowMessage("Odpowiedź " + answer.ToString() + " jest niepoprawna.");
+            GUIController.ShowMessage("Odpowiedź " + answer.ToString() + " jest niepoprawna", MessageColor.Red);
         }
     }
 }

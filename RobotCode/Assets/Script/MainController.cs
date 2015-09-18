@@ -21,8 +21,11 @@ public class MainController : MonoBehaviour
 
     private static bool _isAllWinConditionsAchieved;
     private static DateTime _winTime;
+    private static float _timeToDefeat;
+    private static bool _isDefeat;
 
     private const float TIME_TO_WIN_AFTER_CONDITIONS_ACHIEVED = 5f;
+    private const float TIME_TO_DEFEAT = 4F;
 
     void Awake()
     {
@@ -40,7 +43,16 @@ public class MainController : MonoBehaviour
 
     void Update()
     {
-        if (_isAllWinConditionsAchieved && DateTime.UtcNow > _winTime)
+        if (_isDefeat)
+        {
+            _timeToDefeat += Time.deltaTime;
+
+            if (_timeToDefeat > TIME_TO_DEFEAT)
+            {
+                ReloadLevel();
+            }
+        }
+        else if (_isAllWinConditionsAchieved && DateTime.UtcNow > _winTime)
         {
             Win();
         }
@@ -64,7 +76,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(1);
+        LoadScene(15);
     }
 
     public static void LoadGame(string saveName)
@@ -80,9 +92,11 @@ public class MainController : MonoBehaviour
 
     public static void Defeat()
     {
-        GUIController.ShowMessage("Przegrałeś!");
+        GUIController.ShowMessage("Przegrałeś!", MessageColor.Red);
 
-        Main.ReloadLevel();
+        _timeToDefeat = 0;
+
+        _isDefeat = true;
     }
 
     public void ReloadLevel()

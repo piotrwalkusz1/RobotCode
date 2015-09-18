@@ -21,6 +21,8 @@ public class WinAreaTarget : WinCondition
 
         if (parcel != null && parcel._key == this._key)
         {
+            GUIController.ShowMessage("Robot został dostarczony na miejsce!", MessageColor.Green);
+
             _isConditionAchieved = true;
 
             RefreshWinConditions();

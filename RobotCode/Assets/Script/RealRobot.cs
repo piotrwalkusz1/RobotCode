@@ -288,7 +288,7 @@ public class RealRobot : MonoBehaviour, IRobot
 
         if (win == null)
         {
-            GUIController.ShowMessage("Ta misja nie polega na podawaniu odpowiedzi.");
+            GUIController.ShowMessage("Ta misja nie polega na podawaniu odpowiedzi", MessageColor.Yellow);
             return;
         }
 

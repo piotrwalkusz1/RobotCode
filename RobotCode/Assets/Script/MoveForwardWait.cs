@@ -11,13 +11,12 @@ public class MoveForwardWait : MonoBehaviour
 
     private float _time;
     private float _targetTime;
-    private bool _isMove;
 
     void Update()
     {
         if (_isStart)
         {
-            if (_isMove && _time >= _targetTime)
+            if (_time >= _targetTime)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y,
                     Mathf.MoveTowards(transform.position.z, _targetZ, _speed * Time.deltaTime));
@@ -29,8 +28,11 @@ public class MoveForwardWait : MonoBehaviour
 
     public void StartMove()
     {
-        _isStart = true;
+        if (!_isStart)
+        {
+            _isStart = true;
 
-        _targetTime = Random.Range(_minTime, _maxTime);
+            _targetTime = Random.Range(_minTime, _maxTime);
+        }    
     }
 }

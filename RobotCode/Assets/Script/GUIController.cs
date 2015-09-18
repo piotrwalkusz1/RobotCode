@@ -21,6 +21,7 @@ public class GUIController : MonoBehaviour
     public GameObject _menuPanel;
     public GameObject _loadGamePanel;
     public GameObject _aim;
+    public GameObject _messager;
 
     public static RealRobot RealRobot { get; set; }
 
@@ -54,9 +55,13 @@ public class GUIController : MonoBehaviour
         } 
     }
 
-    public static void ShowMessage(string message)
+    public static void ShowMessage(string message, MessageColor color)
     {
+        ShowMessager();
+
         print(message);
+
+        Messager.ShowMessage(message, color);
     }
 
     public static void HideAll()
@@ -67,6 +72,17 @@ public class GUIController : MonoBehaviour
         HideFunctionsList();
         HideDocumentation();
         Main.HideMenu();
+        HideMessager();
+    }
+
+    public static void ShowMessager()
+    {
+        Main._messager.SetActive(true);
+    }
+
+    public static void HideMessager()
+    {
+        Main._messager.SetActive(false);
     }
 
     public static void ShowFunctionsList(RealRobot realRobot)

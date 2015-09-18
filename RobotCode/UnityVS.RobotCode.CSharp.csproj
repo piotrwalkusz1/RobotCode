@@ -98,6 +98,8 @@
     <Compile Include="Assets\Script\InputFieldMask.cs" />
     <Compile Include="Assets\Script\InputSettings.cs" />
     <Compile Include="Assets\Script\MainController.cs" />
+    <Compile Include="Assets\Script\MessageColor.cs" />
+    <Compile Include="Assets\Script\Messager.cs" />
     <Compile Include="Assets\Script\MoveForwardRandom.cs" />
     <Compile Include="Assets\Script\MoveForwardWait.cs" />
     <Compile Include="Assets\Script\NormalButton.cs" />

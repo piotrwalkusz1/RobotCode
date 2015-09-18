@@ -12,6 +12,8 @@ public class WinDestroyCondition : WinCondition
 
     public void OnDestroy()
     {
+        GUIController.ShowMessage("Obiekt został zniszczony!", MessageColor.Green);
+
         _isConditionAchieved = true;
 
         RefreshWinConditions();

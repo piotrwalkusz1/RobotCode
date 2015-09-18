@@ -21,6 +21,8 @@ namespace Assets.Script
         {
             Compiler.OnCompile += delegate()
             {
+                GUIController.ShowMessage("Kod został skompilowany!", MessageColor.Green);
+
                 _isConditionAchieved = true;
 
                 RefreshWinConditions();

@@ -32,7 +32,7 @@ public class RealWarRobot : RealRobot, IWarRobot
         }
         else
         {
-            GUIController.ShowMessage("Robot nie jest jeszcze gotowy do strzału");
+            GUIController.ShowMessage("Robot nie jest jeszcze gotowy do strzału", MessageColor.Yellow);
         }
     }
 

@@ -19,7 +19,10 @@ public class WinLightCondition : WinCondition
     {
         _realRobot.OnLightFunction += delegate()
         {
+            GUIController.ShowMessage("Światło zostało włączone!", MessageColor.Green);
+
             _isConditionAchieved = true;
+
             RefreshWinConditions();
         };
     }
