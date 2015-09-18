@@ -79,11 +79,20 @@ public class Compiler : MonoBehaviour
                 return;
             }
 
-            foreach (string error in errors)
+            /*foreach (string error in errors)
             {
                 string[] errorData = error.Split(new string[] { " @ " }, StringSplitOptions.None);
 
-                print("Line: " + errorData[0] + ", Column: " + errorData[1] + " : " + errorData[2]);
+                //print("Line: " + errorData[0] + ", Column: " + errorData[1] + " : " + errorData[2]);
+
+                ShowErrorMessage(errorData);
+            }*/
+
+            if (errors.Count > 0)
+            {
+                string[] errorData = errors[0].Split(new string[] { " @ " }, StringSplitOptions.None);
+
+                ShowErrorMessage(errorData);
             }
         }
     }
@@ -121,12 +130,26 @@ public class Compiler : MonoBehaviour
                 return;
             }
 
-            foreach (string error in errors)
+            /*foreach (string error in errors)
             {
                 string[] errorData = error.Split(new string[] { " @ " }, StringSplitOptions.None);
 
-                print("Line: " + errorData[0] + ", Column: " + errorData[1] + " : " + errorData[2]);
+                //print("Line: " + errorData[0] + ", Column: " + errorData[1] + " : " + errorData[2]);
+
+                ShowErrorMessage(errorData);
+            }*/
+
+            if (errors.Count > 0)
+            {
+                string[] errorData = errors[0].Split(new string[] { " @ " }, StringSplitOptions.None);
+
+                ShowErrorMessage(errorData);
             }
         }
+    }
+
+    private void ShowErrorMessage(string[] errorData)
+    {
+        MainController.UpdateEvent += delegate() { GUIController.ShowMessage("Wiersz " + errorData[0] + " : " + errorData[2], MessageColor.Red); };
     }
 }

@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
+    public static event Action UpdateEvent;
+
     public static MainController Main { get; private set; }
 
     public static bool IsGame { get; set; }
@@ -43,6 +45,13 @@ public class MainController : MonoBehaviour
 
     void Update()
     {
+        if (UpdateEvent != null)
+        {
+            UpdateEvent();
+
+            UpdateEvent = null;
+        }
+
         if (_isDefeat)
         {
             _timeToDefeat += Time.deltaTime;
