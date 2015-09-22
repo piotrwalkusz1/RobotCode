@@ -33,6 +33,8 @@ public class GUIDocumentation : MonoBehaviour
         {
             print("There are two GUIDocumentation at least");
         }
+
+        LoadDocumentation();
     }
 
     public void Hide()

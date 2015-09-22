@@ -85,7 +85,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(15);
+        LoadScene(1);
     }
 
     public static void LoadGame(string saveName)
@@ -97,6 +97,11 @@ public class MainController : MonoBehaviour
         InitializeGame();
 
         LoadScene(saveData.Lvl);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     public static void Defeat()

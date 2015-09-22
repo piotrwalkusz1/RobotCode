@@ -13,7 +13,7 @@ public class GUIMissionInfo : MonoBehaviour
 
     public void Show()
     {
-        GUIController.ShowMissionInfo();
+        GUIController.Main.ShowMissionInfo();
     }
 
     public void Hide()

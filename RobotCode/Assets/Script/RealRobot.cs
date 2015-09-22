@@ -9,7 +9,6 @@ using System.Linq;
 
 public class RealRobot : MonoBehaviour, IRobot
 {
-    public RobotFunctions _robotFunctions;
     public GameObject _blueLight;
 
     public string _firstCode;
@@ -18,6 +17,8 @@ public class RealRobot : MonoBehaviour, IRobot
     public float _maxRotationSpeed;
 
     public Action OnLightFunction;
+
+    public CodeInfo _code { get; set; }
 
     private float _currentMovementSpeed;
     private float _currentRotationSpeed;
@@ -46,12 +47,8 @@ public class RealRobot : MonoBehaviour, IRobot
     {
         _tasks = new List<Action>();
 
-        _robotFunctions = GetComponent<RobotFunctions>();
-
-        if (_firstCode != null && _firstCode != "")
-        {
-            _robotFunctions.Functions[0].Code = _firstCode;
-        }
+        _code = new CodeInfo();
+        if(_firstCode != null && _firstCode != "") _code.Code = _firstCode;
 
         _currentMovementSpeed = _maxMovementSpeed;
         _currentRotationSpeed = _maxRotationSpeed;
@@ -194,6 +191,15 @@ public class RealRobot : MonoBehaviour, IRobot
         return result;
     }
 
+    public Position GetPosition(string name)
+    {
+        Position result = null;
+
+        AddTaskAndWaitOneFrame(delegate() { Function_GetPosition(name, out result); });
+
+        return result;
+    }
+
     public void Print(string message)
     {
         print(message);
@@ -268,6 +274,8 @@ public class RealRobot : MonoBehaviour, IRobot
         if (button == null)
         {
             result = false;
+
+            GUIController.ShowMessage("Przycisk o nazwie \"" + buttonName + "\" nie istnieje. Zostanie zwrócona wartość 'false'!", MessageColor.Red);
         }
         else
         {
@@ -279,7 +287,7 @@ public class RealRobot : MonoBehaviour, IRobot
     {
         _blueLight.SetActive(!_blueLight.activeSelf);
 
-        if (OnLightFunction != null) OnLightFunction();
+        if (OnLightFunction != null) { OnLightFunction(); OnLightFunction = null; }
     }
 
     private void Function_Answer(float answer)
@@ -293,6 +301,22 @@ public class RealRobot : MonoBehaviour, IRobot
         }
 
         win.Answer(answer);
+    }
+
+    private void Function_GetPosition(string name, out Position result)
+    {
+        var pos = FindObjectsOfType<GetPositionName>().FirstOrDefault(x => x._name == name);
+
+        if (pos == null)
+        {
+            result = new Position(0, 0);
+
+            GUIController.ShowMessage("Obiekt o nazwie \"" + name + "\" nie istnieje. Zostanie zwrócona wartość (0, 0)!", MessageColor.Red);            
+        }
+        else
+        {
+            result = new Position(pos.transform.position.x, pos.transform.position.z);
+        }
     }
 
     private void Update_Move()

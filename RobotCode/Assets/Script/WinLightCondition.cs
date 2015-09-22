@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WinLightCondition : WinCondition
 {
-    public RealRobot _realRobot;
+    private RealRobot _realRobot;
 
     public override bool IsConditionAchieved
     {
@@ -17,6 +17,8 @@ public class WinLightCondition : WinCondition
 
     void Awake()
     {
+        _realRobot = GetComponent<RealRobot>();
+
         _realRobot.OnLightFunction += delegate()
         {
             GUIController.ShowMessage("Światło zostało włączone!", MessageColor.Green);

@@ -17,7 +17,7 @@ public class PlayerRobotSelector : MonoBehaviour
 
                 if (realRobot != null)
                 {
-                    GUIController.ShowFunctionsList(realRobot);
+                    GUIController.ShowCodeEditor(realRobot);
                 }
             }
         }

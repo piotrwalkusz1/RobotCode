@@ -14,7 +14,6 @@ public class GUIController : MonoBehaviour
     public List<MonoBehaviour> _componentsDisableWhileGUI;
 
     public CodeEditor _codeEditor;
-    public GUIFunctionList _functionsList;
     public GUIMissionInfo _missionInfo;
     public GUIDocumentation _documentation;
     public GUIMenu _menu;
@@ -64,12 +63,20 @@ public class GUIController : MonoBehaviour
         Messager.ShowMessage(message, color);
     }
 
+    public static void ShowMessage(string message, MessageColor color, float time)
+    {
+        ShowMessager();
+
+        print(message);
+
+        Messager.ShowMessage(message, color, time);
+    }
+
     public static void HideAll()
     {
         HideAim();
         HideCodeEditor();
         HideMissionInfo();
-        HideFunctionsList();
         HideDocumentation();
         Main.HideMenu();
         HideMessager();
@@ -83,15 +90,6 @@ public class GUIController : MonoBehaviour
     public static void HideMessager()
     {
         Main._messager.SetActive(false);
-    }
-
-    public static void ShowFunctionsList(RealRobot realRobot)
-    {
-        RealRobot = realRobot;
-
-        Main._functionsList.gameObject.SetActive(true);
-
-        RefreshComponentsDisableWhileGUI();
     }
 
     public static void ShowMainMenu()
@@ -120,20 +118,13 @@ public class GUIController : MonoBehaviour
         RefreshComponentsDisableWhileGUI();
     }
 
-    public static void HideFunctionsList()
+    public static void ShowCodeEditor(RealRobot realRobot)
     {
-        Main._functionsList.gameObject.SetActive(false);
+        RealRobot = realRobot;
 
-        RefreshComponentsDisableWhileGUI();
-    }
-
-    public static void ShowCodeEditor(CodeInfo codeInfo)
-    {
-        Main._codeEditor.Set(codeInfo, RealRobot);
+        Main._codeEditor.Set(RealRobot._code, RealRobot);
 
         Main._codeEditor.gameObject.SetActive(true);
-
-        Main._functionsList.gameObject.SetActive(false);
 
         RefreshComponentsDisableWhileGUI();
     }
@@ -145,7 +136,7 @@ public class GUIController : MonoBehaviour
         RefreshComponentsDisableWhileGUI();
     }
 
-    public static void ShowMissionInfo()
+    public void ShowMissionInfo()
     {
         Main._missionInfo.gameObject.SetActive(true);
 
@@ -159,7 +150,7 @@ public class GUIController : MonoBehaviour
         RefreshComponentsDisableWhileGUI();
     }
 
-    public static void ShowDocumentation()
+    public void ShowDocumentation()
     {
         Main._documentation.gameObject.SetActive(true);
 
@@ -215,7 +206,6 @@ public class GUIController : MonoBehaviour
 
         if(Main._codeEditor.gameObject.activeInHierarchy ||
            Main._missionInfo.gameObject.activeInHierarchy ||
-           Main._functionsList.gameObject.activeInHierarchy ||
            Main._documentation.gameObject.activeInHierarchy ||
            Main._menu.gameObject.activeInHierarchy ||
            Main._loadGamePanel.gameObject.activeInHierarchy)
@@ -223,12 +213,16 @@ public class GUIController : MonoBehaviour
             Main._componentsDisableWhileGUI.ForEach(x => x.enabled = false);
 
             HideAim();
+
+            Cursor.visible = true;
         }
         else
         {
             Main._componentsDisableWhileGUI.ForEach(x => x.enabled = true);
 
             ShowAim();
+
+            Cursor.visible = false;
         }
     }
 }

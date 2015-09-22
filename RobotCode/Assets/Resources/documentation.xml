@@ -13,6 +13,9 @@ Zwraca obecną prędkość poruszania się dla danego robota.
 &lt;b&gt;GetMaxRotationSpeed&lt;/b&gt; ()
 Zwraca największą możliwą prędkość obracania się dla danego robota.
 
+&lt;b&gt;GetPosition&lt;/b&gt; (string objectName)
+Zwraca pozycję obiektu o podanej nazwie w postaci zmiennej typu 'Position'.
+
 &lt;b&gt;GetRotationSpeed&lt;/b&gt; ()
 Zwraca obecną prędkość obracania się dla danego robota.
 

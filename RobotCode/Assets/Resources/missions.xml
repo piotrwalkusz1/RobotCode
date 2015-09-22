@@ -300,25 +300,104 @@ Udziel odpowiedzi za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</des
 }
 &lt;/color&gt;&lt;/b&gt;
 
-W nawiasach po słowie &lt;b&gt;while&lt;/b&gt; wstawiamy warunek lub zmienną typu &lt;b&gt;bool&lt;/b&gt;. Instrukcje między klamrami będą wykonywać się, dopóki warunek jest prawdziwy. Gdy zmienna 'przyswojonaWiedza' będzie większa lub równa od 100, pętla zostanie przerwana i zostanie wykonana funkcja Odpocznij().
+W nawiasach po słowie &lt;b&gt;while&lt;/b&gt; wstawiamy warunek. Instrukcje między klamrami będą wykonywać się, dopóki warunek jest prawdziwy. Gdy zmienna 'przyswojonaWiedza' będzie większa lub równa od 100, pętla zostanie przerwana i zostanie wykonana funkcja Odpocznij().
 
 W tym zadaniu oprócz dostarczenia robota do miejsca docelowego, nie może on również dotknąć czerwonego promienia. Jeden jest przed, drugi za robotem. Człowiek może ich dotykać bez żadnych przeszkód. Gdy naciśniemy przycisk, promienie z losowym opóźnieniem od 4 do 10 sekund zaczną poruszać się do przodu ze stałą prędkością, równą prędkości robota.
 
-Cały problem leży w właśnie w tym opóźnieniu. Robot po skompilowaniu kodu musi sam określić moment, kiedy należy ruszyć. Najprostrzym sposobem, aby to osiągnąć jest pomiar odległości do przedniego promienia. Gdy wystarczająco się oddali, robot powinien ruszyć. Pomiaru odległości można wykonać za pomocą funkcji lt;b&gt;Raycast()&lt;/b&gt;. Aby wykonać misję należy tak długo powtarzać funkcję lt;b&gt;Wait(czas)&lt;/b&gt;, aż odległość do przedniego promienia wystarczająco się zwiększy. Jako argument funkcji lt;b&gt;Wait(czas)&lt;/b&gt; należy podać bardzo małą wartość, przykładowo 0.2f, aby robot odpowienio szybko reagował. Miejsce docelowe jest oddalone o 22 metry.</description>
+Cały problem leży w właśnie w tym opóźnieniu. Robot po skompilowaniu kodu musi sam określić moment, kiedy należy ruszyć. Najprostrzym sposobem, aby to osiągnąć jest pomiar odległości do przedniego promienia. Gdy wystarczająco się oddali, robot powinien ruszyć. Pomiaru odległości można wykonać za pomocą funkcji &lt;b&gt;Raycast()&lt;/b&gt;. Aby wykonać misję należy tak długo powtarzać funkcję &lt;b&gt;Wait(czas)&lt;/b&gt;, aż odległość do przedniego promienia wystarczająco się zwiększy. Jako argument funkcji &lt;b&gt;Wait(czas)&lt;/b&gt; należy podać bardzo małą wartość, przykładowo 0.2f, aby robot odpowienio szybko reagował. Miejsce docelowe jest oddalone o 22 metry.</description>
   </mission>
   <mission>
     <id>17</id>
-    <name>Pętla</name>
-    <description>Kolejnym zadaniem będzie pokananie labiryntu o następującym kształcie :      
-_ _ _ _ _ _ _ _
-| _ _ _ _ _ _ |
-| | _ _ _ _ | |
-| | |  _ _| | |
-| | |_ _ _ _| |
-| | _ _ _ _ _ |
-|X|
+    <name>Nieskończona pętla</name>
+    <description>
+      To zadanie jest bardzo podobne do poprzedniego z tą różnicą, że po wciśnięciu przycisku promienie zaczną się natychmiast przemieszczać, zatrzymując się po drodze losową ilość razy. Robot powinien wykryć zartzymanie się promieni oraz się zatrzymać. Podobnie musi być wstanie określić, kiedy należy kontynuować przemieszczanie się. Może być przydatne pętla, która nigdy się nie zatrzyma oraz nowe słowo kluczowe &lt;b&gt;else&lt;/b&gt; :
 
-Znak 'X' oznacza poczatkową pozycję labiryntu. Aby dotrzeć na sam koniec należy przejechać 25 metrów, skęcić w prawo, znów przejechać 25 metrów, znów skręcić w prawo, 20 metrów, w prawo, 20 metrów, w prawo, 15 metrów, w prawo, 15 metrów, w prawo itd. Jak widać jest to dość spora liczba kroków, które jednak są bardzo powtarzalne. Każdy fragment składa się z 4 czynności : x metrów, w prawo, x metrów, w prawo. Następny fragment będzie już wyglądał następująco : x-5 metrów, w prawo, x-5 metrów, w prawo. Z pomocą przychodzą tutaj &lt;b&gt;&lt;pętle&lt;b&gt;&lt;. Jedną z nich jest pętla
+&lt;b&gt;&lt;color=#800000ff&gt;public void Main()
+{
+  while(true)
+  {
+    if(warunek)
+    {
+      // wykona się, jeżeli warunek jest prawdziwy
+    }
+    else
+    {
+      // wykona się, jeżeli warunek jest fałszywy
+    }    
+  }
+}
+&lt;/color&gt;&lt;/b&gt;
+
+Jak można się domyśleć, instukcje umieszczone w klamrach po słowie kluczowym &lt;b&gt;else&lt;/b&gt; wykonają się, gdy warunek nie został spełniony. &lt;b&gt;else&lt;/b&gt; występuje wyłącznie w parze ze słowem &lt;b&gt;if&lt;/b&gt;. Oczywistym jest, że wykonają się polecenia albo po słowie kluczowym &lt;b&gt;if&lt;/b&gt;, albo po słowie kluczowym &lt;b&gt;else&lt;/b&gt;, lecz nigdy nie jednocześnie.
+
+Napisz program, który przemieści robota do pola docelowego, pamiętając jednocześnie, że robot nie może dotknąć żadnego z promieni. WSKAZÓWA : Użyj funkcji &lt;b&gt;StartMove(czas)&lt;/b&gt; zamiast &lt;b&gt;Move(odległość)&lt;/b&gt;, gdyż druga funkcja nie zakończy działania, dopóki nie przebędzie wymaganej odległości, pierwszą zaś funkcję można zakończyć funkcją &lt;b&gt;Wait(czas)&lt;/b&gt;.</description>
+  </mission>
+  <mission>
+    <id>18</id>
+    <name>Pętla</name>
+    <description>Kolejnym zadaniem będzie pokananie labiryntu o następującym kształcie : 
+&lt;color=#237514ff&gt;
+_ _ _ _ _ _ _ _ _
+|   _ _ _ _ _ _     |
+|   |   _ _ _ _   |   |
+|   |   |    _ _|   |   |
+|   |   |_ _ _ _  |   |
+|   | _ _ _ _ _ _ _|
+|X|
+      &lt;/color&gt;
+Znak 'X' oznacza poczatkową pozycję labiryntu. Aby dotrzeć na sam koniec należy przejechać 25 metrów, skęcić w prawo, znów przejechać 25 metrów, znów skręcić w prawo, 20 metrów, w prawo, 20 metrów, w prawo, 15 metrów, w prawo, 15 metrów, w prawo itd. Jak widać jest to dość spora liczba kroków, które jednak są bardzo powtarzalne. Każdy fragment składa się z 4 czynności : x metrów, w prawo, x metrów, w prawo. Następny fragment będzie już wyglądał następująco : x-5 metrów, w prawo, x-5 metrów, w prawo. Z pomocą przychodzą tutaj &lt;b&gt;pętle&lt;/b&gt;. Jedną z nich jest pętla
+    </description>
+  </mission>
+  <mission>
+    <id>19</id>
+    <name>Przycisk</name>
+    <description>Jak na razie po wciśnięciu przycisku 'Kompiluj' nie mieliśmy żadnego wpływu na działanie robota. Jednakże jest pewien sposób, aby go kontrolować w trakcie wykonywania kodu. Do tego celu można na przykład użyć specjalnych przycisków. Aby sprawdzić czy dany przycisk został naciśnięty, należy użyć funkcji &lt;b&gt;IsButtonPressed(nazwaPrzycisku)&lt;/b&gt;. Nazwę przycisku należy podać między dwoma cudzysłowami :
+    
+&lt;b&gt;&lt;color=#800000ff&gt;bool czyPrzyciskJestNaciśnięty = IsButtonPressed("Mój przycisk");
+
+if(czyPrzyciskJestNaciśnięty == true)
+{
+  // dalsz kod
+}
+      
+// lub krócej
+
+if(IsButtonPressed("Mój przycisk") == true)
+{
+  // dalszy kod
+}&lt;/color&gt;&lt;/b&gt;
+      
+W tej misji należy przemieścić się do pola docelowego za pomocą specjalnej platformy, która porusza się nieprzerwanie między dwiema większymi platformami. Robot nie jest wstanie wykryć, kedy należy wejść na tą platformę i kiedy ją opuścić. Będzie konieczne sterowanie robotem za pomocą przycisku. Przykładowo gdy jest wciśnięty, robot powinien ruszyć do przodu, a kiedy jest zwolniony, robot powinien się zatrzymać. Nazwa przycisku to "zielony" (wielkość liter ma znaczenie).</description>
+  </mission>
+  <mission>
+    <id>20</id>
+    <name>Obiekty</name>
+    <description>Zadaniem w tej misji będzie dotarcie do miejsca docelowego. Jednakże jest ono ukryte. Jego pozycję możesz odczytać za pomocą funkcji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;. Pewnie już się domyślasz, że pozycji nie da się przedstawić w postaci ani liczby całkowitej, ani liczby zmiennoprzecinkowej, gdyż pozycja składa się z dwóch liczb (pozycja 'x' i pozycja 'y'). Do operowania na złożonych pojęciach należy wykorzystać &lt;b&gt;typy złożone&lt;/b&gt;, w tym przypadku typ &lt;b&gt;Position&lt;/b&gt; :
+
+&lt;b&gt;&lt;color=#800000ff&gt;Position pozycja = GetPosition("jakaś nazwa");&lt;/color&gt;&lt;/b&gt;
+      
+Teraz zmienna 'pozycja' zawiera informacje na temat obiektu o nazwie "jakaś nazwa". Aby odwołać się do poszczególnych składowych pozycji, należy użyć kropki '.', a następnie podać nazwę &lt;b&gt;zmiennej składowej&lt;/b&gt; :
+      
+&lt;b&gt;&lt;color=#800000ff&gt;foat x = pozycja.x;
+float y = pozycja.y;&lt;/color&gt;&lt;/b&gt;
+s     
+Robot znajduje się na pozycji (0, 0) i jest zwrócony zgodnie z kierunkiem osi 'y'. Dla przykładu, jeżeli szukana pozycja wynosi (-3, 2), to widok z góry wyglądałby następująco :
+dotrzyj do miejsca docelowego o nazwie "ukryty cel".</description>
+  </mission>
+  <mission>
+    <id>21</id>
+    <name>Funkcje składowe</name>
+    <description>
+      W tym zadaniu miejsce docelowe również ma nazwę "ukryty cel" lecz robot nie znajduje się już w pozycji (0, 0). To znaczy, że wartość zwrócona przez GetPosition("ukryty cel") nie mówi już nam nic o pozycji ukrytego miejsca docelowego. Musimy dodatkowo poznać pozycję robota za pomocą tej samej funkcji. Nazwa robota to "szukający robot". Gdy poznamy dwie szukane pozycje, będziemy w stanie obliczyć względne odległości. Jednakże jest to dobre miejsce, aby wykorzystać dobrodziejstwo typów złożonych. Mogą one posiadać nie tylko wiele zmiennych, ale również własne &lt;b&gt;funkcje składowe&lt;/b&gt;. Jedną z nich jest &lt;b&gt;GetRelationPosition (pozycjaBezwzględna)&lt;/b&gt;. Aby skorzystać z funckji składowej należy zastosować znak kropki '.' :
+      
+      &lt;b&gt;&lt;color=#800000ff&gt;Position pozycja1 = GetPosition("pozycja1");
+      Position pozycja2 = GetPosition("pozycja2");
+      
+      Position pozycjaWzględna = pozycja1.GetRelativePosition(pozycja2);&lt;/color&gt;&lt;/b&gt;
+     
+      Pozycja względna będzie zawierałą pozycję względną drugiego obiektu względem pierwszego (nie na odwrót!). Przykładowo jeżeli pozycja1 wynosi (10, 5), a pozycja2 równa się (2, 4) to pozycjaWzględna będzie wynosiła (8, 1). Ta wartość oznacza, że aby dostać się z punktu pierwszego do punktu drugiego należy pokonać 8 metrów w osi 'x' i 1 metr w osi 'y'.
+      
+      Oblicz pozycję względną i dotrzyj do punktu docelowego. Robot nadal jest zwrócony zgodnie z kierunkiem osi 'y'.
     </description>
   </mission>
 </missions>

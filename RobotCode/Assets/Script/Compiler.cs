@@ -64,7 +64,7 @@ public class Compiler : MonoBehaviour
 
             codeInfo.IsEdited = false;
 
-            if (OnCompile != null) OnCompile();
+            if (OnCompile != null) MainController.UpdateEvent += delegate() { OnCompile(); OnCompile = null; };
         }
         catch (TargetInvocationException targertException)
         {
@@ -107,15 +107,45 @@ public class Compiler : MonoBehaviour
 
             codeInfo.IsEdited = false;
 
-            if (OnCompile != null) OnCompile();
+            if (OnCompile != null) MainController.UpdateEvent += delegate() { OnCompile(); OnCompile = null; };
 
-            var robotClass = assembly.GetType("Program") as Type;
+            var robotClass = assembly.GetType("Program") as Type; 
+
+            if (robotClass == null)
+            {
+                ShowErrorMessage("Kod nie zawiera klasy o nazwie 'Program'!");
+
+                return;
+            }
+
+            if(!typeof(Robot).IsAssignableFrom(robotClass))
+            {
+                ShowErrorMessage("Klasa 'Program' nie dziedziczy po klasie 'Robot'!");
+
+                return;
+            }
 
             var inst = Activator.CreateInstance(robotClass);
 
             typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(inst, realRobot);
 
-            robotClass.GetMethod("Main").Invoke(inst, null);
+            var mainMethod = robotClass.GetMethod("Main");
+
+            if (mainMethod == null)
+            {
+                ShowErrorMessage("Klasa 'Program' nie zawiera funkcji 'Main'!");
+
+                return;
+            }
+
+            if (mainMethod.GetParameters().Length != 0 || mainMethod.GetGenericArguments().Length != 0)
+            {
+                ShowErrorMessage("Funkcja 'Main' nie może przyjmować żadnych argumentów!");
+
+                return;
+            }
+
+            mainMethod.Invoke(inst, null);
         }
         catch (TargetInvocationException targertException)
         {
@@ -148,8 +178,13 @@ public class Compiler : MonoBehaviour
         }
     }
 
+    private void ShowErrorMessage(string error)
+    {
+        MainController.UpdateEvent += delegate() { GUIController.ShowMessage(error, MessageColor.Red); };
+    }
+
     private void ShowErrorMessage(string[] errorData)
     {
-        MainController.UpdateEvent += delegate() { GUIController.ShowMessage("Wiersz " + errorData[0] + " : " + errorData[2], MessageColor.Red); };
+        MainController.UpdateEvent += delegate() { GUIController.ShowMessage("Wiersz " + errorData[0] + " : " + errorData[2], MessageColor.Red, 8); };
     }
 }

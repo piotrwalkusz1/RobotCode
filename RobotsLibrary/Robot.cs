@@ -92,5 +92,10 @@ namespace RobotsLibrary
         {
             return _robot.GetRotationSpeed();
         }
+
+        public Position GetPosition(string objectName)
+        {
+            return _robot.GetPosition(objectName);
+        }
     }
 }

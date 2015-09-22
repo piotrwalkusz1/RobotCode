@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.1.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -89,11 +91,11 @@
     <Compile Include="Assets\Script\GUIController.cs" />
     <Compile Include="Assets\Script\GUIDocNavButton.cs" />
     <Compile Include="Assets\Script\GUIDocumentation.cs" />
-    <Compile Include="Assets\Script\GUIFunctionList.cs" />
     <Compile Include="Assets\Script\GUILoadGameButton.cs" />
     <Compile Include="Assets\Script\GUILoadGameList.cs" />
     <Compile Include="Assets\Script\GUIMenu.cs" />
     <Compile Include="Assets\Script\GUIMissionInfo.cs" />
+    <Compile Include="Assets\Script\GetPositionName.cs" />
     <Compile Include="Assets\Script\Identificator.cs" />
     <Compile Include="Assets\Script\InputFieldMask.cs" />
     <Compile Include="Assets\Script\InputSettings.cs" />
@@ -102,15 +104,17 @@
     <Compile Include="Assets\Script\Messager.cs" />
     <Compile Include="Assets\Script\MoveForwardRandom.cs" />
     <Compile Include="Assets\Script\MoveForwardWait.cs" />
+    <Compile Include="Assets\Script\MoveOnPlatform.cs" />
     <Compile Include="Assets\Script\NormalButton.cs" />
+    <Compile Include="Assets\Script\PlatformMove.cs" />
     <Compile Include="Assets\Script\PlayerProfilController.cs" />
     <Compile Include="Assets\Script\PlayerRobotSelector.cs" />
     <Compile Include="Assets\Script\Prefabs.cs" />
     <Compile Include="Assets\Script\RealRobot.cs" />
     <Compile Include="Assets\Script\RealWarRobot.cs" />
-    <Compile Include="Assets\Script\RobotFunctions.cs" />
     <Compile Include="Assets\Script\SaveController.cs" />
     <Compile Include="Assets\Script\SaveData.cs" />
+    <Compile Include="Assets\Script\ShowWhenCollision.cs" />
     <Compile Include="Assets\Script\SpeedController.cs" />
     <Compile Include="Assets\Script\WallUp.cs" />
     <Compile Include="Assets\Script\WinAnswerCondition.cs" />
@@ -124,7 +128,9 @@
   <ItemGroup>
     <None Include="Assets\Elementals\!Readme.txt" />
     <None Include="Assets\Resources\documentation.xml" />
-    <None Include="Assets\Resources\missions.xml" />
+    <None Include="Assets\Resources\missions.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
