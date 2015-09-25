@@ -19,6 +19,9 @@ public class Compiler : MonoBehaviour
 
     void Awake()
     {
+        CompilerConnector.Main._path = Application.dataPath;
+        CompilerConnector.Main._isEditor = Application.isEditor;
+
         COMPILER_PATH = Application.dataPath + "/Plugin/RobotsLibrary.dll";
 
         if (Main == null)
@@ -58,7 +61,7 @@ public class Compiler : MonoBehaviour
     {
         try
         {
-            var assembly = _compileMethod.Invoke(null, new object[] { codeInfo.Code, COMPILER_PATH }) as Assembly;
+            var assembly = _compileMethod.Invoke(null, new object[] { codeInfo.Code, COMPILER_PATH, Application.dataPath + "/DynamicPlugin/System.dll" }) as Assembly;
 
             codeInfo.CompiledAssembly = assembly;
 
@@ -101,7 +104,7 @@ public class Compiler : MonoBehaviour
     {
         try
         {
-            var assembly = _compileMethod.Invoke(null, new object[] { codeInfo.Code, COMPILER_PATH }) as Assembly;
+            var assembly = _compileMethod.Invoke(null, new object[] { codeInfo.Code, COMPILER_PATH  }) as Assembly;
 
             codeInfo.CompiledAssembly = assembly;
 
@@ -129,7 +132,7 @@ public class Compiler : MonoBehaviour
 
             typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(inst, realRobot);
 
-            var mainMethod = robotClass.GetMethod("Main");
+            var mainMethod = robotClass.GetMethod("Main", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
             if (mainMethod == null)
             {
@@ -180,7 +183,7 @@ public class Compiler : MonoBehaviour
 
     private void ShowErrorMessage(string error)
     {
-        MainController.UpdateEvent += delegate() { GUIController.ShowMessage(error, MessageColor.Red); };
+        MainController.UpdateEvent += delegate() { GUIController.ShowMessage(error, MessageColor.Red, 8); };
     }
 
     private void ShowErrorMessage(string[] errorData)

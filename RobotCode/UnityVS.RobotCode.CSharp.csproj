@@ -12,14 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.1.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,6 +66,9 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="CompilerConnector">
+      <HintPath>Assets\Plugin\CompilerConnector.dll</HintPath>
+    </Reference>
     <Reference Include="RobotsLibrary">
       <HintPath>Assets\Plugin\RobotsLibrary.dll</HintPath>
     </Reference>
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Script\MoveForwardRandom.cs" />
     <Compile Include="Assets\Script\MoveForwardWait.cs" />
     <Compile Include="Assets\Script\MoveOnPlatform.cs" />
+    <Compile Include="Assets\Script\MusicController.cs" />
     <Compile Include="Assets\Script\NormalButton.cs" />
     <Compile Include="Assets\Script\PlatformMove.cs" />
     <Compile Include="Assets\Script\PlayerProfilController.cs" />
@@ -120,6 +122,7 @@
     <Compile Include="Assets\Script\WinAnswerCondition.cs" />
     <Compile Include="Assets\Script\WinAreaParcel.cs" />
     <Compile Include="Assets\Script\WinAreaTarget.cs" />
+    <Compile Include="Assets\Script\WinAreaTargetOneTime.cs" />
     <Compile Include="Assets\Script\WinCompileCondition.cs" />
     <Compile Include="Assets\Script\WinCondition.cs" />
     <Compile Include="Assets\Script\WinDestroyCondition.cs" />
@@ -128,9 +131,7 @@
   <ItemGroup>
     <None Include="Assets\Elementals\!Readme.txt" />
     <None Include="Assets\Resources\documentation.xml" />
-    <None Include="Assets\Resources\missions.xml">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Assets\Resources\missions.xml" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />

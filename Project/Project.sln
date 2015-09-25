@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.RobotCode.CSharp.Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.RobotCode.CSharp.Editor", "..\RobotCode\UnityVS.RobotCode.CSharp.Editor.csproj", "{34234F19-BE76-D732-A142-47A3EF1BF559}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompilerConnector", "..\CompilerConnector\CompilerConnector.csproj", "{76411491-6A7B-4D7D-A7D9-D9D68E4823E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{34234F19-BE76-D732-A142-47A3EF1BF559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34234F19-BE76-D732-A142-47A3EF1BF559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34234F19-BE76-D732-A142-47A3EF1BF559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76411491-6A7B-4D7D-A7D9-D9D68E4823E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76411491-6A7B-4D7D-A7D9-D9D68E4823E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76411491-6A7B-4D7D-A7D9-D9D68E4823E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76411491-6A7B-4D7D-A7D9-D9D68E4823E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

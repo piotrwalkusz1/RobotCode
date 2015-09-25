@@ -85,7 +85,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(1);
+        LoadScene(22);
     }
 
     public static void LoadGame(string saveName)
@@ -129,15 +129,13 @@ public class MainController : MonoBehaviour
 
     public static void CheckWinConditions()
     {
-        if (_winConditions.TrueForAll(x => x.IsConditionAchieved))
+        if (_isAllWinConditionsAchieved == false && _winConditions.TrueForAll(x => x.IsConditionAchieved))
         {
             _isAllWinConditionsAchieved = true;
 
             _winTime = DateTime.UtcNow.AddSeconds(TIME_TO_WIN_AFTER_CONDITIONS_ACHIEVED);
-        }
-        else
-        {
-            _isAllWinConditionsAchieved = false;
+
+            MusicController.PlayMissionComplete();
         }
     }
 

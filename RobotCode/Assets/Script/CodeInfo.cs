@@ -37,9 +37,9 @@ public class CodeInfo
 
         Code = @"using RobotsLibrary;
 
-public class Program : Robot
+class Program : Robot
 {
-    public void Main()
+    void Main()
     {
 
     }
@@ -76,6 +76,6 @@ public class Program : Robot
 
         typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(inst, realRobot);
 
-        robotClass.GetMethod("Main").Invoke(inst, null);
+        robotClass.GetMethod("Main", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Invoke(inst, null);
     }
 }

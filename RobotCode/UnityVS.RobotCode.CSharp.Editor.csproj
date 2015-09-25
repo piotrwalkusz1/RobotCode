@@ -108,6 +108,9 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="CompilerConnector">
+      <HintPath>Assets\Plugin\CompilerConnector.dll</HintPath>
+    </Reference>
     <Reference Include="RobotsLibrary">
       <HintPath>Assets\Plugin\RobotsLibrary.dll</HintPath>
     </Reference>
