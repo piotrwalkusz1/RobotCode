@@ -97,5 +97,10 @@ namespace RobotsLibrary
         {
             return _robot.GetPosition(objectName);
         }
+
+        public Robot GetRobot(string name)
+        {
+            return _robot.GetRobot(name);
+        }
     }
 }

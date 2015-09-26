@@ -25,5 +25,6 @@ namespace RobotsLibrary
         bool IsButtonPressed(string buttonName);
         void Print(string message);
         Position GetPosition(string objectName);
+        Robot GetRobot(string name);
     }
 }

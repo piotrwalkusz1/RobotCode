@@ -28,6 +28,8 @@ public class CodeEditor : MonoBehaviour
     public Text _text;
     public RectTransform _textRectTransform;
 
+    public Button _compileButton;
+
     private CodeInfo _codeInfo;
 
     private GUIContent _guiContent;
@@ -38,7 +40,12 @@ public class CodeEditor : MonoBehaviour
 
         _guiContent = new GUIContent();
         _text.fontSize = _guiStyle.fontSize;
-        _text.font = _guiStyle.font;
+        _text.font = _guiStyle.font; 
+    }
+
+    public void UpdateEnableCompileButton()
+    {
+        _compileButton.interactable = !MainController.WasProgramRun;
     }
 
     void Update()
@@ -57,9 +64,14 @@ public class CodeEditor : MonoBehaviour
 
     public void Compile()
     {
-        SaveChanges();
+        if (!MainController.WasCompileStart)
+        {
+            SaveChanges();
 
-        RealRobot.CompileOrRun(CodeInfo);
+            MainController.WasCompileStart = true;
+
+            RealRobot.CompileOrRun(CodeInfo);
+        }
     }
 
     public void SaveChanges()

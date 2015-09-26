@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 public class RealRobot : MonoBehaviour, IRobot
 {
@@ -78,14 +79,16 @@ public class RealRobot : MonoBehaviour, IRobot
 
     public void CompileOrRun(CodeInfo codeInfo)
     {
-        if (codeInfo.IsEdited)
+        codeInfo.CompileAndRun(this);
+
+        /*if (codeInfo.IsEdited)
         {
             codeInfo.CompileAndRun(this);
         }
         else
         {
             codeInfo.Run(this);
-        }
+        }*/
     }
 
     public void ContinueProcess()
@@ -196,6 +199,15 @@ public class RealRobot : MonoBehaviour, IRobot
         Position result = null;
 
         AddTaskAndWaitOneFrame(delegate() { Function_GetPosition(name, out result); });
+
+        return result;
+    }
+
+    public Robot GetRobot(string name)
+    {
+        Robot result = null;
+
+        AddTaskAndWaitOneFrame(delegate() { Function_GetRobot(name, out result); });
 
         return result;
     }
@@ -316,6 +328,28 @@ public class RealRobot : MonoBehaviour, IRobot
         else
         {
             result = new Position(pos.transform.position.x, pos.transform.position.z);
+        }
+    }
+
+    private void Function_GetRobot(string name, out Robot result)
+    {
+        var robotName = FindObjectsOfType<GetRobotName>().FirstOrDefault(x => x._name == name);
+
+        if (robotName == null)
+        {
+            result = null;
+
+            GUIController.ShowMessage("Robot o nazwie \"" + name + "\" nie istnieje. Zostanie zwrócona wartość 'null'!", MessageColor.Red);
+        }
+        else
+        {
+            RealRobot realRobot = robotName.GetComponent<RealRobot>();
+
+            Robot robot = new Robot();
+
+            typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(robot, realRobot);
+
+            result = robot;
         }
     }
 

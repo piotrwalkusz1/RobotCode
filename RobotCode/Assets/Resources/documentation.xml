@@ -16,8 +16,14 @@ Zwraca największą możliwą prędkość obracania się dla danego robota.
 &lt;b&gt;GetPosition&lt;/b&gt; (string objectName)
 Zwraca pozycję obiektu o podanej nazwie w postaci zmiennej typu 'Position'.
 
+&lt;b&gt;GetRobot&lt;/b&gt; (string robotName)
+Zwara obiekt typu 'Robot', który umożliwia zdalne sterowanie innym robotem o podanej nazwie.
+
 &lt;b&gt;GetRotationSpeed&lt;/b&gt; ()
 Zwraca obecną prędkość obracania się dla danego robota.
+
+&lt;b&gt;GetTower&lt;/b&gt; (string towerName)
+Zwara obiekt typu 'Tower', który umożliwia zdalne sterowanie wieżą o podanej nazwie.
 
 &lt;b&gt;IsButtonPressed&lt;/b&gt; (string buttonName)
 Zwraca wartość "true", jeżeli przycisk o podanej nazwie jest obecnie wciśnięty. W przeciwnym razie zwraca wartość "false". 

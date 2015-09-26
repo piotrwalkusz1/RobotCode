@@ -148,6 +148,13 @@ public class Compiler : MonoBehaviour
                 return;
             }
 
+            MainController.UpdateEvent += delegate()
+            {
+                MainController.WasProgramRun = true;
+
+                GUIController.Main._codeEditor.UpdateEnableCompileButton();
+            };
+
             mainMethod.Invoke(inst, null);
         }
         catch (TargetInvocationException targertException)
@@ -159,6 +166,8 @@ public class Compiler : MonoBehaviour
             if (errors == null)
             {
                 print("Compilation has failed");
+
+                ShowErrorMessage(exception.Message);
 
                 return;
             }
@@ -178,6 +187,13 @@ public class Compiler : MonoBehaviour
 
                 ShowErrorMessage(errorData);
             }
+        }
+        finally
+        {
+            MainController.UpdateEvent += delegate()
+            {
+                MainController.WasCompileStart = false;
+            };
         }
     }
 

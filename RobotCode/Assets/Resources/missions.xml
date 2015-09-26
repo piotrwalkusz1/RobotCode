@@ -52,7 +52,7 @@ class Program : Robot
   }
 }&lt;/color&gt;&lt;/b&gt;
 
-sprawi, że robot przemieści się 5 metrów do przodu. Twoim zadaniem jest przemieszcze robota do zaznaczonego pola, które znajduje się 10 metrów dalej.</description>
+sprawi, że robot przemieści się 5 metrów do przodu. Twoim zadaniem jest przemieszcze robota do zaznaczonego pola, które znajduje się 10 metrów dalej. Pamiętaj, że możesz uruchomić prawidłowo skompilowany kod tylko raz. Gdy kod przestanie się wykonywać, a cel misji nie został osiągnięty, należy powtórzyć poziom.</description>
   </mission>
   <mission>
     <id>4</id>
@@ -73,7 +73,7 @@ class Program : Robot
   <mission>
     <id>5</id>
     <name>Labirynt</name>
-    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu. Aby znaleźć odpowiednią drogę, najpierw się trochę rozejrzyj osobiście.</description>
+    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu. Aby znaleźć odpowiednią drogę, musisz najpierw się trochę rozejrzyj osobiście.</description>
   </mission>
   <mission>
     <id>6</id>

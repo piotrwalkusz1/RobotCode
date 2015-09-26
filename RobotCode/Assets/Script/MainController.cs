@@ -10,12 +10,16 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
+    private const int FIRST_LVL = 24;
+
     public static event Action UpdateEvent;
 
     public static MainController Main { get; private set; }
 
     public static bool IsGame { get; set; }
     public static int Lvl { get; set; }
+    public static bool WasProgramRun { get; set; }
+    public static bool WasCompileStart { get; set; }
 
     public PlayerProfilController PlayerProfilController { get; set; }
 
@@ -74,6 +78,12 @@ public class MainController : MonoBehaviour
             ResetWinConditions();
 
             CheckWinConditions();
+
+            WasCompileStart = false;
+
+            WasProgramRun = false;
+
+            GUIController.Main._codeEditor.UpdateEnableCompileButton();
         }
     }
 
@@ -85,7 +95,7 @@ public class MainController : MonoBehaviour
 
         InitializeGame();
 
-        LoadScene(22);
+        LoadScene(FIRST_LVL);
     }
 
     public static void LoadGame(string saveName)

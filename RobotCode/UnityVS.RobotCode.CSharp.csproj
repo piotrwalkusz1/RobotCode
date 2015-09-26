@@ -97,6 +97,8 @@
     <Compile Include="Assets\Script\GUIMenu.cs" />
     <Compile Include="Assets\Script\GUIMissionInfo.cs" />
     <Compile Include="Assets\Script\GetPositionName.cs" />
+    <Compile Include="Assets\Script\GetRobotName.cs" />
+    <Compile Include="Assets\Script\GetTowerName.cs" />
     <Compile Include="Assets\Script\Identificator.cs" />
     <Compile Include="Assets\Script\InputFieldMask.cs" />
     <Compile Include="Assets\Script\InputSettings.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Assets\Script\SaveData.cs" />
     <Compile Include="Assets\Script\ShowWhenCollision.cs" />
     <Compile Include="Assets\Script\SpeedController.cs" />
+    <Compile Include="Assets\Script\Tower.cs" />
     <Compile Include="Assets\Script\WallUp.cs" />
     <Compile Include="Assets\Script\WinAnswerCondition.cs" />
     <Compile Include="Assets\Script\WinAreaParcel.cs" />
