@@ -2,7 +2,7 @@
 using System.Collections;
 using RobotsLibrary;
 
-public class Tower : MonoBehaviour 
+public class RealTower : MonoBehaviour, ITower
 {
     public Transform _bulletRespawn;
     public GameObject _bullet;
@@ -17,11 +17,13 @@ public class Tower : MonoBehaviour
     {
         if (_prepareToFire)
         {
-            Vector3 newDir = Vector3.RotateTowards(transform.forward, _target - transform.position, _rotationSpeed * Time.deltaTime, 0);
+            Vector3 targetDir = _target - transform.position;
 
-            transform.LookAt(newDir);
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, _rotationSpeed * Time.deltaTime, 0);
 
-            if (!_wasFired && Vector3.Angle(newDir, transform.forward) < 0.5f)
+            transform.rotation = Quaternion.LookRotation(newDir);
+
+            if (!_wasFired && Vector3.Angle(targetDir, transform.forward) < 0.5f)
             {
                 _wasFired = true;
 
@@ -32,7 +34,12 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public void Fire(Position position)
+    public void Shoot(Position position)
+    {
+        MainController.UpdateEvent += delegate() { Function_Shoot(position); };
+    }
+
+    public void Function_Shoot(Position position)
     {
         if (_prepareToFire)
         {
@@ -51,5 +58,7 @@ public class Tower : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         _prepareToFire = false;
+
+        _wasFired = false;
     }
 }

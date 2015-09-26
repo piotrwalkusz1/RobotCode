@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
-    private const int FIRST_LVL = 24;
+    private const int FIRST_LVL = 25;
 
     public static event Action UpdateEvent;
 

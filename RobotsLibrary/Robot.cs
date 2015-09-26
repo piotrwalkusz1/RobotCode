@@ -102,5 +102,10 @@ namespace RobotsLibrary
         {
             return _robot.GetRobot(name);
         }
+
+        public Tower GetTower(string name)
+        {
+            return _robot.GetTower(name);
+        }
     }
 }

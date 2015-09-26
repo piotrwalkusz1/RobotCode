@@ -115,12 +115,12 @@
     <Compile Include="Assets\Script\PlayerRobotSelector.cs" />
     <Compile Include="Assets\Script\Prefabs.cs" />
     <Compile Include="Assets\Script\RealRobot.cs" />
+    <Compile Include="Assets\Script\RealTower.cs" />
     <Compile Include="Assets\Script\RealWarRobot.cs" />
     <Compile Include="Assets\Script\SaveController.cs" />
     <Compile Include="Assets\Script\SaveData.cs" />
     <Compile Include="Assets\Script\ShowWhenCollision.cs" />
     <Compile Include="Assets\Script\SpeedController.cs" />
-    <Compile Include="Assets\Script\Tower.cs" />
     <Compile Include="Assets\Script\WallUp.cs" />
     <Compile Include="Assets\Script\WinAnswerCondition.cs" />
     <Compile Include="Assets\Script\WinAreaParcel.cs" />

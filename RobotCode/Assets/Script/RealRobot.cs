@@ -212,6 +212,15 @@ public class RealRobot : MonoBehaviour, IRobot
         return result;
     }
 
+    public Tower GetTower(string name)
+    {
+        Tower result = null;
+
+        AddTaskAndWaitOneFrame(delegate() { Function_GetTower(name, out result); });
+
+        return result;
+    }
+
     public void Print(string message)
     {
         print(message);
@@ -350,6 +359,28 @@ public class RealRobot : MonoBehaviour, IRobot
             typeof(Robot).GetField("_robot", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(robot, realRobot);
 
             result = robot;
+        }
+    }
+
+    private void Function_GetTower(string name, out Tower result)
+    {
+        var towerName = FindObjectsOfType<GetTowerName>().FirstOrDefault(x => x._name == name);
+
+        if (towerName == null)
+        {
+            result = null;
+
+            GUIController.ShowMessage("Wieża o nazwie \"" + name + "\" nie istnieje. Zostanie zwrócona wartość 'null'!", MessageColor.Red);
+        }
+        else
+        {
+            RealTower realTower = towerName.GetComponent<RealTower>();
+
+            Tower tower = new Tower();
+
+            typeof(Tower).GetField("_tower", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(tower, realTower);
+
+            result = tower;
         }
     }
 

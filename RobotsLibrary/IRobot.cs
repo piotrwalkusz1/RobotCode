@@ -26,5 +26,6 @@ namespace RobotsLibrary
         void Print(string message);
         Position GetPosition(string objectName);
         Robot GetRobot(string name);
+        Tower GetTower(string name);
     }
 }
