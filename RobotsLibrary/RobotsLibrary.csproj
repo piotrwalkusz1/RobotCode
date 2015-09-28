@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRobot.cs" />
+    <Compile Include="RobotTech\Tower.cs" />
+    <Compile Include="RobotTech\ITower.cs" />
     <Compile Include="ITower.cs" />
     <Compile Include="IWarRobot.cs" />
     <Compile Include="Position.cs" />

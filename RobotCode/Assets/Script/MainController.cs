@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
-    private const int FIRST_LVL = 25;
+    private const int FIRST_LVL = 1;
 
     public static event Action UpdateEvent;
 
@@ -84,22 +84,28 @@ public class MainController : MonoBehaviour
             WasProgramRun = false;
 
             GUIController.Main._codeEditor.UpdateEnableCompileButton();
+
+            PlayerProfilController.Save();
         }
     }
 
     public void NewGame()
     {
-        PlayerProfilController.Set(new SaveData(), "Piotr Wielki");
+        PlayerProfilController.Set(new SaveData(), "Save");
 
         PlayerProfilController.Save();
+
+        FindObjectOfType<CheckSave>().GetComponent<Button>().interactable = true;
 
         InitializeGame();
 
         LoadScene(FIRST_LVL);
     }
 
-    public static void LoadGame(string saveName)
+    public void LoadGame(string saveName)
     {
+        saveName = "Save";
+
         var saveData = SaveController.Load(saveName);
 
         PlayerProfilController.Set(saveData, saveName);

@@ -49,6 +49,9 @@ Ustawia prędkość poruszania się. Gdy zostanie podana wartość wyższa od pr
 &lt;b&gt;SetRotationSpeed&lt;/b&gt; (float speed)
 Ustawia prędkość obracania się. Gdy zostanie podana wartość wyższa od prędkości maksymalnej, zostanie ustawiona prędkość maksymalna.
 
+&lt;b&gt;Shoot&lt;/b&gt; ()
+Strzela pociskiem przed siebie (dostępne tylko w robocie wojennym)
+
 &lt;b&gt;StartMove&lt;/b&gt; (float time)
 Robot zacznie się poruszać przed siebie przez czas podany w argumencie funkcji.
 

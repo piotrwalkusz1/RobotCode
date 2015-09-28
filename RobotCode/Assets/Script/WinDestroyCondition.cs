@@ -3,6 +3,11 @@ using System.Collections;
 
 public class WinDestroyCondition : WinCondition
 {
+    public void Start()
+    {
+        GetComponent<BulletTarget>().OnDestroy += ActionOnDestroy;
+    }
+
     public override bool IsConditionAchieved
     {
         get { return _isConditionAchieved; }
@@ -10,7 +15,7 @@ public class WinDestroyCondition : WinCondition
 
     private bool _isConditionAchieved = false;
 
-    public void OnDestroy()
+    public void ActionOnDestroy()
     {
         GUIController.ShowMessage("Obiekt został zniszczony!", MessageColor.Green);
 

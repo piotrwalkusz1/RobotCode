@@ -10,7 +10,7 @@ public class GUILoadGameButton : MonoBehaviour
     {
         string playerName = GetComponentInChildren<Text>().text;
 
-        MainController.LoadGame(playerName);
+        MainController.Main.LoadGame(playerName);
     }
 
     public void SetEnable(string text)
