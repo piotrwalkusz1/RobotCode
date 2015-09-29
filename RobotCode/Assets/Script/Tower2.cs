@@ -1,23 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower2 : MonoBehaviour, RobotTech.ITower
+public class Tower2 : MonoBehaviour
 {
-    public GameObject _target;
-    public GameObject _bullet;
-
-    void Update()
-    {
-
-    }
+    public string _name;
 
     public void Disable()
     {
-        throw new System.NotImplementedException();
-    }
+        GetComponent<TowerAutoShoot>().enabled = false;
 
-    public void Find(string name)
-    {
-        throw new System.NotImplementedException();
+        GetComponent<UnityStandardAssets.Cameras.LookatTarget>().enabled = false;
     }
 }

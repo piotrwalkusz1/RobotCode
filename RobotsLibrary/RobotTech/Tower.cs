@@ -7,7 +7,7 @@ namespace RobotTech
 {
     public class Tower
     {
-        private ITower _tower;
+        private volatile static ITower _tower;
 
         public Tower(string name)
         {

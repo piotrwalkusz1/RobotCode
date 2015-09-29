@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
-    private const int FIRST_LVL = 28;
+    private const int FIRST_LVL = 1;
 
     public static event Action UpdateEvent;
 
@@ -92,6 +92,8 @@ public class MainController : MonoBehaviour
             GUIController.Main._codeEditor.UpdateEnableCompileButton();
 
             PlayerProfilController.Save();
+
+            typeof(RobotTech.Tower).GetField("_tower", BindingFlags.Static | BindingFlags.NonPublic).SetValue(null, new TowerController());
         }
     }
 

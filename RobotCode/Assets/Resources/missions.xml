@@ -73,44 +73,59 @@ class Program : Robot
   <mission>
     <id>5</id>
     <name>Labirynt</name>
-    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu. Aby znaleźć odpowiednią drogę, musisz najpierw się trochę rozejrzyj osobiście.</description>
+    <description>Użyj funkcji &lt;b&gt;Move(odległość)&lt;/b&gt; oraz &lt;b&gt;Rotate(kąt)&lt;/b&gt;, aby przemieścić robota na koniec labiryntu.
+    
+Aby znaleźć odpowiednią drogę, musisz się najpierw trochę rozejrzeć osobiście.</description>
   </mission>
   <mission>
     <id>6</id>
     <name>Powolna jazda</name>
-    <description>Twoim zadaniem jest przemieszczenie robota do strefy oddalonej o 30 metrów. Jednakże misja zakończy się niepowodzeniem, gdy robot będzie się poruszał szybciej niż 0.9 metra na sekundę. Aby spowolnić robota użyj funckji &lt;b&gt;SetMovementSpeed(prędkość)&lt;/b&gt;. Należy podać wartość mniejszą od 0.9. Tak. Zgadza się. Jako argumentów funkcji można również używać liczb zmiennoprzecinkowych. Należy jednak pamiętać, że tytułowy przecinek jest zastępowany przez kropkę "." oraz po liczbie należy dodać literę "f", aby zaznaczyć, ża mamy do czynienia z liczną zmiennoprzecinkową, na przykład "12.45f".</description>
+    <description>Twoim zadaniem jest przemieszczenie robota do strefy oddalonej o 30 metrów. Jednakże misja zakończy się niepowodzeniem, gdy robot będzie się poruszał szybciej niż 0.9 metra na sekundę.
+    
+Aby spowolnić robota użyj funckji &lt;b&gt;SetMovementSpeed(prędkość)&lt;/b&gt;. Należy podać wartość mniejszą od 0.9. Tak. Zgadza się. Jako argumentów funkcji można również używać liczb zmiennoprzecinkowych. Należy jednak pamiętać, że tytułowy przecinek jest zastępowany przez kropkę "." oraz po liczbie należy dodać literę "f", aby zaznaczyć, ża mamy do czynienia z liczną zmiennoprzecinkową, na przykład "12.45f".</description>
   </mission>
   <mission>
     <id>7</id>
     <name>Zmienne</name>
-    <description>Zmienne służą do przechowywania informacji określonego typu. Zmienna typu &lt;b&gt;int&lt;/b&gt; służy do przechowywania liczb całkowitych. Aby użyć zmiennej najpierw należy ją zadeklarować : 
+    <description>Zmienne służą do przechowywania informacji określonego typu. Zmienna typu &lt;b&gt;int&lt;/b&gt; służy do przechowywania liczb całkowitych. Aby użyć zmiennej najpierw należy ją zadeklarować :
+&lt;b&gt;&lt;color=#800000ff&gt;
 &lt;b&gt;int&lt;/b&gt; a = 5;
+&lt;/color&gt;&lt;b&gt;
 Deklaracja zmiennej składa się z trzech części. Nazwy typu ('int'), nazwy zmiennej ('a') oraz początkowej wartości ('5'). Pamiętaj, że nazwa zmiennej nie może zawierać w sobie żadnych białych znaków oraz większości znaków specjalnych. W kolejnych misjach Twoim zadaniem będzie odpowiadanie na zadane pytania. Odpowiedzi udzielasz za pomocą funckji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;. Zacznijmy od czegoś prostego. Z ilu znaków składa się &lt;b&gt;nazwa zmiennej&lt;/b&gt; w następującym wyrażeniu :
+&lt;b&gt;&lt;color=#800000ff&gt;
 &lt;b&gt;int&lt;/b&gt; duzaLiczba = 999999;</description>
+&lt;/color&gt;&lt;b&gt;
   </mission>
   <mission>
     <id>8</id>
     <name>Operacje arytmetyczne</name>
     <description>Na zmiennych możemy wykonywać proste operacje arytmetyczne, takie jak dodawanie ("+"), odejmowanie ("-"), mnożenie ("*") i dzielenie ("/"). Wartoś zmiennej zmieniamy za pomocą operatora przypisania ("=")
+&lt;b&gt;&lt;color=#800000ff&gt;
 int a = 5;
 int b = 6
 a = a + b;
+&lt;/color&gt;&lt;b&gt;
 W pierwszych dwóch wierszach deklarujemy zmienną "a" o wartości 5 oraz zmienną "b" o wartości 6. W trzecim wierszu zmiennej "a" przypisujemy nową wartość równą sumie zmiennych "a" i "b". Od tego momentu zmienna "a" będzie miała wartość 11. Za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt; odpowiedz na pytanie : jaka będzie wartość zmiennej "c" po wykonaniu wszystkich czterech linijek następującego kodu?
+&lt;b&gt;&lt;color=#800000ff&gt;
 int a = 3;
 int b = 4;
 b = b - a;
-int c = b + 5;</description>
+int c = b + 5;
+&lt;/color&gt;&lt;b&gt;
+  </description>
   </mission>
   <mission>
     <id>9</id>
     <name>Mnożenie</name>
     <description>Za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt; odpowiedz na pytanie : jaka będzie wartość zmiennej "c" po wykonaniu wszystkich pięciu linijek następującego kodu?
+&lt;b&gt;&lt;color=#800000ff&gt;
 int a = 3;
 int b = 4;
 a = a * a;
 b = b * b;
 c = b - a;
-c = c * c;</description>
+c = c * c;
+&lt;/color&gt;&lt;b&gt;</description>
   </mission>
   <mission>
     <id>10</id>
@@ -513,15 +528,116 @@ Aby dostać się do miejsca docelowego oddalonego o 18 metrów od pierwszego rob
   <mission>
     <id>25</id>
     <name>Wieża</name>
-    <description>
-      To zadanie jest podobne do poprzedniego. Jednak tym razem nie użyjemy drugiego robota, lecz wieży. Aby uzyskać do nie dostęp wykorzystujemy analogiczną funkcję co w misji poprzedniej :
-      &lt;b&gt;&lt;color=#800000ff&gt;
-    void Main()
-    {
-      Tower wieza = GetTower("nazwaWieży");
-    }
-    &lt;/color&gt;&lt;/b&gt;
-    W przeciwieństwie do robota, wieża ma tylko jedną funkcję. 
-    </description>
+    <description>To zadanie jest podobne do poprzedniego. Jednak tym razem nie użyjemy drugiego robota, lecz wieży. Aby uzyskać do nie dostęp wykorzystujemy analogiczną funkcję co w misji poprzedniej :
+&lt;b&gt;&lt;color=#800000ff&gt;
+void Main()
+{
+  Tower wieza = GetTower("nazwaWieży");
+}
+&lt;/color&gt;&lt;/b&gt;
+W przeciwieństwie do robota, wieża ma tylko jedną funkcję : &lt;b&gt;Shoot(pozycja)&lt;/b&gt;, gdzie jako argument 'pozycja' podajemy obiekt typu &lt;b&gt;Position&lt;/b&gt;. Wieża obróci cię w stronę podanej pozycji, a następnie wystrzeli pocisk :
+&lt;b&gt;&lt;color=#800000ff&gt;
+wieza.Shoot(pozycjaDoOstrzelania);
+&lt;/color&gt;&lt;/b&gt;
+Zadaniem w tej misji jest zniszczenie obiektu o nazwie "Cel". Pozycję obiektu uzyskasz za pomocą funkcji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;.</description>
+  </mission>
+  <mission>
+    <id>26</id>
+    <name>Tworzenie obietków</name>
+    <description>W tym musisz za pomocą wieży zniszczyć trzy obiekty. Jednak tym razem nie mają one nazw, a co za tym idzie, nie można odczytać ich pozycji za pomocą funckji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;.
+      
+Pozycje obiektów są za to znane z góry : (-8, 8), (2, 10) i (11, 5). Mając te dane możesz ręcznie utworzyć obiekty typu Position i przekazać je wieży. Do tworzenia nowych obiektów słóży słowo kluczowe &lt;b&gt;new&lt;/b&gt; :
+&lt;b&gt;&lt;color=#800000ff&gt;
+void Main()
+{
+  Position pozycja = new Position(2, 10);
+}
+&lt;/color&gt;&lt;/b&gt;
+Jak widzisz tworzenie obietków przypomina wywołanie funkcji. Po słowie &lt;b&gt;new&lt;/b&gt; podajemy nazwę typu, a następnie w nawiasach argumenty (w tym przypadku kolejno pozycję x i y). Wykorzystując tą wiedzę zniszcz wszystkie obiekty. Nazwa wieży to "Wieza".</description>
+  </mission>
+  <mission>
+    <id>27</id>
+    <name>Tworzenie klas</name>
+    <description>Teraz pora na naukę tworzenia &lt;b&gt;klas&lt;/b&gt;. Niespodzianka! Robisz to już od samego początku! Oto szablon klasy :
+&lt;b&gt;&lt;color=#800000ff&gt;
+class NazwaKlasy
+{
+  void Funkcja1()
+  {
+    // ...
+  }
+
+  int Funkcja1(float jakisArgument)
+  {
+    // ...
+  }
+}
+&lt;/color&gt;&lt;/b&gt;
+W rzeczywistości całe dotychczasowe programowanie robotów polegało na utworzeniu klasy o nazwie 'Program' z funkcją 'Main', która nic nie zwracała i nie przyjmowała żadnych argumentów. Gdy kompilacja dobiegła końca, automatycznie wykonywała się funkcja 'Main'.
+
+Jednakże było możliwe używanie funkcji np. Light() czy Move(odległość), lecz nigdzie ich nie tworzyliśmy. To zasługa &lt;b&gt;dziedziczenia&lt;/b&gt;. Firma zajmująca się programowaniem robotów już wcześniej utworzyła klasę o nazwie &lt;b&gt;Robot&lt;/b&gt;. Dziedziczenie polega na rozszerzeniu dziedziczonej klasy. Nasza klasa 'Program' ma wszystko to, co posiada klasa 'Robot' plus funkcję 'Main' i inne funkcje. Dziedziczenie zapisuje się w następujący sposób :
+&lt;b&gt;&lt;color=#800000ff&gt;
+class NazwaKlasy : DziedziczonaKlasa
+{
+  // ...
+}
+&lt;/color&gt;&lt;/b&gt;
+Klasa 'Robot' nie jest jedyną klasą, po której możemy dziedziczyć. Mamy jeszcze klasę 'WarRobot'. Jest ona dostępna tylko dla robotów wojennych. Właśnie takiego robota musisz użyć do zniszczenia wszystkich celów, aby ukończyć misję.
+
+Klasa 'WarRobot' oprócz wszystkich funkcji zawartych w klasie 'Robot' udostępnia również funkcję &lt;b&gt;Shoot()&lt;/b&gt;, która wystrzeliwuje pocisk w kierunku w jakim jest zwrócony robot. Zauważ, że tym razem klasa 'Program' nie dziedzi domyślnie z klasy 'Robot' lecz z klasy 'WarRobot'.</description>
+  </mission>
+  <mission>
+    <id>28</id>
+    <name>Przestrzenie nazwa</name>
+    <description>Przyjrzyjmy się naszemu szablonowi kodu :
+&lt;b&gt;&lt;color=#800000ff&gt;
+using RobotsLibrary;
+
+class Program : Robot
+{
+  void Main()
+  {
+
+  }
+}
+&lt;/color&gt;&lt;/b&gt;
+Jedyną rzeczą, która stanowi teraz zagadkę jest instrukcja "using RobotsLibrary;".
+
+W tej misji musisz podobnie jak w innych dotrzeć do wyznaczonego miejsca oddalonego o 30 metrów. Jednak po drodze znajduje się wieża, która zestrzeli każdy obiekt, który się do niej zbliży. Naszczęści frima RobotTech stworzyła specjalną klasę, która pozwala na zdalne dezaktywowanie wieży. Ta klasa nazywa się &lt;b&gt;Tower&lt;/b&gt;. Na nieszczęście tak samo nazywa się typ opiektu zwracany przez funkcję &lt;b&gt;GetTower(nazwaWiezy)&lt;/b&gt;. Pozwala on na sterowanie wieżą. Z kolei klasa udostępniona przez firmę RobotTech pozwala tylko na wyłączenie wieży. Używa się jej w następujący sposób :
+&lt;b&gt;&lt;color=#800000ff&gt;
+void Main()
+{
+  Tower wieza = new Tower("nazwaWieży");
+      
+  wieza.Disable();
+}
+&lt;/color&gt;&lt;/b&gt;
+Na początek tworzymy obiekt typu 'Tower' podając jako argument nazwę wieży. Następnie za pomocą funkcji składowej &lt;b&gt;Disable()&lt;/b&gt; wyłączamy wieżę. Ale skąd robot ma wiedzieć, czy chodzi nam akurat o klasę 'Tower' firmy RobotTech, a nie o typ 'Tower', którego używaliśmy dotychczas? Wszyscy producenci oprogramowania dla robotów musialiby towrzyć unikalne nazwy typów. Aby tego uniknąć, stosuje się przestrzenie klas.
+
+Firma RobotTech umieściła swoją klasę w w przestrzeni nazwa "RobotTech", a typ 'Tower', którego używaliśmy dotychczas należy do przestrzeni nazw "RobotsLibrary". Pełną nazwę podaje się w ten sposób :
+&lt;b&gt;&lt;color=#800000ff&gt;
+void Main()
+{
+  RobotsLibrary.Tower wieza1 = GetTower(nazwaWieży2);
+      
+  RobotTech.Tower wieza2 = new Tower("nazwaWieży2");
+}
+&lt;/color&gt;&lt;/b&gt;
+Ale podawanie pełnej nazwy za każdym razem jest męczące. Dlatego używa się instrukcji :
+&lt;b&gt;&lt;color=#800000ff&gt;
+using NazwaPrzestrzeniNazw;
+&lt;/color&gt;&lt;/b&gt;
+Powyższa instrukcja mówi nam o domyślnie używanej przestrzeni nazw. Bez tego nasz kod wyglądałby następująco :
+class Program : RobotsLibrary.Robot
+{
+  void Main()
+  {
+    RobotsLibrary.Position pozycja = GetPosition('nazwaCelu');
+    RobotsLibrary.Tower wieza = GetTower(nazwaWieży);
+    wieza.Shoot(pozycja);
+  }
+}
+      
+Wykorzystując wiedzę na temat przestrzeni nazw oraz posługując się klasą RobotTech.Tower stworzoną przez firmę RobotTech, przetransportuj bezpiecznie robota do miejsca przeznaczenia. Nazwa wieży to "Wieza".</description>
   </mission>
 </missions>

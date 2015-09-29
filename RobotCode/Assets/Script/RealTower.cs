@@ -55,7 +55,7 @@ public class RealTower : MonoBehaviour, ITower
 
     private IEnumerator Fuction_ReadyFire()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
 
         _prepareToFire = false;
 
