@@ -129,6 +129,7 @@
     <Compile Include="Assets\Script\MoveForwardWait.cs" />
     <Compile Include="Assets\Script\MoveOnPlatform.cs" />
     <Compile Include="Assets\Script\MusicController.cs" />
+    <Compile Include="Assets\Script\MusicOnDestroy.cs" />
     <Compile Include="Assets\Script\NormalButton.cs" />
     <Compile Include="Assets\Script\PlatformMove.cs" />
     <Compile Include="Assets\Script\PlayerProfilController.cs" />
@@ -137,11 +138,13 @@
     <Compile Include="Assets\Script\RealRobot.cs" />
     <Compile Include="Assets\Script\RealTower.cs" />
     <Compile Include="Assets\Script\RealWarRobot.cs" />
+    <Compile Include="Assets\Script\RobotMusic.cs" />
     <Compile Include="Assets\Script\SaveController.cs" />
     <Compile Include="Assets\Script\SaveData.cs" />
     <Compile Include="Assets\Script\ShowWhenCollision.cs" />
     <Compile Include="Assets\Script\SpeedController.cs" />
     <Compile Include="Assets\Script\Tower2.cs" />
+    <Compile Include="Assets\Script\TowerAutoShoot.cs" />
     <Compile Include="Assets\Script\WallUp.cs" />
     <Compile Include="Assets\Script\WinAnswerCondition.cs" />
     <Compile Include="Assets\Script\WinAreaParcel.cs" />

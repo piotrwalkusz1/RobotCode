@@ -488,7 +488,40 @@ class Program : Robot
   }
 }
 &lt;/color&gt;&lt;/b&gt;
-
 Nazwy tych miejsc to "zmienna", "funkcja", "obiekt", "iteracja" i "warunek".</description>
+  </mission>
+  <mission>
+    <id>24</id>
+    <name>Zdalne funkcje</name>
+    <description>Tym razem jeden robot to za mało. Aby ukończyć misję należy za pomocą jednej maszyny wydać polecenie drugiej.
+      
+Na początku trzeba odszukać drugiego robota. Robimy to za pomocą funkcji &lt;b&gt;GetRobot(nazwaRobota)&lt;/b&gt; :
+&lt;b&gt;&lt;color=#800000ff&gt;
+void Main()
+{
+  Robot drugiRobot = GetRobot("nazwaRobota");
+}
+&lt;/color&gt;&lt;/b&gt;
+Następnie należy wydać mu instrukcję, identycznie jak robimy to z głównym robotem :
+&lt;b&gt;&lt;color=#800000ff&gt;
+drugiRobot.Rotate(90);
+drugiRobot.StartMove(5.5f);
+drugiRobot.Light();
+&lt;/color&gt;&lt;/b&gt;
+Aby dostać się do miejsca docelowego oddalonego o 18 metrów od pierwszego robota, trzeba najpierw otworzyć przejscie za pomocą przycisku oddalonego o 10 metrów od drugiego robota. Drugi robot ma nazwę "Robot2".</description>
+  </mission>
+  <mission>
+    <id>25</id>
+    <name>Wieża</name>
+    <description>
+      To zadanie jest podobne do poprzedniego. Jednak tym razem nie użyjemy drugiego robota, lecz wieży. Aby uzyskać do nie dostęp wykorzystujemy analogiczną funkcję co w misji poprzedniej :
+      &lt;b&gt;&lt;color=#800000ff&gt;
+    void Main()
+    {
+      Tower wieza = GetTower("nazwaWieży");
+    }
+    &lt;/color&gt;&lt;/b&gt;
+    W przeciwieństwie do robota, wieża ma tylko jedną funkcję. 
+    </description>
   </mission>
 </missions>

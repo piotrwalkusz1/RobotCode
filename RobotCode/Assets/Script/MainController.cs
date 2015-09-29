@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
-    private const int FIRST_LVL = 1;
+    private const int FIRST_LVL = 28;
 
     public static event Action UpdateEvent;
 
@@ -75,6 +75,8 @@ public class MainController : MonoBehaviour
     {
         if (MainController.IsGame)
         {
+            UpdateEvent = null;
+
             ResetWinConditions();
 
             CheckWinConditions();
@@ -82,6 +84,10 @@ public class MainController : MonoBehaviour
             WasCompileStart = false;
 
             WasProgramRun = false;
+
+            _isAllWinConditionsAchieved = false;
+
+            _isDefeat = false;
 
             GUIController.Main._codeEditor.UpdateEnableCompileButton();
 
@@ -122,11 +128,14 @@ public class MainController : MonoBehaviour
 
     public static void Defeat()
     {
-        GUIController.ShowMessage("Przegrałeś!", MessageColor.Red);
+        if (!_isDefeat)
+        {
+            GUIController.ShowMessage("Przegrałeś!", MessageColor.Red);
 
-        _timeToDefeat = 0;
+            _timeToDefeat = 0;
 
-        _isDefeat = true;
+            _isDefeat = true;
+        }  
     }
 
     public void ReloadLevel()

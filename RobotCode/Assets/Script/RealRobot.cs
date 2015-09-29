@@ -43,9 +43,13 @@ public class RealRobot : MonoBehaviour, IRobot
 
     private AutoResetEvent _stopEvent = new AutoResetEvent(false);
 
+    private RobotMusic _music;
+
 	// Use this for initialization
 	protected void Start () 
     {
+        _music = GetComponent<RobotMusic>();
+
         _tasks = new List<Action>();
 
         _code = new CodeInfo();
@@ -58,6 +62,21 @@ public class RealRobot : MonoBehaviour, IRobot
 	// Update is called once per frame
 	protected void Update () 
     {
+        if(_isMove || _rotationPhase != 0)
+        {
+            if (!_music.IsPlaying())
+            {
+                _music.PLayMoveClip();
+            }
+        }
+        else
+        {
+            if (_music.IsPlaying())
+            {
+                _music.StopMoveClip();
+            }
+        }
+
         ExecuteTasks();
 
         Update_Rotate();       
