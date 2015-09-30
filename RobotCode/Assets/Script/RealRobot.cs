@@ -31,6 +31,7 @@ public class RealRobot : MonoBehaviour, IRobot
     private bool _movementTypeIsTime; // false - distance, true - time
     private float _movementDistanceOrTimeLeft;
     private Vector2 _movementLastPosition;
+    private int _movementForward;
 
     private bool _rotationTypeIsTime; // false - distance, true - time
     private int _rotationPhase = 0; // -1 - left, 0 - nothing, 1 - right
@@ -265,7 +266,9 @@ public class RealRobot : MonoBehaviour, IRobot
 
     private void Function_Move(float distance)
     {
-        _movementDistanceOrTimeLeft = distance;
+        _movementForward = distance > 0 ? 1 : -1;
+
+        _movementDistanceOrTimeLeft = Mathf.Abs(distance);
 
         _movementLastPosition = new Vector2(transform.position.x, transform.position.z);
 
@@ -415,7 +418,12 @@ public class RealRobot : MonoBehaviour, IRobot
 
                 rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
 
-                if (!_movementTypeIsTime) ContinueProcess();            
+                if (!_movementTypeIsTime)
+                {
+                    rigidbody.MovePosition(transform.position + _movementForward * transform.forward * _movementDistanceOrTimeLeft);
+
+                    ContinueProcess();
+                }
             }
             else
             {
@@ -431,7 +439,7 @@ public class RealRobot : MonoBehaviour, IRobot
                 }
                 else
                 {
-                    Vector3 velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed;
+                    Vector3 velocity = transform.TransformDirection(Vector3.forward) * _currentMovementSpeed * _movementForward;
 
                     velocity.y = rigidbody.velocity.y;
 
@@ -459,9 +467,17 @@ public class RealRobot : MonoBehaviour, IRobot
         {
             if (_rotationDeegresOrTimeLeft <= 0)
             {
+                if (!_rotationTypeIsTime)
+                {
+                    transform.Rotate(0, _rotationPhase * _rotationDeegresOrTimeLeft, 0); 
+                }
+
                 _rotationPhase = 0;
 
-                if(!_rotationTypeIsTime) ContinueProcess();
+                if (!_rotationTypeIsTime)
+                {
+                    ContinueProcess();
+                }
             }
             else
             {

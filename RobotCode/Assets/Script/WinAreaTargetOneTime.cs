@@ -12,7 +12,7 @@ public class WinAreaTargetOneTime : WinCondition
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<RealRobot>() != null)
+        if (!_isConditionAchieved && other.GetComponent<RealRobot>() != null)
         {
             _isConditionAchieved = true;
 

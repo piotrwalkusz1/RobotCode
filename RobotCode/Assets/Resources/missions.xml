@@ -52,7 +52,7 @@ class Program : Robot
   }
 }&lt;/color&gt;&lt;/b&gt;
 
-sprawi, że robot przemieści się 5 metrów do przodu. Twoim zadaniem jest przemieszcze robota do zaznaczonego pola, które znajduje się 10 metrów dalej. Pamiętaj, że możesz uruchomić prawidłowo skompilowany kod tylko raz. Gdy kod przestanie się wykonywać, a cel misji nie został osiągnięty, należy powtórzyć poziom.</description>
+sprawi, że robot przemieści się 5 metrów do przodu. Podanie wartości ujemnej sprawi, że robot zacznie poruszać się do tyłu. Twoim zadaniem jest przemieszcze robota do zaznaczonego pola, które znajduje się 10 metrów dalej. Pamiętaj, że możesz uruchomić prawidłowo skompilowany kod tylko raz. Gdy kod przestanie się wykonywać, a cel misji nie został osiągnięty, należy powtórzyć poziom.</description>
   </mission>
   <mission>
     <id>4</id>
@@ -82,7 +82,7 @@ Aby znaleźć odpowiednią drogę, musisz się najpierw trochę rozejrzeć osobi
     <name>Powolna jazda</name>
     <description>Twoim zadaniem jest przemieszczenie robota do strefy oddalonej o 30 metrów. Jednakże misja zakończy się niepowodzeniem, gdy robot będzie się poruszał szybciej niż 0.9 metra na sekundę.
     
-Aby spowolnić robota użyj funckji &lt;b&gt;SetMovementSpeed(prędkość)&lt;/b&gt;. Należy podać wartość mniejszą od 0.9. Tak. Zgadza się. Jako argumentów funkcji można również używać liczb zmiennoprzecinkowych. Należy jednak pamiętać, że tytułowy przecinek jest zastępowany przez kropkę "." oraz po liczbie należy dodać literę "f", aby zaznaczyć, ża mamy do czynienia z liczną zmiennoprzecinkową, na przykład "12.45f".</description>
+Aby spowolnić robota użyj funckji &lt;b&gt;SetMovementSpeed(prędkość)&lt;/b&gt;. Należy podać wartość niższą od 0.9, aby detektor nie wykrył robota. Tak. Zgadza się. Jako argumentów funkcji można również używać liczb zmiennoprzecinkowych. Należy jednak pamiętać, że tytułowy przecinek jest zastępowany przez kropkę "." oraz po liczbie należy dodać literę "f", aby zaznaczyć, ża mamy do czynienia z liczną zmiennoprzecinkową, na przykład 12.45f.</description>
   </mission>
   <mission>
     <id>7</id>
@@ -90,11 +90,11 @@ Aby spowolnić robota użyj funckji &lt;b&gt;SetMovementSpeed(prędkość)&lt;/b
     <description>Zmienne służą do przechowywania informacji określonego typu. Zmienna typu &lt;b&gt;int&lt;/b&gt; służy do przechowywania liczb całkowitych. Aby użyć zmiennej najpierw należy ją zadeklarować :
 &lt;b&gt;&lt;color=#800000ff&gt;
 &lt;b&gt;int&lt;/b&gt; a = 5;
-&lt;/color&gt;&lt;b&gt;
+&lt;/color&gt;&lt;/b&gt;
 Deklaracja zmiennej składa się z trzech części. Nazwy typu ('int'), nazwy zmiennej ('a') oraz początkowej wartości ('5'). Pamiętaj, że nazwa zmiennej nie może zawierać w sobie żadnych białych znaków oraz większości znaków specjalnych. W kolejnych misjach Twoim zadaniem będzie odpowiadanie na zadane pytania. Odpowiedzi udzielasz za pomocą funckji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;. Zacznijmy od czegoś prostego. Z ilu znaków składa się &lt;b&gt;nazwa zmiennej&lt;/b&gt; w następującym wyrażeniu :
 &lt;b&gt;&lt;color=#800000ff&gt;
-&lt;b&gt;int&lt;/b&gt; duzaLiczba = 999999;</description>
-&lt;/color&gt;&lt;b&gt;
+&lt;b&gt;int&lt;/b&gt; duzaLiczba = 999999;
+&lt;/color&gt;&lt;/b&gt;</description>
   </mission>
   <mission>
     <id>8</id>
@@ -104,14 +104,14 @@ Deklaracja zmiennej składa się z trzech części. Nazwy typu ('int'), nazwy zm
 int a = 5;
 int b = 6
 a = a + b;
-&lt;/color&gt;&lt;b&gt;
+&lt;/color&gt;&lt;/b&gt;
 W pierwszych dwóch wierszach deklarujemy zmienną "a" o wartości 5 oraz zmienną "b" o wartości 6. W trzecim wierszu zmiennej "a" przypisujemy nową wartość równą sumie zmiennych "a" i "b". Od tego momentu zmienna "a" będzie miała wartość 11. Za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt; odpowiedz na pytanie : jaka będzie wartość zmiennej "c" po wykonaniu wszystkich czterech linijek następującego kodu?
 &lt;b&gt;&lt;color=#800000ff&gt;
 int a = 3;
 int b = 4;
 b = b - a;
 int c = b + 5;
-&lt;/color&gt;&lt;b&gt;
+&lt;/color&gt;&lt;/b&gt;
   </description>
   </mission>
   <mission>
@@ -125,7 +125,7 @@ a = a * a;
 b = b * b;
 c = b - a;
 c = c * c;
-&lt;/color&gt;&lt;b&gt;</description>
+&lt;/color&gt;&lt;/b&gt;</description>
   </mission>
   <mission>
     <id>10</id>
@@ -134,27 +134,27 @@ c = c * c;
   </mission>
   <mission>
     <id>11</id>
-    <name>Dzielenie i zmienne typu &lt;b&gt;float&lt;/b&gt;</name>
+    <name>Dzielenie i zmienne zmiennoprzecinkowe</name>
     <description>Jak już zostało powiedziane, zmienne typu &lt;b&gt;int&lt;/b&gt; przechowują liczby całkowite. Co jeśli chcemy zapisać ułamek? Z pomocą przychodzi nam typ &lt;b&gt;float&lt;/b&gt;. Po wykonaniu następującego kodu :
 
 &lt;b&gt;&lt;color=#800000ff&gt;int a = 10;
 int b = 3;
-int c = a / b;&lt;/color&gt;&lt;b&gt;
+int c = a / b;&lt;/color&gt;&lt;/b&gt;
 
 zmienna "c" będzie równa 3, gdyż typ &lt;b&gt;int&lt;/b&gt; przechowuje tylko liczby całkowite. Wartość dzielenia została zaokrąglona w dół. Teraz spójrzmy na ten przykład:
 
 &lt;b&gt;&lt;color=#800000ff&gt;float a = 10;
 float b = 3;
-float c = a / b;&lt;/color&gt;&lt;b&gt;
+float c = a / b;&lt;/color&gt;&lt;/b&gt;
 
 Dięki zastosowaniu typu &lt;b&gt;float&lt;/b&gt; zmienna "c" ma teraz wartość 3.333333 (po zaokrągleniu do szejściu miejsc po przecinku). Należy również mieć na uwadze, że przypisywanie liczby całkowitej do zmiennoprzecinkowej jest możliwe, lecz odwrota sytuacja spowoduje wystąpienie błędu :
-
-&lt;b&gt;&lt;color=#800000ff&gt;int a = 10;
+&lt;b&gt;&lt;color=#800000ff&gt;
+int a = 10;
 float b = a; // jest to dozwolone
 
 float c = 10.5f;
-int d = c; // wystąpi błąd, ponieważ nie da się zapisać liczby '10.5' w postaci liczby całkowitej&lt;/color&gt;&lt;b&gt;
-    
+int d = c; // wystąpi błąd, ponieważ nie da się zapisać liczby '10.5' w postaci liczby całkowitej
+&lt;/color&gt;&lt;/b&gt;
 Za pomocą zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblicz średnią z ocen pewnego ucznia. Potrzebne dane zostały już umieszczone w kodzie. Odpowiedz na pytanie, używając funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
   </mission>
   <mission>
@@ -171,7 +171,7 @@ Za pomocą zmiennych &lt;b&gt;float&lt;/b&gt; i operatorów arytmetycznych oblic
 
 Ten kod sprawi, że robot przebędzie 10 metrów, a następnie włączy światła. Gdyby zamiast funkcji &lt;b&gt;Move&lt;/b&gt; użyć &lt;b&gt;StartMove&lt;/b&gt; robot jednocześnie zacznie się przemieszczać oraz zapali światła. Przydatną rzeczą jest połączenie funkcji &lt;b&gt;StartMove&lt;/b&gt; oraz &lt;b&gt;StartRotate&lt;/b&gt;, które sprawi, że robot będzie jednocześnie się poruszał i skręcał. Będzie się on poruszał po łuku. Wielkość tego łuku można określić za pomocą funkcji &lt;b&gt;SetRotationSpeed&lt;/b&gt;. Im większa szybkość obrotu, tym mniejszy będzie okrąg, po którym będzie się poruszał robot.
 
-Twoim zadaniem jest przetransportowanie robota na drugi koniec trasy w kształcie okręgu o promieniu 10 metrów. Należy obliczyć ze wzoru na obwód koła długość trasu, czas trwania podróży oraz jaka powinna powinna być prędkość obrotu (WSKAZÓWKA : robot powinien wykonać obrót 180 stopni wciągu trwania całego ruchu). Prędkość robota odczytasz za pomocą funkcji &lt;b&gt;GetMovementSpeed()&lt;/b&gt;. Funkcja ta w odróżnieniu od poznanych dotychczas zwraca ona wartość typu &lt;b&gt;float&lt;/b&gt;, na przykład :
+Twoim zadaniem jest przetransportowanie robota na drugi koniec trasy w kształcie okręgu o promieniu 10 metrów. Należy obliczyć ze wzoru na obwód koła długość trasy, czas trwania podróży oraz jaka powinna powinna być prędkość obrotu (WSKAZÓWKA : robot powinien wykonać obrót 180 stopni wciągu trwania całego ruchu). Prędkość robota odczytasz za pomocą funkcji &lt;b&gt;GetMovementSpeed()&lt;/b&gt;. Funkcja ta w odróżnieniu od poznanych dotychczas zwraca wartość typu &lt;b&gt;float&lt;/b&gt;, na przykład :
 
 &lt;b&gt;&lt;color=#800000ff&gt;void Main()
 {
@@ -191,7 +191,7 @@ Należy pamiętać, że użycie zmiennej np. typu &lt;b&gt;int&lt;/b&gt; zamiast
   <mission>
     <id>14</id>
     <name>Pomiar odległości</name>
-    <description>W kolejnych misjach będzie potrzebna funckja umożliwiająca pomiar odległości. Jest nią &lt;b&gt;Raycast()&lt;/b&gt;. Sprawia ona, że robot wysyła przed siebie promień i mierzy dystans do najbliższej przeszkody. Przykład użycia :
+    <description>W kolejnych misjach będzie potrzebna funkcja umożliwiająca pomiar odległości. Jest nią &lt;b&gt;Raycast()&lt;/b&gt;. Sprawia ona, że robot wysyła przed siebie promień i mierzy dystans do najbliższej przeszkody. Przykład użycia :
 
 &lt;b&gt;&lt;color=#800000ff&gt;void Main()
 {
@@ -223,7 +223,7 @@ Gdy chcemy, aby robot wykonał daną czynność tylko wtedy, gdy określony waru
   if(warunek)
   {
     WykonajPierwsząCzynność();
-    WykonajDrrugąCzynność();
+    WykonajDrugąCzynność();
   }
 }
 &lt;/color&gt;&lt;/b&gt;
@@ -315,7 +315,7 @@ Udziel odpowiedzi za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</des
 }
 &lt;/color&gt;&lt;/b&gt;
 
-W nawiasach po słowie &lt;b&gt;while&lt;/b&gt; wstawiamy warunek. Instrukcje między klamrami będą wykonywać się, dopóki warunek jest prawdziwy. Gdy zmienna 'przyswojonaWiedza' będzie większa lub równa od 100, pętla zostanie przerwana i zostanie wykonana funkcja Odpocznij().
+W nawiasach po słowie &lt;b&gt;while&lt;/b&gt; wstawiamy warunek. Instrukcje między klamrami będą wykonywać się, dopóki warunek jest prawdziwy. Gdy zmienna 'przyswojonaWiedza' będzie większa lub równa 100, pętla zostanie przerwana i zostanie wykonana funkcja Odpocznij().
 
 W tym zadaniu oprócz dostarczenia robota do miejsca docelowego, nie może on również dotknąć czerwonego promienia. Jeden jest przed, drugi za robotem. Człowiek może ich dotykać bez żadnych przeszkód. Gdy naciśniemy przycisk, promienie z losowym opóźnieniem od 4 do 10 sekund zaczną poruszać się do przodu ze stałą prędkością, równą prędkości robota.
 
@@ -324,8 +324,7 @@ Cały problem leży w właśnie w tym opóźnieniu. Robot po skompilowaniu kodu 
   <mission>
     <id>17</id>
     <name>Nieskończona pętla</name>
-    <description>
-      To zadanie jest bardzo podobne do poprzedniego z tą różnicą, że po wciśnięciu przycisku promienie zaczną się natychmiast przemieszczać, zatrzymując się po drodze losową ilość razy. Robot powinien wykryć zartzymanie się promieni oraz się zatrzymać. Podobnie musi być wstanie określić, kiedy należy kontynuować przemieszczanie się. Może być przydatne pętla, która nigdy się nie zatrzyma oraz nowe słowo kluczowe &lt;b&gt;else&lt;/b&gt; :
+    <description>To zadanie jest bardzo podobne do poprzedniego z tą różnicą, że po wciśnięciu przycisku promienie zaczną się natychmiast przemieszczać, zatrzymując się po drodze losową ilość razy. Robot powinien wykryć zatrzymanie się promieni oraz się zatrzymać. Podobnie musi być wstanie określić, kiedy należy kontynuować przemieszczanie się. Może być przydatne pętla, która nigdy się nie zatrzyma oraz nowe słowo kluczowe &lt;b&gt;else&lt;/b&gt; :
 
 &lt;b&gt;&lt;color=#800000ff&gt;void Main()
 {
@@ -360,7 +359,7 @@ _ _ _ _ _ _ _ _ _
 |   | _ _ _ _ _ _ _|
 |X|
 &lt;/color&gt;
-Znak 'X' oznacza poczatkową pozycję labiryntu. Aby dotrzeć na sam koniec należy przejechać 25 metrów, skęcić w prawo, znów przejechać 25 metrów, znów skręcić w prawo, 20 metrów, w prawo, 20 metrów, w prawo, 15 metrów, w prawo, 15 metrów, w prawo itd. Jak widać jest to dość spora liczba kroków, które jednak są bardzo powtarzalne. Każdy fragment składa się z 4 czynności : x metrów, w prawo, x metrów, w prawo. Następny fragment będzie już wyglądał następująco : x-5 metrów, w prawo, x-5 metrów, w prawo. Gdy mamy do czynienia z iteracją, czyli zmianą stopniową zmianą zmiennej (w tym przypadku drogi do przebycia), należy skorzystać z pętli &lt;b&gt;for&lt;/b&gt; :
+Znak 'X' oznacza poczatkową pozycję robota w labiryncie. Aby dotrzeć na sam koniec należy przejechać 25 metrów, skęcić w prawo, znów przejechać 25 metrów, znów skręcić w prawo, 20 metrów, w prawo, 20 metrów, w prawo, 15 metrów, w prawo, 15 metrów, w prawo itd. Jak widać jest to dość spora liczba kroków, które jednak są bardzo powtarzalne. Każdy fragment składa się z 4 czynności : x metrów, w prawo, x metrów, w prawo. Następny fragment będzie już wyglądał następująco : x-5 metrów, w prawo, x-5 metrów, w prawo. Gdy mamy do czynienia z iteracją, czyli stopniową zmianą zmiennej (w tym przypadku drogi do przebycia), należy skorzystać z pętli &lt;b&gt;for&lt;/b&gt; :
 &lt;b&gt;&lt;color=#800000ff&gt;
 void Main()
 {
@@ -418,7 +417,7 @@ Teraz zmienna 'pozycja' zawiera informacje na temat obiektu o nazwie "jakaś naz
       
 &lt;b&gt;&lt;color=#800000ff&gt;foat x = pozycja.x;
 float y = pozycja.y;&lt;/color&gt;&lt;/b&gt;
-s     
+     
 Robot znajduje się na pozycji (0, 0) i jest zwrócony zgodnie z kierunkiem osi 'y'. Dla przykładu, jeżeli szukana pozycja wynosi (-2, 1), to widok z góry wyglądałby następująco :
 &lt;color=#237514ff&gt;
 = = = = =
@@ -433,14 +432,14 @@ Dotrzyj do miejsca docelowego o nazwie "ukryty cel".</description>
   <mission>
     <id>21</id>
     <name>Funkcje składowe</name>
-    <description>W tym zadaniu miejsce docelowe również ma nazwę "ukryty cel" lecz robot nie znajduje się już w pozycji (0, 0). To znaczy, że wartość zwrócona przez GetPosition("ukryty cel") nie mówi już nam nic o pozycji ukrytego miejsca docelowego. Musimy dodatkowo poznać pozycję robota za pomocą tej samej funkcji. Nazwa robota to "szukający robot". Gdy poznamy dwie szukane pozycje, będziemy w stanie obliczyć względne odległości. Jednakże jest to dobre miejsce, aby wykorzystać dobrodziejstwo typów złożonych. Mogą one posiadać nie tylko wiele zmiennych, ale również własne &lt;b&gt;funkcje składowe&lt;/b&gt;. Jedną z nich jest &lt;b&gt;GetRelationPosition (pozycjaBezwzględna)&lt;/b&gt;. Aby skorzystać z funckji składowej należy zastosować znak kropki '.' :
+    <description>W tym zadaniu miejsce docelowe również ma nazwę "ukryty cel" lecz robot nie znajduje się już w pozycji (0, 0). To znaczy, że wartość zwrócona przez GetPosition("ukryty cel") nie mówi już nam nic o pozycji ukrytego miejsca docelowego. Musimy dodatkowo poznać pozycję robota za pomocą tej samej funkcji. Nazwa robota to "robot". Gdy poznamy dwie szukane pozycje, będziemy w stanie obliczyć względne odległości. Jednakże jest to dobre miejsce, aby wykorzystać dobrodziejstwo typów złożonych. Mogą one posiadać nie tylko wiele zmiennych, ale również własne &lt;b&gt;funkcje składowe&lt;/b&gt;. Jedną z nich jest &lt;b&gt;GetRelationPosition (pozycjaBezwzględna)&lt;/b&gt;. Aby skorzystać z funckji składowej należy zastosować znak kropki '.' :
       
 &lt;b&gt;&lt;color=#800000ff&gt;Position pozycja1 = GetPosition("pozycja1");
 Position pozycja2 = GetPosition("pozycja2");
       
 Position pozycjaWzględna = pozycja1.GetRelativePosition(pozycja2);&lt;/color&gt;&lt;/b&gt;
      
-Pozycja względna będzie zawierałą pozycję względną drugiego obiektu względem pierwszego (nie na odwrót!). Przykładowo jeżeli pozycja1 wynosi (10, 5), a pozycja2 równa się (2, 4) to pozycjaWzględna będzie wynosiła (8, 1). Ta wartość oznacza, że aby dostać się z punktu pierwszego do punktu drugiego należy pokonać 8 metrów w osi 'x' i 1 metr w osi 'y'.
+Pozycja względna będzie zawierałą pozycję względną drugiego obiektu względem pierwszego (nie na odwrót!). Przykładowo jeżeli 'pozycja1' wynosi (10, 4), a 'pozycja2' równa się (2, 5) to 'pozycjaWzględna' będzie wynosiła (-8, 1). Ta wartość oznacza, że aby dostać się z punktu pierwszego do punktu drugiego należy pokonać 8 metrów przeciwnie do kierunku osi 'x' i 1 metr zgodnie z kierunkiem osi 'y'.
       
 Oblicz pozycję względną i dotrzyj do punktu docelowego. Robot nadal jest zwrócony zgodnie z kierunkiem osi 'y'.</description>
   </mission>
@@ -476,17 +475,34 @@ class Program : Robot
   }
 }
 &lt;/color&gt;&lt;/b&gt;
-Utworzyliśmy funkcję, która pobiera dwa argumenty typu &lt;b&gt;int&lt;/b&gt; i zwraca wartość typu &lt;b&gt;int&lt;/b&gt;. Słowo kluczowe &lt;b&gt;return&lt;/b&gt; powołuje przerwanie funkcji i zwrócenie wartości. Po zakończeniu działania kodu zmienna 'y' będzie miała wartość '15'. Warto zauważyć, że funkcjię Dodaj(a, b) umieściliśmy poza funkcją 'Main()'. 
+Utworzyliśmy funkcję, która pobiera dwa argumenty typu &lt;b&gt;int&lt;/b&gt; i zwraca wartość typu &lt;b&gt;int&lt;/b&gt;. Słowo kluczowe &lt;b&gt;return&lt;/b&gt; powołuje przerwanie funkcji i zwrócenie wartości. Po zakończeniu działania kodu zmienna 'y' będzie miała wartość '15'. Warto zauważyć, że funkcjię Dodaj(a, b) umieściliśmy poza funkcją 'Main()'. Ważne, aby pamięteać, że funkcje nie modyfikują oryginalnych wartości, tylko pracują na kopiach :
+&lt;b&gt;&lt;color=#800000ff&gt;
+using RobotsLibrary;
+
+class Program : Robot
+{
+  void Main()
+  {
+    int x = 5;
+    Zmien(x);
+  }
+
+  void Zmien(int a)
+  {
+    a = 10;
+  }
+}
+&lt;/color&gt;&lt;/b&gt;
+Po wykonaniu się kodu, zmienna 'x' nadal będzie miała wartość 5.
 
 Jak nie trudno się domyślić, funkcja Main(), która wykonuje się automatycznie po skompilowaniu kodu, nie przyjmuje żadnych argumentów, a po braku słowa kluczowego &lt;b&gt;return&lt;/b&gt; możemy wnioskować, że nie zwraca żadnej wartości. Rzeczywiście, słowo kluczowe &lt;b&gt;void&lt;/b&gt; oznacza brak zwracanej wartości.
 
-Posiadając już teraz umiejętność tworzenia własnych funkcji, służących skracaniu kodu, oblicz sumę f(-1)+f(0)+f(1)+f(5)+f(6), gdzie f(x) jest wyżej wymienionym przekształceniem.
-    </description>
+Posiadając już teraz umiejętność tworzenia własnych funkcji służących skracaniu kodu, oblicz sumę f(-1)+f(0)+f(1)+f(5)+f(6), gdzie f(x) jest wyżej wymienionym przekształceniem. Odpowiedź podaj za pomocą funkcji &lt;b&gt;Answer(odpowiedź)&lt;/b&gt;.</description>
   </mission>
   <mission>
     <id>23</id>
     <name>Podróż do wielu punktów</name>
-    <description>W tej misji robot musi dotrzeć do 5 różnych ukrytych miejsc. Wykonanie pięciu bardzo podobnych czynności jest świetną okazją do użycia funkcji. Powinna ona przyjmować jako argument nazwę celu, a następnie przemieścić się do niego. Nie ma potrzeby, aby ta funkcja coś zwracała, dlatego typ zwracanej wartości powinien być ustawiony na &lt;b&gt;void&lt;b&gt; (brak zwracanej wartość). Dodając do tego informację, że typ tekstowy ma nazwę &lt;b&gt;string&lt;b&gt;, jesteśmy w stanie stworzyć naszą funkcję :
+    <description>W tej misji robot musi dotrzeć do 5 różnych ukrytych miejsc. Wykonanie pięciu bardzo podobnych czynności jest świetną okazją do użycia funkcji. Powinna ona przyjmować jako argument nazwę celu, a następnie przemieścić się do niego. Nie ma potrzeby, aby ta funkcja coś zwracała, dlatego typ zwracanej wartości powinien być ustawiony na &lt;b&gt;void&lt;/b&gt; (brak zwracanej wartość). Dodając do tego informację, że typ tekstowy ma nazwę &lt;b&gt;string&lt;/b&gt;, jesteśmy w stanie stworzyć naszą funkcję :
 &lt;b&gt;&lt;color=#800000ff&gt;
 using RobotsLibrary;
 
@@ -499,11 +515,13 @@ class Program : Robot
 
   void JedzDo(string nazwaCelu)
   {
-    // kod, który przemieści robota do celu o podanej nazwie
+    Position pozycja = GetPosition(nazwaCelu);
+  
+    // kod, który przemieści robota do podanej pozycji
   }
 }
 &lt;/color&gt;&lt;/b&gt;
-Nazwy tych miejsc to "zmienna", "funkcja", "obiekt", "iteracja" i "warunek".</description>
+Nazwy tych miejsc to "zmienna", "funkcja", "obiekt", "iteracja" i "warunek". Robot ma nazwę "robot". Nie zapomnij o funkcji &lt;b&gt;GetRelativePosition(pozycja)&lt;/b&gt;</description>
   </mission>
   <mission>
     <id>24</id>
@@ -528,7 +546,7 @@ Aby dostać się do miejsca docelowego oddalonego o 18 metrów od pierwszego rob
   <mission>
     <id>25</id>
     <name>Wieża</name>
-    <description>To zadanie jest podobne do poprzedniego. Jednak tym razem nie użyjemy drugiego robota, lecz wieży. Aby uzyskać do nie dostęp wykorzystujemy analogiczną funkcję co w misji poprzedniej :
+    <description>To zadanie jest podobne do poprzedniego. Jednak tym razem nie użyjemy drugiego robota, lecz wieży. Aby uzyskać do niej dostęp wykorzystujemy analogiczną funkcję co w misji poprzedniej :
 &lt;b&gt;&lt;color=#800000ff&gt;
 void Main()
 {
