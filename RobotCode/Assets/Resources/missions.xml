@@ -557,12 +557,12 @@ W przeciwieństwie do robota, wieża ma tylko jedną funkcję : &lt;b&gt;Shoot(p
 &lt;b&gt;&lt;color=#800000ff&gt;
 wieza.Shoot(pozycjaDoOstrzelania);
 &lt;/color&gt;&lt;/b&gt;
-Zadaniem w tej misji jest zniszczenie obiektu o nazwie "Cel". Pozycję obiektu uzyskasz za pomocą funkcji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;.</description>
+Zadaniem w tej misji jest zniszczenie obiektu o nazwie "Cel". Pozycję obiektu uzyskasz za pomocą funkcji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;. Nazwa wieży to "Wieza".</description>
   </mission>
   <mission>
     <id>26</id>
     <name>Tworzenie obietków</name>
-    <description>W tym musisz za pomocą wieży zniszczyć trzy obiekty. Jednak tym razem nie mają one nazw, a co za tym idzie, nie można odczytać ich pozycji za pomocą funckji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;.
+    <description>W tym zadaniu musisz za pomocą wieży zniszczyć trzy obiekty. Jednak tym razem nie mają one nazw, a co za tym idzie, nie można odczytać ich pozycji za pomocą funckji &lt;b&gt;GetPosition(nazwaObiektu)&lt;/b&gt;.
       
 Pozycje obiektów są za to znane z góry : (-8, 8), (2, 10) i (11, 5). Mając te dane możesz ręcznie utworzyć obiekty typu Position i przekazać je wieży. Do tworzenia nowych obiektów słóży słowo kluczowe &lt;b&gt;new&lt;/b&gt; :
 &lt;b&gt;&lt;color=#800000ff&gt;
@@ -571,7 +571,8 @@ void Main()
   Position pozycja = new Position(2, 10);
 }
 &lt;/color&gt;&lt;/b&gt;
-Jak widzisz tworzenie obietków przypomina wywołanie funkcji. Po słowie &lt;b&gt;new&lt;/b&gt; podajemy nazwę typu, a następnie w nawiasach argumenty (w tym przypadku kolejno pozycję x i y). Wykorzystując tą wiedzę zniszcz wszystkie obiekty. Nazwa wieży to "Wieza".</description>
+Jak widzisz tworzenie obietków przypomina wywołanie funkcji. Po słowie &lt;b&gt;new&lt;/b&gt; podajemy nazwę typu, a następnie w nawiasach argumenty (w tym przypadku kolejno pozycję x i y). Wykorzystując tą wiedzę zniszcz wszystkie obiekty. Nazwa wieży to "Wieza". Pamiętaj, że wieża potrzebuje czasu na przeładowanie, więc między strzałami użyj funkcji &lt;b&gt;Wait(czas)&lt;/b&gt;.
+  </description>
   </mission>
   <mission>
     <id>27</id>
@@ -585,7 +586,7 @@ class NazwaKlasy
     // ...
   }
 
-  int Funkcja1(float jakisArgument)
+  int Funkcja2(float jakisArgument)
   {
     // ...
   }
@@ -621,7 +622,7 @@ class Program : Robot
 &lt;/color&gt;&lt;/b&gt;
 Jedyną rzeczą, która stanowi teraz zagadkę jest instrukcja "using RobotsLibrary;".
 
-W tej misji musisz podobnie jak w innych dotrzeć do wyznaczonego miejsca oddalonego o 30 metrów. Jednak po drodze znajduje się wieża, która zestrzeli każdy obiekt, który się do niej zbliży. Naszczęści frima RobotTech stworzyła specjalną klasę, która pozwala na zdalne dezaktywowanie wieży. Ta klasa nazywa się &lt;b&gt;Tower&lt;/b&gt;. Na nieszczęście tak samo nazywa się typ opiektu zwracany przez funkcję &lt;b&gt;GetTower(nazwaWiezy)&lt;/b&gt;. Pozwala on na sterowanie wieżą. Z kolei klasa udostępniona przez firmę RobotTech pozwala tylko na wyłączenie wieży. Używa się jej w następujący sposób :
+W tej misji musisz podobnie jak w innych dotrzeć do wyznaczonego miejsca oddalonego o 30 metrów. Jednak po drodze znajduje się wieża, która zestrzeli każdy obiekt, który się do niej zbliży. Naszczęście frima RobotTech stworzyła specjalną klasę, która pozwala na zdalne dezaktywowanie wieży. Ta klasa nazywa się &lt;b&gt;Tower&lt;/b&gt;. Na nieszczęście tak samo nazywa się typ opiektu zwracany przez funkcję &lt;b&gt;GetTower(nazwaWiezy)&lt;/b&gt;. Pozwala on na sterowanie wieżą. Z kolei klasa udostępniona przez firmę RobotTech pozwala tylko na wyłączenie wieży. Używa się jej w następujący sposób :
 &lt;b&gt;&lt;color=#800000ff&gt;
 void Main()
 {
@@ -630,32 +631,33 @@ void Main()
   wieza.Disable();
 }
 &lt;/color&gt;&lt;/b&gt;
-Na początek tworzymy obiekt typu 'Tower' podając jako argument nazwę wieży. Następnie za pomocą funkcji składowej &lt;b&gt;Disable()&lt;/b&gt; wyłączamy wieżę. Ale skąd robot ma wiedzieć, czy chodzi nam akurat o klasę 'Tower' firmy RobotTech, a nie o typ 'Tower', którego używaliśmy dotychczas? Wszyscy producenci oprogramowania dla robotów musialiby towrzyć unikalne nazwy typów. Aby tego uniknąć, stosuje się przestrzenie klas.
+Na początek tworzymy obiekt typu 'Tower' podając jako argument nazwę wieży. Następnie za pomocą funkcji składowej &lt;b&gt;Disable()&lt;/b&gt; wyłączamy wieżę. Ale skąd robot ma wiedzieć, czy chodzi nam akurat o klasę 'Tower' firmy RobotTech, a nie o typ 'Tower', którego używaliśmy dotychczas? Wszyscy producenci oprogramowania dla robotów musialiby towrzyć unikalne nazwy typów. Aby tego uniknąć, stosuje się przestrzenie nazw.
 
-Firma RobotTech umieściła swoją klasę w w przestrzeni nazwa "RobotTech", a typ 'Tower', którego używaliśmy dotychczas należy do przestrzeni nazw "RobotsLibrary". Pełną nazwę podaje się w ten sposób :
+Firma RobotTech umieściła swoją klasę w w przestrzeni nazw "RobotTech", a typ 'Tower', którego używaliśmy dotychczas należy do przestrzeni nazw "RobotsLibrary". Pełną nazwę podaje się w ten sposób :
 &lt;b&gt;&lt;color=#800000ff&gt;
 void Main()
 {
-  RobotsLibrary.Tower wieza1 = GetTower(nazwaWieży2);
-      
-  RobotTech.Tower wieza2 = new Tower("nazwaWieży2");
+  RobotsLibrary.Tower wieza1 = GetTower("nazwaWieży1");
+
+  RobotTech.Tower wieza2 = new RobotTech.Tower("nazwaWieży2");
 }
-&lt;/color&gt;&lt;/b&gt;
+      &lt;/color&gt;&lt;/b&gt;
 Ale podawanie pełnej nazwy za każdym razem jest męczące. Dlatego używa się instrukcji :
 &lt;b&gt;&lt;color=#800000ff&gt;
 using NazwaPrzestrzeniNazw;
 &lt;/color&gt;&lt;/b&gt;
 Powyższa instrukcja mówi nam o domyślnie używanej przestrzeni nazw. Bez tego nasz kod wyglądałby następująco :
+&lt;b&gt;&lt;color=#800000ff&gt;
 class Program : RobotsLibrary.Robot
 {
   void Main()
   {
     RobotsLibrary.Position pozycja = GetPosition('nazwaCelu');
-    RobotsLibrary.Tower wieza = GetTower(nazwaWieży);
+    RobotsLibrary.Tower wieza = GetTower("nazwaWieży");
     wieza.Shoot(pozycja);
   }
 }
-      
+&lt;/color&gt;&lt;/b&gt;    
 Wykorzystując wiedzę na temat przestrzeni nazw oraz posługując się klasą RobotTech.Tower stworzoną przez firmę RobotTech, przetransportuj bezpiecznie robota do miejsca przeznaczenia. Nazwa wieży to "Wieza".</description>
   </mission>
 </missions>

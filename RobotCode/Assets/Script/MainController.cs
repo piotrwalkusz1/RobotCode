@@ -94,6 +94,11 @@ public class MainController : MonoBehaviour
             PlayerProfilController.Save();
 
             typeof(RobotTech.Tower).GetField("_tower", BindingFlags.Static | BindingFlags.NonPublic).SetValue(null, new TowerController());
+
+            if (level == 29)
+            {
+                Cursor.visible = true;
+            }
         }
     }
 
